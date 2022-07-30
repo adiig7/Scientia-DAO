@@ -9,5 +9,6 @@ contract VotingOnProposal{
         uint8 numberOfResearchers;
         uint256 numberOfResearches;
         uint256 timestamp;
+        bool ownsNFT;
     }
 }
