@@ -15,7 +15,7 @@ export default function () {
           {/* <Image src={logo} /> */}
 
           <span className={styles.footer_text}>
-            © 2020 ALL RIGHTS RESERVED - Scientia DAO
+            © 2022 ALL RIGHTS RESERVED - Scientia DAO
           </span>
           <div className={`${styles.github} `}>
             <Image src={github} />

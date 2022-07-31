@@ -1,19 +1,27 @@
-.header {
-}
-
 .navbar {
-    position: fixed;
-    width: 100%;
-    border-bottom: 1px solid #B1BDF8;
+  position: fixed;
+  width: 100%;
+  border-bottom: 1px solid #b1bdf8;
   display: flex;
+  justify-content: flex-start;
   justify-content: space-between;
+  padding: 0 20px;
   align-items: center;
-  background: 	#1e2124;
+  background: #1e2124;
+  height: 8vh; 
+  /* background: #ffffff;
+  color: #000;
+  */
   /* padding: 1rem 1.5rem; */
 }
 
 .hamburger {
   display: none;
+  margin: 0 25px;
+  background-color: rgb(120, 228, 255);
+  background-color: #5d9aee;
+  border-radius: 6px;
+  padding: 5px 8px;
 }
 
 .bar {
@@ -23,7 +31,7 @@
   margin: 5px auto;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
-  background-color: #222222;
+  background-color: #000000;
 }
 
 .navmenu {
@@ -31,26 +39,50 @@
   justify-content: space-between;
   align-items: center;
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .navitem {
-  margin-left: 5rem;
+  margin: 0 1rem;
+  transition: ease-in-out .2s;
+
+}
+
+.navitem:hover {
+  /* color: #28acff; */
+  transform: scale(1.12);
 }
 
 .navlink {
-/* font-size: 18px; */
+  /* font-size: 18px; */
   color: white;
+  /* color: black; */
   text-transform: uppercase;
 }
 
-.navlink:hover {
-  color: #28acff;
-}
+.logo {
+    /* display: inline-block; */
+    /* max-width: 120px; */
+    margin: 0 25px;
+    padding: 10px 0;
+    display: flex;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #5d9aee;
+  }
+  
 
 .navlogo {
-  font-size: 1.8rem;
-  font-weight: 500;
-  /* color: #482ff7; */
+    /* display: inline-block; */
+
+  max-width: 45px;
+  margin: 0 10px;
+
 }
 
 .container {
@@ -58,12 +90,16 @@
 }
 
 @media only screen and (max-width: 768px) {
+    .navbar {
+        justify-content: space-between;
+    }
+
   .navmenu {
     position: fixed;
     left: -100%;
     top: 5rem;
     flex-direction: column;
-    background-color: #fff;
+    background-color: inherit;
     width: 100%;
     border-radius: 10px;
     text-align: center;
@@ -99,9 +135,3 @@
   }
 }
 
-.logo {
-  /* display: inline-block; */
-  max-width: 120px;
-  margin: 0 25px;
-  cursor: pointer;
-}
