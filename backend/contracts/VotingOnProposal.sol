@@ -13,8 +13,8 @@ contract VotingOnProposal{
     
     struct Voter {
         bool HasVoted;  // if true, that person already voted
+        boot ownsNFT; // how many NFTs the person owns
         uint voteIndex;   // index of the voted proposal
-        uint ownsNFT; // how many NFTs the person owns
     }
     
     enum Vote {
