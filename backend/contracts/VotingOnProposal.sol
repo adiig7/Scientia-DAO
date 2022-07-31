@@ -10,4 +10,17 @@ contract VotingOnProposal{
         uint256 numberOfResearches;
         uint256 timestamp;
     }
+    
+    struct Voter {
+        bool HasVoted;  // if true, that person already voted
+        bool ownsNFT; // how many NFTs the person owns
+        uint voteIndex;   // index of the voted proposal
+    }
+    
+    enum Vote {
+        Yes, // Yes = 0
+        No // No = 1
+    }
+    
+    mapping(address => Voter) public voters;
 }
