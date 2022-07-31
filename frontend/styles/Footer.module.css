@@ -21,8 +21,8 @@
 
 .footer_text {
     font-size: 16px;
-    max-width: 250px;
-    text-align: center;
+    /* max-width: 500px; */
+    /* text-align: center; */
 }
 
 .github {
@@ -74,4 +74,13 @@
       100% {
           background-position: 0% 50%;
       }
+  }
+
+  @media screen and (max-width: 768px) {
+    .footer_text {
+        font-size: 12px;
+        /* max-width: 500px; */
+        /* text-align: center; */
+    }
+    
   }

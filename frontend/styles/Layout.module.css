@@ -1,13 +1,15 @@
 .navbar {
+    /* border-bottom: 1px solid #b1bdf8; */
+    background: #1e2124;
+    background: #1e2124;
+    background: #111111;
   position: fixed;
   width: 100%;
-  border-bottom: 1px solid #b1bdf8;
   display: flex;
   justify-content: flex-start;
   justify-content: space-between;
   padding: 0 20px;
   align-items: center;
-  background: #1e2124;
   height: 8vh; 
   /* background: #ffffff;
   color: #000;
@@ -89,9 +91,48 @@
   padding: 0 2rem;
 }
 
+.titleWord {
+    animation: color-animation 4s linear infinite;
+  }
+  
+  .word1 {
+    --color-1: #a2cdff;
+    --color-2: #84daff;
+    --color-3: #c0ffa1;
+  }
+  
+  .word2 {
+    --color-1: #6cffe4;
+    --color-2: #4dffea;
+    --color-3: rgb(114, 255, 208);
+  }
+
+  
+  @keyframes color-animation {
+    0%    {color: var(--color-1)}
+    32%   {color: var(--color-1)}
+    33%   {color: var(--color-2)}
+    65%   {color: var(--color-2)}
+    66%   {color: var(--color-3)}
+    99%   {color: var(--color-3)}
+    100%  {color: var(--color-1)}
+  }
+  
+  /* Here are just some visual styles. 🖌 */
+
+  
+  .title {
+    /* font-family: "Montserrat", sans-serif; */
+    font-weight: 800;
+    font-size: 28px;
+    /* text-transform: uppercase; */
+  }
+
+
 @media only screen and (max-width: 768px) {
     .navbar {
         justify-content: space-between;
+        background: #1e2124;
     }
 
   .navmenu {

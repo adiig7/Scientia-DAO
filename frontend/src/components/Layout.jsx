@@ -5,6 +5,7 @@ import logo from "../assets/logo2.png";
 import scope from "../assets/scope-128.png";
 import Image from "next/image";
 import Link from "next/link";
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export default function Layout({ children }) {
   const [isActive, setIsActive] = useState(false);
@@ -20,8 +21,12 @@ export default function Layout({ children }) {
         <nav className={styles.navbar}>
           <div className={styles.logo}>
             <Link href={"/"}>
-              {/* <Image src={logo} /> */}
-              <div>Scientia DAO</div>
+
+              
+              <div className={styles.title}>
+                <span className={`${styles.titleWord} ${styles.word1}`}>Scientia </span>
+                <span className={`${styles.titleWord} ${styles.word2}`}>DAO</span>
+              </div>
             </Link>
             <div className={styles.navlogo}>
               <Image src={scope} />
@@ -46,11 +51,12 @@ export default function Layout({ children }) {
             </li>
             <li className={styles.navitem}>
               <Link href="">
-                <a className={styles.navlink}>Browse</a>
+                <a className={styles.navlink}>Explore</a>
               </Link>
             </li>
             <li className={styles.navitem}>
-              <button>Connect Wallet</button>
+              {/* <button>Connect Wallet</button> */}
+              <ConnectButton />
             </li>
           </ul>
           <button
