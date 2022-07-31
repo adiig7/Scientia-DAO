@@ -1,8 +1,9 @@
 .navbar {
+    z-index: 1000;
     /* border-bottom: 1px solid #b1bdf8; */
     background: #1e2124;
-    background: #1e2124;
     background: #111111;
+    /* background: #1e2124; */
   position: fixed;
   width: 100%;
   display: flex;
@@ -11,6 +12,7 @@
   padding: 0 20px;
   align-items: center;
   height: 8vh; 
+
   /* background: #ffffff;
   color: #000;
   */
@@ -22,7 +24,9 @@
   margin: 0 25px;
   background-color: rgb(120, 228, 255);
   background-color: #5d9aee;
-  border-radius: 6px;
+  background-color: #1e80ff;
+  border-radius: 10px;
+  border: 2px solid black;
   padding: 5px 8px;
 }
 
@@ -124,7 +128,7 @@
   .title {
     /* font-family: "Montserrat", sans-serif; */
     font-weight: 800;
-    font-size: 28px;
+    font-size: 26px;
     /* text-transform: uppercase; */
   }
 
@@ -134,6 +138,26 @@
         justify-content: space-between;
         background: #1e2124;
     }
+    .navlogo {
+        max-width: 35px;
+    }
+
+    .titleWord, .word1, .word2 {
+        display: inline;
+        /* margin: 5px; */
+        font-size: 16px;
+    }
+
+      
+  .title {
+    /* font-family: "Montserrat", sans-serif; */
+    font-weight: 800;
+    font-size: 22px;
+    margin: 0;
+    display: inline;
+    /* padding: 50px; */
+    /* text-transform: uppercase; */
+  }
 
   .navmenu {
     position: fixed;
