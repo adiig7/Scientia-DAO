@@ -76,8 +76,11 @@ contract VotingOnProposal{
         emit proposalAddEvent(msg.sender, pdfLink, videoLink, block.timestamp, 0, 0, block.timestamp + 7 days);
     }
 
-    function vote(address voter, uint256 proposalIndex) public isADAOMember, isProposalActive{
-        
+    function vote(uint256 proposalIndex, Vote vote) public isADAOMember, isProposalActive{
+        Proposal storage proposal = proposals[proposalIndex];
+        if(vote == Vote.YAY){
+            proposal.yayVotes +=1;
+        }else
+            proposal.nayVotes += 1;
     }
-
 }
