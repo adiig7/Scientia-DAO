@@ -2,12 +2,17 @@
 pragma solidity ^0.8.10;
 
 // import "@openzeppelin/contracts/utils/Counters.sol";
+interface NFT {
+    function balanceOf(address user, uint256 tokenId)
+        external
+        returns (uint256);
+}
 
-contract VotingOnProposal{
+contract VotingOnProposal {
+    // using Counters for Counters.Counter;
+    NFT nft;
 
-    // using Counters for Counters.Counter; 
-    
-    struct Proposal{
+    struct Proposal {
         address from;
         string pdfLink;
         string videolink;
@@ -18,38 +23,50 @@ contract VotingOnProposal{
         uint256 amount;
     }
 
-        event proposalAddEvent(address indexed from, string pdfLink, string videoLink, uint256 timestamp);
-    
+    event proposalAddEvent(
+        address indexed from,
+        string pdfLink,
+        string videoLink,
+        uint256 timestamp
+    );
+
     struct Voter {
         bool ownsNFT; // how many NFTs the person owns
     }
 
-    
     enum Vote {
         Yes, // Yes = 0
         No // No = 1
     }
-    
+
     // mapping to keep track of voters voting on proposals, where address is the address of the voter, uint256 is the //proposal index and bool is to keep track if the voter has voted on the proposal or not
     mapping(address => mapping(uint256 => bool)) hasVoted;
     mapping(address => Voter) public voters;
     mapping(uint256 => Proposal) proposals;
     // array of proposals
-    uint proposalsIndex = 0;
+    uint256 proposalsIndex = 0;
 
-     modifier isADAOMember{
+    constructor(address nftContract) {
+        nft = NFT(nftContract);
+    }
+
+    modifier isADAOMember() {
         require(voters[msg.sender].ownsNFT == true);
+        require(nft.balanceOf(msg.sender, 0) > 0, "You are not a DAO member");
         _;
     }
 
-    modifier isProposalActive{
+    modifier isProposalActive() {
         require(proposals[proposalsIndex].deadline >= block.timestamp);
+        _;
     }
 
-    modifier isProposalEnded{
+    modifier isProposalEnded() {
         require(proposals[proposalsIndex].deadline <= block.timestamp);
+        _;
     }
-/*
+
+    /*
     //function if eligible to vote and the vote itself
     function vote(uint proposal) public {
         Voter storage sender = voters[msg.sender];
@@ -65,31 +82,52 @@ contract VotingOnProposal{
     }
     */
 
-    function addProposal(string memory pdfLink, string memory videoLink, uint256 amount) public isADAOMember{
-        Proposal storage proposal = proposals[proposalsIndex];
-        proposal.from = msg.sender;
-        proposal.pdfLink = pdfLink;
-        proposal.videolink = videoLink;
-        proposal.deadline = block.timestamp + 7 days;
-        proposal.timestamp = block.timestamp;
-        proposal.amount = amount;
+    function addProposal(
+        string memory pdfLink,
+        string memory videoLink,
+        uint256 amount
+    ) public isADAOMember {
+        // Proposal storage proposal = proposals[proposalsIndex];
+        // proposal.from = msg.sender;
+        // proposal.pdfLink = pdfLink;
+        // proposal.videolink = videoLink;
+        // proposal.deadline = block.timestamp + 7 days;
+        // proposal.timestamp = block.timestamp;
+        // proposal.amount = amount;
+
+        proposals[proposalsIndex] = Proposal(
+            msg.sender,
+            pdfLink,
+            videoLink,
+            block.timestamp,
+            0,
+            0,
+            block.timestamp + 7 days,
+            amount
+        );
         // proposals.push(Proposal(msg.sender, pdfLink, videoLink, block.timestamp, 0, 0, block.timestamp + 7 days));
-        proposalsIndex +=1;
-        emit proposalAddEvent(msg.sender, pdfLink, videoLink, block.timestamp, 0, 0, block.timestamp + 7 days, amount);
+        proposalsIndex += 1;
+        emit proposalAddEvent(msg.sender, pdfLink, videoLink, block.timestamp);
     }
 
-    function vote(uint256 proposalIndex, Vote vote) public isADAOMember, isProposalActive{
+    function vote(uint256 proposalIndex, Vote vote)
+        public
+        isADAOMember
+        isProposalActive
+    {
         Proposal storage proposal = proposals[proposalIndex];
-        if(vote == Vote.YAY){
-            proposal.yayVotes +=1;
-        }else
-            proposal.nayVotes += 1;
+        if (vote == Vote.Yes) {
+            proposal.yayVotes += 1;
+        } else proposal.nayVotes += 1;
     }
 
-    // only the DAO officials can call this function 
-    function executeProposal(uint256 proposalIndex, uint256 amount) public isProposalEnded{
-        Proposal storage proposal = proposals(proposalIndex);
-        if(proposal.yayVotes > proposal.nayVotes){
+    // only the DAO officials can call this function
+    function executeProposal(uint256 proposalIndex, uint256 amount)
+        public
+        isProposalEnded
+    {
+        Proposal storage proposal = proposals[proposalIndex];
+        if (proposal.yayVotes > proposal.nayVotes) {
             (bool sent, ) = proposal.from.call{value: amount}("");
         }
     }
