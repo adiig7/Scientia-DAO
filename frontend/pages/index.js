@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import hero from "../src/assets/hero.gif";
 import book from "../src/assets/book.gif";
+import FeaturesCard from "../src/components/FeaturesCard";
 
 export default function Home() {
   return (
@@ -26,22 +27,38 @@ export default function Home() {
         </div>
         <div className={styles.tagline}>
           <span className={`${styles.titleWord} ${styles.word2}`}>
-            
-            Publish{" "} & share{" "}
+            Publish & share{" "}
           </span>
           <span className={`${styles.titleWord} ${styles.word1}`}>
-             your research on the 
+            your research on the
           </span>
           <span className={`${styles.titleWord} ${styles.word2}`}>
             {" "}
-            world&#39;s first DAO {" "}
+            world&#39;s first DAO{" "}
           </span>
           <span className={`${styles.titleWord} ${styles.word1}`}>
-          community for SCIENTISTS
+            community for SCIENTISTS
           </span>
-          
         </div>
       </main>
+
+      <div className={styles.features}>
+        <div className={styles.title}>
+          <span className={`${styles.titleWord} ${styles.word2}`}>DAO</span>
+          <span className={`${styles.titleWord} ${styles.word1}`}>
+            {" "}
+            Features
+          </span>
+        </div>
+
+        <div className={styles.wrapper}>
+
+        <FeaturesCard/>
+        <FeaturesCard/>
+      </div>
+      
+      
+      </div>
     </div>
   );
 }

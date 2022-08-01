@@ -3,7 +3,7 @@
 }
 
 .main {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   padding: 6rem 0;
   /* flex: 1; */
   display: flex;
@@ -17,7 +17,6 @@
 .hero {
   max-width: 400px;
 }
-
 
 .title {
   /* font-family: "Montserrat", sans-serif; */
@@ -43,15 +42,28 @@
   --color-3: rgb(114, 255, 208);
 }
 
-
 @keyframes color-animation {
-  0%    {color: var(--color-1)}
-  32%   {color: var(--color-1)}
-  33%   {color: var(--color-2)}
-  65%   {color: var(--color-2)}
-  66%   {color: var(--color-3)}
-  99%   {color: var(--color-3)}
-  100%  {color: var(--color-1)}
+  0% {
+    color: var(--color-1);
+  }
+  32% {
+    color: var(--color-1);
+  }
+  33% {
+    color: var(--color-2);
+  }
+  65% {
+    color: var(--color-2);
+  }
+  66% {
+    color: var(--color-3);
+  }
+  99% {
+    color: var(--color-3);
+  }
+  100% {
+    color: var(--color-1);
+  }
 }
 
 /* Here are just some visual styles. 🖌 */
@@ -65,16 +77,43 @@
   text-transform: uppercase;
 }
 
+/* features */
 
-@media screen and ( max-width: 768px ) {
-  .main * {
+.features {
+  /* min-height: 100vh; */
+  /* padding: 6rem 0; */
+  /* flex: 1; */
+  display: flex;
+  flex-direction: column;
   /* justify-content: center; */
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.title {
-  font-size: 36px;
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
+@media screen and (max-width: 768px) {
+  .main * {
+    margin-bottom: 0;
+    /* justify-content: center; */
+  }
+
+  .features {
+    margin-top: 0;
+  }
+
+  .title {
+    font-size: 36px;
+  }
+
+  .tagline {
+    font-size: 18px;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

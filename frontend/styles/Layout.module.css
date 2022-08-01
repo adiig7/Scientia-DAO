@@ -3,6 +3,7 @@
     /* border-bottom: 1px solid #b1bdf8; */
     background: #1e2124;
     background: #111111;
+    /* background: #111111b5; */
     /* background: #1e2124; */
   position: fixed;
   width: 100%;
@@ -25,6 +26,8 @@
   background-color: rgb(120, 228, 255);
   background-color: #5d9aee;
   background-color: #1e80ff;
+  background: linear-gradient(176deg, #3D9DEA, #4A4EEE);
+
   border-radius: 10px;
   border: 2px solid black;
   padding: 5px 8px;
