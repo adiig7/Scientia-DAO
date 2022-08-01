@@ -1,0 +1,86 @@
+.footer {
+    border-top: 1px solid #B1BDF8;
+    /* padding: 20px; */
+    background: #151515;
+    max-height: 8vh;
+}
+
+
+.footer_items {
+    background: #151515;
+    width: 100%;
+    padding: 1.2rem;
+
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.footer_text {
+    font-size: 16px;
+    /* max-width: 500px; */
+    /* text-align: center; */
+}
+
+.github {
+    display: inline-block;
+    padding: 5px;
+    margin: 0 20px;
+    transition: ease-in-out .2s;
+    /* border-radius: 5px; */
+    /* border: 2px solid rgb(104, 151, 165); */
+}
+
+.githubs {
+    background-color: inherit;
+    margin: 0 auto;
+}
+
+.github:hover {
+    transform: scale(1.25);
+}
+
+.gradientBorder {
+    --borderWidth: 3px;
+    background: #1D1F20;
+    position: relative;
+    border-radius: var(--borderWidth);
+  }
+  .gradientBorder:after {
+    content: '';
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+    border-radius: calc(2 * var(--borderWidth));
+    z-index: -1;
+    animation: animatedgradient 3s ease alternate infinite;
+    background-size: 300% 300%;
+  }
+  
+  
+  @keyframes animatedgradient {
+      0% {
+          background-position: 0% 50%;
+      }
+      50% {
+          background-position: 100% 50%;
+      }
+      100% {
+          background-position: 0% 50%;
+      }
+  }
+
+  @media screen and (max-width: 768px) {
+    .footer_text {
+        font-size: 12px;
+        /* max-width: 500px; */
+        /* text-align: center; */
+    }
+    
+  }
