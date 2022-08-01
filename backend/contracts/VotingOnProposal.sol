@@ -15,6 +15,7 @@ contract VotingOnProposal{
         uint256 yayVotes;
         uint256 nayVotes;
         uint256 deadline;
+        uint256 amount;
     }
 
         event proposalAddEvent(address indexed from, string pdfLink, string videoLink, uint256 timestamp);
@@ -64,16 +65,17 @@ contract VotingOnProposal{
     }
     */
 
-    function addProposal(string memory pdfLink, string memory videoLink) public isADAOMember{
+    function addProposal(string memory pdfLink, string memory videoLink, uint256 amount) public isADAOMember{
         Proposal storage proposal = proposals[proposalsIndex];
         proposal.from = msg.sender;
         proposal.pdfLink = pdfLink;
         proposal.videolink = videoLink;
         proposal.deadline = block.timestamp + 7 days;
         proposal.timestamp = block.timestamp;
+        proposal.amount = amount;
         // proposals.push(Proposal(msg.sender, pdfLink, videoLink, block.timestamp, 0, 0, block.timestamp + 7 days));
         proposalsIndex +=1;
-        emit proposalAddEvent(msg.sender, pdfLink, videoLink, block.timestamp, 0, 0, block.timestamp + 7 days);
+        emit proposalAddEvent(msg.sender, pdfLink, videoLink, block.timestamp, 0, 0, block.timestamp + 7 days, amount);
     }
 
     function vote(uint256 proposalIndex, Vote vote) public isADAOMember, isProposalActive{
@@ -82,5 +84,13 @@ contract VotingOnProposal{
             proposal.yayVotes +=1;
         }else
             proposal.nayVotes += 1;
+    }
+
+    // only the DAO officials can call this function 
+    function executeProposal(uint256 proposalIndex, uint256 amount) public isProposalEnded{
+        Proposal storage proposal = proposals(proposalIndex);
+        if(proposal.yayVotes > proposal.nayVotes){
+            (bool sent, ) = proposal.from.call{value: amount}("");
+        }
     }
 }
