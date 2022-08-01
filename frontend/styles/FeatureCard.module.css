@@ -6,7 +6,7 @@
     background: linear-gradient(120deg, #343a4f, #0f1620);
     background: linear-gradient(176deg, rgb(120, 120, 255), rgb(80, 80, 255));
     background: linear-gradient(176deg, #3D9DEA, #4A4EEE);
-    max-width:350px;
+    max-width: 350px;
     text-align: center;
     padding: 20px;
     border-radius: 25px;
@@ -39,4 +39,10 @@
     border-bottom-right-radius: 30px;
   
    
+  }
+
+  @media screen and ( max-width: 768px ) {
+    .productSpecifications {
+      max-width: 250px;
+    }
   }

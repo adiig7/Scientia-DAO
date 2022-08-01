@@ -27,9 +27,9 @@
   background-color: #5d9aee;
   background-color: #1e80ff;
   background: linear-gradient(176deg, #3D9DEA, #4A4EEE);
-
+  background: transparent;
   border-radius: 10px;
-  border: 2px solid black;
+  border: 2px solid ;
   padding: 5px 8px;
 }
 
@@ -41,6 +41,7 @@
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
   background-color: #000000;
+  background-color: #fff;
 }
 
 .navmenu {
@@ -165,11 +166,11 @@
   .navmenu {
     position: fixed;
     left: -100%;
-    top: 5rem;
+    top: 4.5rem;
     flex-direction: column;
     background-color: inherit;
     width: 100%;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     text-align: center;
     transition: 0.3s;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
