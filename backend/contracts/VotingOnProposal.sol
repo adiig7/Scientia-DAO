@@ -3,9 +3,7 @@ pragma solidity ^0.8.10;
 
 // import "@openzeppelin/contracts/utils/Counters.sol";
 interface NFT {
-    function balanceOf(address user, uint256 tokenId)
-        external
-        returns (uint256);
+    function balanceOf(address user) external returns (uint256);
 }
 
 contract VotingOnProposal {
@@ -52,7 +50,7 @@ contract VotingOnProposal {
 
     modifier isADAOMember() {
         require(voters[msg.sender].ownsNFT == true);
-        require(nft.balanceOf(msg.sender, 0) > 0, "You are not a DAO member");
+        require(nft.balanceOf(msg.sender) > 0, "You are not a DAO member");
         _;
     }
 
