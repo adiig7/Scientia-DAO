@@ -2,9 +2,14 @@
   padding: 0 2rem;
 }
 
+.container * {
+  /* border: 1px solid red; */
+}
+
 .main {
   /* min-height: 100vh; */
-  padding: 6rem 0;
+  padding-top: 4rem;
+  padding-bottom: 1rem;
   /* flex: 1; */
   display: flex;
   /* flex-direction: column; */
@@ -32,7 +37,6 @@
   animation: color-animation 4s linear infinite;
 }
 
-
 .tagline {
   /* font-family: "Montserrat", sans-serif; */
   font-weight: 800;
@@ -42,7 +46,6 @@
   text-transform: uppercase;
   max-width: 650px;
 }
-
 
 .word1 {
   --color-1: #a2cdff;
@@ -80,7 +83,6 @@
   }
 }
 
-
 /* features */
 
 .features {
@@ -93,20 +95,28 @@
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
+  text-align: center;
+}
+
+.features .title {
+  font-size: 28px;
 }
 
 .button {
   align-items: center;
   appearance: none;
-  background-color: #FCFCFD;
+  background-color: #fcfcfd;
+  background-color: #5de9ff;
   border-radius: 4px;
   border-width: 0;
-  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
   box-sizing: border-box;
-  color: #36395A;
+  color: #36395a;
   cursor: pointer;
   display: inline-flex;
-  font-family: "JetBrains Mono",monospace;
+  font-weight: bold;
+  /* font-family: "JetBrains Mono",monospace; */
   /* height: 48px; */
   justify-content: center;
   line-height: 1;
@@ -117,28 +127,30 @@
   position: relative;
   text-align: left;
   text-decoration: none;
-  transition: box-shadow .15s,transform .15s;
+  transition: box-shadow 0.15s, transform 0.15s;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   white-space: nowrap;
-  will-change: box-shadow,transform;
+  will-change: box-shadow, transform;
   font-size: 18px;
   margin: 10px 10px;
   padding: 10px 15px;
 }
 
 .button:focus {
-  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
 }
 
 .button:hover {
-  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
   transform: translateY(-2px);
 }
 
 .button:active {
-  box-shadow: #D6D6E7 0 3px 7px inset;
+  box-shadow: #d6d6e7 0 3px 7px inset;
   transform: translateY(2px);
 }
 
@@ -146,6 +158,56 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.feature_card {
+  margin: 40px auto;
+  padding: 20px;
+
+  display: flex;
+  justify-content: space-around;
+  /* justify-content: center; */
+  flex-wrap: wrap;
+  align-items: center;
+  /* align-items: flex-start; */
+
+  /* border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border: 5px solid white; */
+
+  /* height: 200px;
+  width: 800px; */
+  /* max-width: 90%; */
+  /* background-color: #000000;
+  background-image: linear-gradient(147deg, #000000 0%, #2c3e50 74%);
+
+  background-color: #310e68;
+  background-image: linear-gradient(180deg, #13012f 0%, #181518 74%); */
+  /* 
+  -webkit-box-shadow: 46px 46px 184px 44px rgba(255, 255, 255, 0.54);
+  -moz-box-shadow: 46px 46px 184px 44px rgba(255, 255, 255, 0.54);
+  box-shadow: 0px -5px 10px 4px rgba(255, 255, 255, 0.981); */
+
+  /* box-shadow: blue 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px,
+    rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px,
+    rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px,
+    rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px,
+    rgb(255, 85, 85) 40px -40px; */
+}
+
+.carousel {
+  margin: 0 auto;
+  max-width: 90%;
+  text-align: start;
+}
+
+.carousel .title {
+  font-size: 24px;
+}
+
+.carousel p {
+  text-align: center;
+  max-width: 500px;
 }
 
 @media screen and (max-width: 768px) {
@@ -158,6 +220,7 @@
     justify-content: center;
     text-align: center;
     flex-direction: column-reverse;
+    padding: 4rem 0;
   }
 
   .button {
@@ -168,12 +231,31 @@
     margin-top: 0;
   }
 
+  .features .title {
+    font-size: 22px;
+  }
+
   .title {
     font-size: 36px;
   }
 
   .tagline {
     font-size: 18px;
+  }
+
+  .carousel {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+
+  .carousel .title {
+    margin: 20px auto;
+  }
+
+
+  .feature_card {
+    margin: 20px auto;
+    flex-direction: column-reverse;
   }
 }
 

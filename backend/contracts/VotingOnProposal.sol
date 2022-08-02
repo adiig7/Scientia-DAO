@@ -40,9 +40,12 @@ contract VotingOnProposal {
     // mapping to keep track of voters voting on proposals, where address is the address of the voter, uint256 is the //proposal index and bool is to keep track if the voter has voted on the proposal or not
     mapping(address => mapping(uint256 => bool)) hasVoted;
     mapping(address => Voter) public voters;
-    mapping(uint256 => Proposal) proposals;
+    mapping(uint256 => Proposal) public proposals;
+    // holds the list of proposals that have been given the grant by the DAO
+    mapping(uint256 => Proposal) public acceptedProposals;
     // array of proposals
     uint256 proposalsIndex = 0;
+    uint256 acceptedProposalsIndex = 0;
 
     constructor(address nftContract) {
         nft = NFT(nftContract);
@@ -64,35 +67,11 @@ contract VotingOnProposal {
         _;
     }
 
-    /*
-    //function if eligible to vote and the vote itself
-    function vote(uint proposal) public {
-        Voter storage sender = voters[msg.sender];
-        require(sender.ownsNFT != 0, "Has no right to vote");
-        require(!sender.HasVoted, "Already voted.");
-        sender.HasVoted = true;
-        sender.voteIndex = proposal;
-
-        // If 'proposal' is out of the range of the array,
-        // this will throw automatically and revert all
-        // changes.
-        proposals[proposal].voteCount += sender.ownsNFT;
-    }
-    */
-
     function addProposal(
         string memory pdfLink,
         string memory videoLink,
         uint256 amount
     ) public isADAOMember {
-        // Proposal storage proposal = proposals[proposalsIndex];
-        // proposal.from = msg.sender;
-        // proposal.pdfLink = pdfLink;
-        // proposal.videolink = videoLink;
-        // proposal.deadline = block.timestamp + 7 days;
-        // proposal.timestamp = block.timestamp;
-        // proposal.amount = amount;
-
         proposals[proposalsIndex] = Proposal(
             msg.sender,
             pdfLink,
@@ -103,7 +82,6 @@ contract VotingOnProposal {
             block.timestamp + 7 days,
             amount
         );
-        // proposals.push(Proposal(msg.sender, pdfLink, videoLink, block.timestamp, 0, 0, block.timestamp + 7 days));
         proposalsIndex += 1;
         emit proposalAddEvent(msg.sender, pdfLink, videoLink, block.timestamp);
     }
@@ -127,6 +105,8 @@ contract VotingOnProposal {
         Proposal storage proposal = proposals[proposalIndex];
         if (proposal.yayVotes > proposal.nayVotes) {
             (bool sent, ) = proposal.from.call{value: amount}("");
+            acceptedProposals[acceptedProposalsIndex] = proposal;
+            acceptedProposalsIndex += 1;
         }
     }
 }
