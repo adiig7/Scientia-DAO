@@ -161,7 +161,7 @@
 }
 
 .feature_card {
-  margin: 60px auto;
+  margin: 40px auto;
   padding: 20px;
 
   display: flex;
@@ -247,6 +247,11 @@
     margin: 0 auto;
     max-width: 100%;
   }
+
+  .carousel .title {
+    margin: 20px auto;
+  }
+
 
   .feature_card {
     margin: 20px auto;

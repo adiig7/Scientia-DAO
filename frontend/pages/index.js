@@ -7,6 +7,8 @@ import exp from "../src/assets/exp.png";
 import chemist from "../src/assets/chemist.png";
 import image from "../src/assets/genius-bg.png";
 import image8 from "../src/assets/8_bg.png";
+import one from "../src/assets/13_bg.png";
+import grants from "../src/assets/grants.png";
 import FeaturesCard from "../src/components/FeaturesCard";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -83,14 +85,15 @@ export default function Home() {
           <Carousel
             width={"100%"}
             // axis={"verticals"}
-            // verticalSwipe={'vertiacl'}
+            // verticalSwipe={'vertical'}
             // autoFocus={true}
             // autoPlay={true}
             // interval={6000}
             // useKeyboardArrows={true}
             // swipeable={true}
-            showThumbs={false}
+            // showThumbs={false}
           >
+            {/* slide 1 */}
             <div>
               <div className={styles.feature_card}>
                 <div>
@@ -138,37 +141,26 @@ export default function Home() {
                 <div>
                   <div className={styles.title}>
                     <span className={`${styles.titleWord} ${styles.word2}`}>
-                      What
+                      Contribute
                     </span>
                     <span className={`${styles.titleWord} ${styles.word1}`}>
                       {" "}
-                      is
+                      &#38;
                     </span>
                     <span className={`${styles.titleWord} ${styles.word2}`}>
                       {" "}
-                      Scientia
-                    </span>
-                    <span className={`${styles.titleWord} ${styles.word1}`}>
-                      {" "}
-                      DAO
-                    </span>
-                    <span className={`${styles.titleWord} ${styles.word2}`}>
-                      {" "}
-                      ?
+                      Collaborate
                     </span>
                   </div>
                   <p>
-                    World&#39;s first DAO Community for Scientists &#38;
-                    Researchers.
+                    Publish your work &#38; get valuable input from scienitsts
+                    around the globe.
                     <br />
                     <br />
-                    Researchers from around the world can become DAO member and
-                    get access to lot more
+                    What more ?
                     <br />
-                    <br />
-                    Slide next &#38; see what else
-                    <br />
-                    we got for you...
+                    You can also collaborate with other DAO members on
+                    researches and earn rewards and contributor NFT
                   </p>
                 </div>
                 <Image src={exp} />
@@ -179,41 +171,37 @@ export default function Home() {
               <div className={styles.feature_card}>
                 <div>
                   <div className={styles.title}>
+                    <span className={`${styles.titleWord} ${styles.word1}`}>
+                      What&#39;s
+                    </span>
                     <span className={`${styles.titleWord} ${styles.word2}`}>
-                      What
+                      {" "}
+                      for
                     </span>
                     <span className={`${styles.titleWord} ${styles.word1}`}>
                       {" "}
-                      is
+                      general
                     </span>
                     <span className={`${styles.titleWord} ${styles.word2}`}>
                       {" "}
-                      Scientia
+                      audience ?
                     </span>
-                    <span className={`${styles.titleWord} ${styles.word1}`}>
-                      {" "}
-                      DAO
-                    </span>
-                    <span className={`${styles.titleWord} ${styles.word2}`}>
-                      {" "}
-                      ?
-                    </span>
+                    
                   </div>
                   <p>
-                    World&#39;s first DAO Community for Scientists &#38;
-                    Researchers.
+                    Now you must be thinking if this DAO is for scientists,
+                    what's there for you?
                     <br />
                     <br />
-                    Researchers from around the world can become DAO member and
-                    get access to lot more
+                    Well we got you covered 😉
                     <br />
                     <br />
-                    Slide next &#38; see what else
-                    <br />
-                    we got for you...
+                    You can read research papers in explore section and support the work monetarily by 
+                    minting the the research paper as NFT
                   </p>
                 </div>
-                <Image src={image8} />
+                {/* <Image src={image8} /> */}
+                <Image src={chemist} />
               </div>
             </div>
             {/* next slide */}
@@ -222,51 +210,49 @@ export default function Home() {
                 <div>
                   <div className={styles.title}>
                     <span className={`${styles.titleWord} ${styles.word2}`}>
-                      What
+                      Apply 
                     </span>
                     <span className={`${styles.titleWord} ${styles.word1}`}>
                       {" "}
-                      is
+                      For
                     </span>
                     <span className={`${styles.titleWord} ${styles.word2}`}>
                       {" "}
-                      Scientia
+                      Grants
                     </span>
-                    <span className={`${styles.titleWord} ${styles.word1}`}>
+                    {/* <span className={`${styles.titleWord} ${styles.word1}`}>
                       {" "}
                       DAO
                     </span>
                     <span className={`${styles.titleWord} ${styles.word2}`}>
                       {" "}
                       ?
-                    </span>
+                    </span> */}
                   </div>
                   <p>
-                    World&#39;s first DAO Community for Scientists &#38;
-                    Researchers.
+                    Once you publish your research you can apply for grants.
                     <br />
                     <br />
-                    Researchers from around the world can become DAO member and
-                    get access to lot more
+                    This will help you take your research to next level.
+                    And as you achive milestone, you will move to next phase :D 
                     <br />
                     <br />
-                    Slide next &#38; see what else
+                    {/* Slide next &#38; see what else */}
                     <br />
-                    we got for you...
+                    {/* we got for you... */}
                   </p>
                 </div>
-                <Image src={scientist} />
+                <Image src={one} />
               </div>
             </div>
-           
           </Carousel>
         </div>
-
+        {/* 
         <Image src={scientist} />
         <Image src={exp} />
         <Image src={chemist} />
         <Image src={image} />
-        <Image src={image8} />
+        <Image src={image8} /> */}
         {/* <div className={styles.wrapper}>
           <FeaturesCard />
           <FeaturesCard />
