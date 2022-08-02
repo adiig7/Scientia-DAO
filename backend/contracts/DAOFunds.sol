@@ -15,8 +15,7 @@ contract DAOFunds {
     }
 
     function withdrawETH() public {
-        address payable to = payable(msg.sender);
-        to.transfer(getBalance());
+        payable(msg.sender).transfer(getBalance());
     }
 
     function withdrawETHTo(address payable _to) public {
