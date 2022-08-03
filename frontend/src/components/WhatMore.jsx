@@ -11,15 +11,15 @@ export default function WhatMore() {
           <span className={`${styles.titleWord} ${styles.word2}`}> to</span>
           <span className={`${styles.titleWord} ${styles.word1}`}>
             {" "}
-            Expect ?
+            Expect?
           </span>
         </div>
 
         <div className={styles.upcoming}>
           <p>
             We have a lot of things planned for this project and will be working
-            on them one by one. Here are some key points to give ya&#39;ll a
-            glimpse of what we are planning to implement in future:
+            on them one by one. Here are some key points to give y&#39;all a
+            glimpse of what we are planning to implement in the future:
             <br />
             <br />
             <span>
@@ -29,7 +29,7 @@ export default function WhatMore() {
             🚀 Token &#38; Governance launch
             <br />
             <br />
-            🚀 Liscensing &#38; Patent feature for researches
+            🚀 Licensing &#38; Patent feature for researches
             </span>
           </p>
         </div>
