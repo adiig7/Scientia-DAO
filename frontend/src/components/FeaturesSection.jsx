@@ -66,8 +66,8 @@ export default function FeaturesSection() {
                     Researchers.
                     <br />
                     <br />
-                    Researchers from around the world can become DAO member and
-                    get access to lot more
+                    Researchers from around the world can become a DAO member and
+                    get access to a lot more
                     <br />
                     <br />
                     Slide next &#38; see what else
@@ -96,14 +96,14 @@ export default function FeaturesSection() {
                     </span>
                   </div>
                   <p>
-                    Publish your work &#38; get valuable input from scienitsts
+                    Publish your work &#38; get valuable input from scientists
                     around the globe.
                     <br />
                     <br />
-                    What more ?
+                    What more?
                     <br />
                     You can also collaborate with other DAO members on
-                    researches and earn rewards and contributor NFT
+                    researches and earn rewards and contributor-NFTs
                   </p>
                 </div>
                 <Image src={exp} />
@@ -127,19 +127,19 @@ export default function FeaturesSection() {
                     </span>
                     <span className={`${styles.titleWord} ${styles.word2}`}>
                       {" "}
-                      audience ?
+                      audience?
                     </span>
                   </div>
                   <p>
-                    Now you must be thinking if this DAO is for scientists,
-                    what's there for you?
+                    Now you must be thinking: 'If this DAO is for scientists,
+                    what's there for me?'
                     <br />
                     <br />
-                    Well we got you covered 😉
+                    Well, we got you covered! 😉
                     <br />
                     <br />
                     You can read research papers in explore section and support
-                    the work monetarily by minting the the research paper as NFT
+                    the work monetarily by minting the research paper as an NFT.
                   </p>
                 </div>
                 {/* <Image src={image8} /> */}
@@ -168,8 +168,8 @@ export default function FeaturesSection() {
                     Once you publish your research you can apply for grants.
                     <br />
                     <br />
-                    This will help you take your research to next level. And as
-                    you achive milestone, you will move to next phase :D
+                    This will help you to take your research to the next level. And as
+                    you achieve milestones, you will move to the next phase! :D
                   </p>
                 </div>
                 <Image src={one} />
