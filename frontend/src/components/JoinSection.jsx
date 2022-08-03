@@ -43,14 +43,14 @@ export default function JoinSection() {
               </div>
 
               <p>
-                Anyone who has done a research and want to showcase it can be
-                come a DAO member
+                Anyone who has done a research and want to showcase it can
+                become a DAO member
                 <br />
                 by minting the DAO NFT.
                 <br />
                 <br />
-                This membership is open to first 100 researchers and then entry
-                to DAO will be governed by DAO members
+                This membership is open to the first 100 researchers and then the entry
+                to the DAO will be governed by the DAO members.
               </p>
             </div>
 
@@ -69,10 +69,10 @@ export default function JoinSection() {
                 </span>
               </div>
               <p>
-                Anyone around the world can come and read the publish researches.
+                Anyone around the world can come and read the published researches.
                 <br />
                 <br />
-                And if you like someone&#39;s work you support them through grants for their work and earn yourself a contributor NFT
+                And if you like someone&#39;s work, you can support them through grants for their work and earn yourself a contributor NFT.
                 <br />
               </p>
             </div>
