@@ -1,11 +1,11 @@
 import React from 'react'
 import Image from 'next/image'
-import { Carousel } from 'react-responsive-carousel'
 import exp from "../assets/exp.png";
 import chemist from "../assets/chemist.png";
 import image from "../assets/genius-bg.png";
 import one from "../assets/13_bg.png";
 import styles from '../../styles/Home.module.css'
+import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function FeaturesSection() {
@@ -30,11 +30,12 @@ export default function FeaturesSection() {
             // axis={"verticals"}
             // verticalSwipe={'vertical'}
             autoFocus={true}
-            autoPlay={true}
+            // autoPlay={true}
             interval={6000}
             useKeyboardArrows={true}
             swipeable={true}
             showThumbs={false}
+            infiniteLoop={true}
           >
             {/* slide 1 */}
             <div>

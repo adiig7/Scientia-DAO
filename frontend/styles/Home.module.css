@@ -37,15 +37,7 @@
   animation: color-animation 4s linear infinite;
 }
 
-.tagline {
-  /* font-family: "Montserrat", sans-serif; */
-  font-weight: 800;
-  font-size: 18px;
-  margin: 15px;
-  /* text-align: center; */
-  text-transform: uppercase;
-  max-width: 650px;
-}
+
 
 .word1 {
   --color-1: #a2cdff;
@@ -57,6 +49,16 @@
   --color-1: #6cffe4;
   --color-2: #4dffea;
   --color-3: rgb(114, 255, 208);
+}
+
+.tagline {
+  /* font-family: "Montserrat", sans-serif; */
+  font-weight: 800;
+  font-size: 18px;
+  margin: 15px;
+  /* text-align: center; */
+  text-transform: uppercase;
+  max-width: 650px;
 }
 
 @keyframes color-animation {

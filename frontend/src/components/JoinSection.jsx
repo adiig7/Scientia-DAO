@@ -21,7 +21,7 @@ export default function JoinSection() {
           <div className={styles.carousel}>
           <Carousel
             autoFocus={true}
-            autoPlay={true}
+            // autoPlay={true}
             interval={6000}
             useKeyboardArrows={true}
             swipeable={true}
@@ -72,7 +72,7 @@ export default function JoinSection() {
                 Anyone around the world can come and read the published researches.
                 <br />
                 <br />
-                And if you like someone&#39;s work, you can support them through grants for their work and earn yourself a contributor NFT.
+                And if you like someone&#39;s work you support them through donations/grants for social good and earn yourself a contributor NFT
                 <br />
               </p>
             </div>
