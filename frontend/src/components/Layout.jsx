@@ -5,7 +5,7 @@ import logo from "../assets/logo2.png";
 import scope from "../assets/scope-128.png";
 import Image from "next/image";
 import Link from "next/link";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 export default function Layout({ children }) {
   const [isActive, setIsActive] = useState(false);
@@ -18,14 +18,17 @@ export default function Layout({ children }) {
     <>
       {/* <div className={styles.container}> */}
       <header className={styles.header}>
-        <nav className={styles.navbar}>
+        <nav
+         className={styles.navbar}>
           <div className={styles.logo}>
             <Link href={"/"}>
-
-              
               <div className={styles.title}>
-                <span className={`${styles.titleWord} ${styles.word1}`}>Scientia </span>
-                <span className={`${styles.titleWord} ${styles.word2}`}>DAO</span>
+                <span className={`${styles.titleWord} ${styles.word1}`}>
+                  Scientia{" "}
+                </span>
+                <span className={`${styles.titleWord} ${styles.word2}`}>
+                  DAO
+                </span>
               </div>
             </Link>
             <div className={styles.navlogo}>
@@ -33,6 +36,7 @@ export default function Layout({ children }) {
             </div>
           </div>
           <ul
+          
             className={
               isActive === false
                 ? styles.navmenu

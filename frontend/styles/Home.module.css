@@ -85,7 +85,7 @@
 
 /* features */
 
-.features {
+.features, .what_more {
   /* min-height: 100vh; */
   /* padding: 6rem 0; */
   /* flex: 1; */
@@ -98,9 +98,29 @@
   text-align: center;
 }
 
-.features .title {
+.features .title, .what_more .title {
   font-size: 28px;
 }
+
+.upcoming {
+  max-width: 80%;
+  border: 1px solid rgb(110, 99, 160);
+  padding: 1.5rem 3rem;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  /* box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2); */
+  backdrop-filter: blur(14px);
+  background-color: rgba(94, 80, 109, 0.18);
+  transition: ease-in-out .3s;
+}
+
+.upcoming:hover {
+  transform: scale(1.02);
+}
+
+
+
 
 .button {
   align-items: center;
@@ -160,6 +180,10 @@
   justify-content: center;
 }
 
+.section {
+  margin: 0 auto;
+}
+
 .feature_card {
   margin: 40px auto;
   padding: 20px;
@@ -210,6 +234,52 @@
   max-width: 500px;
 }
 
+
+/* join dao */
+
+.join_dao {
+  /* min-height: 100vh; */
+  padding: 4rem 0;
+  /* flex: 1; */
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.join_dao .title {
+  font-size: 28px;
+}
+
+.how_to_join {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.carousel_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.how_to_join p {
+  text-align: center;
+  max-width: 500px;
+  margin-bottom: 50px;
+}
+
+.how_to_join .title {
+  font-size: 22px;
+}
+
+
 @media screen and (max-width: 768px) {
   .main * {
     margin-bottom: 0;
@@ -256,6 +326,11 @@
   .feature_card {
     margin: 20px auto;
     flex-direction: column-reverse;
+  }
+
+  .upcoming {
+    max-width: 100%;
+    padding: 1rem 1.5rem;
   }
 }
 
