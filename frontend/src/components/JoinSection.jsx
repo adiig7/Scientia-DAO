@@ -69,14 +69,11 @@ export default function JoinSection() {
                 </span>
               </div>
               <p>
-                Anyone who has done a research and want to showcase it can be
-                come a DAO member
-                <br />
-                by minting the DAO NFT.
+                Anyone around the world can come and read the publish researches.
                 <br />
                 <br />
-                This membership is open to first 100 researchers and then entry
-                to DAO will be governed by DAO members
+                And if you like someone&#39;s work you support them through grants for their work and earn yourself a contributor NFT
+                <br />
               </p>
             </div>
           </Carousel>

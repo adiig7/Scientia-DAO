@@ -85,7 +85,8 @@
 
 /* features */
 
-.features, .what_more {
+.features,
+.what_more {
   /* min-height: 100vh; */
   /* padding: 6rem 0; */
   /* flex: 1; */
@@ -98,7 +99,8 @@
   text-align: center;
 }
 
-.features .title, .what_more .title {
+.features .title,
+.what_more .title {
   font-size: 28px;
 }
 
@@ -112,15 +114,12 @@
   /* box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2); */
   backdrop-filter: blur(14px);
   background-color: rgba(94, 80, 109, 0.18);
-  transition: ease-in-out .3s;
+  transition: ease-in-out 0.3s;
 }
 
 .upcoming:hover {
   transform: scale(1.02);
 }
-
-
-
 
 .button {
   align-items: center;
@@ -234,7 +233,6 @@
   max-width: 500px;
 }
 
-
 /* join dao */
 
 .join_dao {
@@ -279,7 +277,6 @@
   font-size: 22px;
 }
 
-
 @media screen and (max-width: 768px) {
   .main * {
     margin-bottom: 0;
@@ -322,7 +319,6 @@
     margin: 20px auto;
   }
 
-
   .feature_card {
     margin: 20px auto;
     flex-direction: column-reverse;
@@ -331,6 +327,26 @@
   .upcoming {
     max-width: 100%;
     padding: 1rem 1.5rem;
+  }
+
+  .how_to_join p {
+    font-size: 14px;
+  }
+
+  .carousel p {
+    font-size: 14px;
+  }
+  
+  .how_to_join .title {
+    font-size: 20px;
+  }
+
+  .carousel .title {
+    font-size: 20px;
+  }
+
+  .what_more p {
+    font-size: 14px;
   }
 }
 
