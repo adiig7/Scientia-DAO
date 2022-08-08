@@ -1,5 +1,7 @@
 # Documentation
 
+![scientia_dao_logo](https://user-images.githubusercontent.com/11206675/183511519-021297a0-b855-41ca-a5ca-d50852554296.png)
+
 ### What is our main idea?
 
 Scientia DAO is the first DAO Community for Scientists & Researchers.
