@@ -8,6 +8,7 @@ interface MemberNFT {
 }
 
 contract DAOMember {
+    event ApprovalMemberRejected(address indexed rejectedAddress);
     struct ResearchPaper {
         address researcher;
         uint256 dateOfPublication; //time when the paper is published
@@ -19,7 +20,7 @@ contract DAOMember {
         string bio;
         uint256 yayVotes;
         uint256 nayVotes;
-        bool approved; /// if the person is approved by the DAO members or not
+        uint256 votingStartTime;
         string pfpURI; /// profile picture URI
         string foR; /// field of research
         string[] researchesURI; /// string array of ipfsURI
@@ -32,8 +33,6 @@ contract DAOMember {
     }
 
     uint256 public votingDuration = 2 days;
-
-    uint256 public startVotingTime;
 
     uint256 public counterResearches = 0;
     uint256 public counterMembers = 0;
@@ -89,29 +88,45 @@ contract DAOMember {
         address _member,
         string memory _name,
         string memory _pfp,
-        bool approved
+        bool approved,
+        uint256 _id
     ) public onlyDAOMember {
-
-    }
+        Member storage member = requestList[_id];
+        require(block.timestamp > member.votingStartTime + votingDuration, "Voting hasn't ended yet for this member!");
+        if(member.yayVotes > member.nayVotes){
+            membersList[counterMembers] = member;
+            counterMembers += 1;
+        }else{
+            emit ApprovalMemberRejected(member.memberAddress);
+        }
+        // TODO : delete the member from the requestList
+            }
 
     function addRequest(string memory _name, string memory _bio, string memory _pfpURI, string memory _foR, string[] researchesURI) public {
-        requestList[counterRequestList] = Member(msg.sender, _name, _bio, false, _pfpURI, _foR, researchesURI);
+        requestList[counterRequestList] = Member(msg.sender, _name, _bio, 0, 0, block.timestamp, false, _pfpURI, _foR, researchesURI);
         counterRequestList+=1;
-        startVotingTime = block.timestamp;
     }
 
     // voting function for requested member
-    function approve(Vote vote, uint _id) public {
-        require(block.timestamp > startVotingTime, "You can't approve this person before the voting starts");
-        require(startVotingTime + votingDuration < block.timestamp, "Voting has already ended");
+    function vote(Vote vote, uint _id) public{
         Member storage member = requestList[_id];
+        require(block.timestamp > member.votingStartTime, "You can't approve this person before the voting starts.");
+        require(member.votingStartTime + votingDuration < block.timestamp, "Voting has already ended");
         if(vote = Vote.YES)
             member.yayVotes += 1;
         else
             member.nayVotes += 1;
     }
 
-    function getResearch() public view returns () {}
+    function getResearches() public view returns(ResearchPaper[]) {
+        return researchesPublishedList;
+    }
 
-    function getMembers() public view returns () {}
+    function getResearch(uint _index) public view returns(ResearchPaper){
+        return researchesPublishedList[_index];
+    }
+
+    function getMembers() public view returns(Member[]) {
+        return membersList;
+    }
 }
