@@ -38,7 +38,6 @@
   margin-top: 20px;
   margin-bottom: 40px;
   border-radius: 10px;
-  /* box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2); */
   backdrop-filter: blur(14px);
   background-color: rgba(94, 80, 109, 0.18);
   transition: ease-in-out 0.3s;

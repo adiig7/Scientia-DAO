@@ -7,7 +7,7 @@ export default function explore() {
   return (
     <>
       <Head>
-        <title>Publish</title>
+        <title>Explore</title>
         <meta
           name="description"
           content="PUBLISH and SHARE YOUR RESEARCH ON THE WORLD'S FIRST DAO COMMUNITY FOR SCIENTISTS"
