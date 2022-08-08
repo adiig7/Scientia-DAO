@@ -9,6 +9,8 @@ import "@openzeppelin/contracts@4.7.2/utils/Counters.sol";
 contract MemberNFT is ERC721, ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
 
+    /// price =  0.05 ether
+
     Counters.Counter private _tokenIdCounter;
     const baseURI;
 

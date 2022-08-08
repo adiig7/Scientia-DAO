@@ -7,13 +7,19 @@ interface MemberNFT {
     function safeMint(address to) external;
 }
 
+/// issue
+/// mapping will overwrite the intial record for the particular address in the membersPaperList ,that way it will not return the whole collection
+/// return of the Whole mapping
+
 contract DAOMember {
     event ApprovalMemberRejected(address indexed rejectedAddress);
+
     struct ResearchPaper {
         address researcher;
         uint256 dateOfPublication; //time when the paper is published
         string researchPaperURI;
     }
+
     struct Member {
         address memberAddress;
         string name;
@@ -21,13 +27,14 @@ contract DAOMember {
         uint256 yayVotes;
         uint256 nayVotes;
         uint256 votingStartTime;
+        bool approval;
         string pfpURI; /// profile picture URI
         string foR; /// field of research
         string[] researchesURI; /// string array of ipfsURI
     }
 
     /// cases for voting for adding a member
-    enum Vote{
+    enum Vote {
         YES,
         NO
     }
@@ -56,6 +63,7 @@ contract DAOMember {
         nft = MemberNFT(NFT);
     }
 
+    /// conditional functions
     modifier onlyDAOMember() {
         require(nft.balanceOf(msg.sender) > 0, " You are not a DAO member");
         _;
@@ -63,7 +71,7 @@ contract DAOMember {
 
     /// @dev - To add the research
     /// @param  researchPaperURI -ipfs uri for the research
-
+    /// @return success - mentions the success
     function addResearch(string memory researchPaperURI) public onlyDAOMember {
         /// add the research to the common ResearchPaper Array to show it to all s
         researchesPublishedList[counterResearches] = ResearchPaper(
@@ -82,59 +90,94 @@ contract DAOMember {
         );
     }
 
-    /// add member to the members array
-    /// also mints the NFT from our contract directly to the user , will be easy to call it here
-    function addMember(
-        address _member,
-        string memory _name,
-        string memory _pfp,
-        bool approved,
-        uint256 _id
-    ) public onlyDAOMember {
+    /// @dev -  this enables you to add the DAO members
+    /// @dev - NFT is minted later to make him a DAO member
+    /// @param _id - id of the member to be added from the requests array
+    /// Requirments : Only DAO Member can call this function
+    function addMember(uint256 _id) public onlyDAOMember {
         Member storage member = requestList[_id];
-        require(block.timestamp > member.votingStartTime + votingDuration, "Voting hasn't ended yet for this member!");
-        if(member.yayVotes > member.nayVotes){
+        require(
+            block.timestamp > member.votingStartTime + votingDuration,
+            "Voting hasn't ended yet for this member!"
+        );
+        if (member.yayVotes > member.nayVotes) {
             membersList[counterMembers] = member;
             counterMembers += 1;
-        }else{
+        } else {
             emit ApprovalMemberRejected(member.memberAddress);
         }
+        delete requestList[_id];
         // TODO : delete the member from the requestList
-            }
+    }
 
-    function addRequest(string memory _name, string memory _bio, string memory _pfpURI, string memory _foR, string[] researchesURI) public {
-        requestList[counterRequestList] = Member(msg.sender, _name, _bio, 0, 0, block.timestamp, false, _pfpURI, _foR, researchesURI);
-        counterRequestList+=1;
+    function addRequest(
+        string memory _name,
+        string memory _bio,
+        string memory _pfpURI,
+        string memory _foR,
+        string[] memory researchesURI
+    ) public {
+        requestList[counterRequestList] = Member(
+            msg.sender,
+            _name,
+            _bio,
+            0,
+            0,
+            block.timestamp,
+            false,
+            _pfpURI,
+            _foR,
+            researchesURI
+        );
+        counterRequestList += 1;
     }
 
     // voting function for requested member
-    function vote(Vote vote, uint _id) public{
+    function vote(Vote _vote, uint256 _id) public {
         Member storage member = requestList[_id];
-        require(block.timestamp > member.votingStartTime, "You can't approve this person before the voting starts.");
-        require(member.votingStartTime + votingDuration < block.timestamp, "Voting has already ended");
-        if(vote = Vote.YES)
-            member.yayVotes += 1;
-        else
-            member.nayVotes += 1;
+        require(
+            block.timestamp > member.votingStartTime,
+            "You can't approve this person before the voting starts."
+        );
+        require(
+            member.votingStartTime + votingDuration < block.timestamp,
+            "Voting has already ended"
+        );
+        if (_vote == Vote.YES) member.yayVotes += 1;
+        else member.nayVotes += 1;
     }
 
+    // cannot return the whole mapping stored for the researches
+    /// solution, it can be converted to a 1-D array , to make it returnable
     /// @dev - To get all the researches added in the DAO
     /// @return - array that contains all the research papers
-    function getResearches() public view returns(ResearchPaper[]) {
+    function getResearches() public view returns (ResearchPaper[] memory) {
         return researchesPublishedList;
     }
 
-    /// @dev - To get all the researches added in the DAO
+    /// @dev - To get a particular research
     /// @param  _index - the index of the research paper to be viewed in the researchesPublishedList
     /// @return - the research paper at the given index
-    function getResearch(uint _index) public view returns(ResearchPaper){
+    function getResearch(uint256 _index)
+        public
+        view
+        returns (ResearchPaper memory)
+    {
         return researchesPublishedList[_index];
     }
 
-
+    /// Issue : can not return the whole mapping
     /// @dev - To get all the members in the DAO
     /// @return - array that contains all the members
-    function getMembers() public view returns(Member[]) {
+    function getMembers() public view returns (Member[] memory) {
         return membersList;
+    }
+
+    function getMembersResearch(uint256 _id)
+        public
+        view
+        returns (string[] memory)
+    {
+        return membersList[_id].researchesURI;
     }
 }
