@@ -118,14 +118,22 @@ contract DAOMember {
             member.nayVotes += 1;
     }
 
+    /// @dev - To get all the researches added in the DAO
+    /// @return - array that contains all the research papers
     function getResearches() public view returns(ResearchPaper[]) {
         return researchesPublishedList;
     }
 
+    /// @dev - To get all the researches added in the DAO
+    /// @param  _index - the index of the research paper to be viewed in the researchesPublishedList
+    /// @return - the research paper at the given index
     function getResearch(uint _index) public view returns(ResearchPaper){
         return researchesPublishedList[_index];
     }
 
+
+    /// @dev - To get all the members in the DAO
+    /// @return - array that contains all the members
     function getMembers() public view returns(Member[]) {
         return membersList;
     }
