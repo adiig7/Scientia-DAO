@@ -42,7 +42,7 @@
   /* box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2); */
   backdrop-filter: blur(14px);
   background-color: rgba(94, 80, 109, 0.18);
-  transition: ase-in-out 0.3s;
+  transition: ease-in-out 0.3s;
   display: flex;
   flex-direction: column;
   justify-content: center;
