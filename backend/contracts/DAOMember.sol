@@ -10,23 +10,34 @@ interface MemberNFT {
 contract DAOMember {
     struct ResearchPaper {
         address researcher;
-        uint256 dateOfPublication;
+        uint256 dateOfPublication; //time when the paper is published
         string researchPaperURI;
     }
     struct Member {
         address memberAddress;
         string name;
         string bio;
+        uint256 yayVotes;
+        uint256 nayVotes;
         bool approved; /// if the person is approved by the DAO members or not
         string pfpURI; /// profile picture URI
         string foR; /// field of research
         string[] researchesURI; /// string array of ipfsURI
     }
 
+    /// cases for voting for adding a member
+    enum Vote{
+        YES,
+        NO
+    }
 
-    uint256 counterResearches = 0;
-    uint256 counterMembers = 0;
-    uint256 counterRequestList = 0;
+    uint256 public votingDuration = 2 days;
+
+    uint256 public startVotingTime;
+
+    uint256 public counterResearches = 0;
+    uint256 public counterMembers = 0;
+    uint256 public counterRequestList = 0;
 
     MemberNFT nft;
 
@@ -86,16 +97,19 @@ contract DAOMember {
     function addRequest(string memory _name, string memory _bio, string memory _pfpURI, string memory _foR, string[] researchesURI) public {
         requestList[counterRequestList] = Member(msg.sender, _name, _bio, false, _pfpURI, _foR, researchesURI);
         counterRequestList+=1;
+        startVotingTime = block.timestamp;
     }
-    address memberAddress;
-        string name;
-        string bio;
-        bool approved; /// if the person is approved by the DAO members or not
-        string pfpURI; /// profile picture URI
-        string foR; /// field of research
-        string[] researchesURI;
 
-    function approve() public {}
+    // voting function for requested member
+    function approve(Vote vote, uint _id) public {
+        require(block.timestamp > startVotingTime, "You can't approve this person before the voting starts");
+        require(startVotingTime + votingDuration < block.timestamp, "Voting has already ended");
+        Member storage member = requestList[_id];
+        if(vote = Vote.YES)
+            member.yayVotes += 1;
+        else
+            member.nayVotes += 1;
+    }
 
     function getResearch() public view returns () {}
 
