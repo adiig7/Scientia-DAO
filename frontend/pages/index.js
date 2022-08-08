@@ -5,6 +5,7 @@ import hero from "../src/assets/hero.png";
 import JoinSection from "../src/components/JoinSection";
 import FeaturesSection from "../src/components/FeaturesSection";
 import WhatMore from "../src/components/WhatMore";
+import Link from "next/link";
 
 // import scientist from "../assets/scientist.png";
 // import image8 from "../assets/8_bg.png";
@@ -45,9 +46,11 @@ export default function Home() {
               community for SCIENTISTS
             </span>
           </div>
+          <Link href={'#join'}>
           <button className={styles.button} role="button">
             Explore DAO
           </button>
+          </Link>
         </div>
 
         <div className={styles.hero}>
@@ -56,7 +59,7 @@ export default function Home() {
       </main>
 
       {/* join section */}
-      <div className={styles.section}>
+      <div id="join" className={styles.section}>
         <FeaturesSection />
       </div>
 

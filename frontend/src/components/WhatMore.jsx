@@ -22,6 +22,7 @@ export default function WhatMore() {
             will be working on to improve this project:
           </p>
 
+            <li>🚀 Add Colloborate &#38; Contribute feature for DAO Members</li> 
             <li>🚀 Milestone feature for Grants</li> 
             <li>🚀 Token and Governance Setup</li> 
             <li>🚀 License and patent feature for published researches</li> 
