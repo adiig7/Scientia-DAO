@@ -2,37 +2,28 @@
   padding-top: 6rem;
   padding-bottom: 1rem;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   flex-direction: column;
+  min-height: 92vh;
 }
 
-.title {
-  font-weight: 800;
-  font-size: 34px;
+.main h2 {
+  color: #5de9ff;
   margin: 15px;
+
+  text-align: center;
 }
 
-.titleWord {
-  animation: color-animation 4s linear infinite;
+.main p {
+  color: #eaeaff;
 }
 
-.word1 {
-  --color-1: #a2cdff;
-  --color-2: #84daff;
-  --color-3: #c0ffa1;
-}
-
-.word2 {
-  --color-1: #6cffe4;
-  --color-2: #4dffea;
-  --color-3: rgb(114, 255, 208);
-}
-
-.publish {
+.research {
   margin: 200px auto;
-  min-width: 80%;
+  /* min-width: 80%; */
+  max-width: 94%;
   border: 1px solid rgb(110, 99, 160);
   padding: 1.5rem 3rem;
   margin-top: 20px;
@@ -48,93 +39,28 @@
   flex-wrap: wrap;
 }
 
-.publish:hover {
+/* .research:hover {
   transform: scale(0.98);
+} */
+
+.research p {
+  text-align: justify;
 }
 
-.research_title {
-  width: 100%;
-  min-height: 40px;
-  padding: 1rem;
-  border-radius: 10px;
-  margin: 20px auto;
-  background: rgb(239, 224, 253);
-  color: black;
-  font-size: 18px;
+.research h3 {
+  margin: 15px auto;
 }
 
-.research_desc {
-  width: 100%;
-  min-height: 250px;
-  padding: 1rem;
-  margin: 20px auto;
-  background: rgb(239, 224, 253);
-  color: black;
-  border-radius: 10px;
-  font-size: 18px;
-  scroll-behavior: auto;
-  resize: vertical;
-  scroll-behavior: auto;
-}
-
-.research_docs {
-  padding: 1rem;
-  background: rgb(239, 224, 253);
-  color: black;
-  font-size: 18px;
-  border-radius: 10px;
-  text-align: start;
-  width: 100%;
-  margin: 20px auto;
-  font-size: 16px;
-}
-
-
-
-.upload {
+.media {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  margin: 15px auto;
   flex-wrap: wrap;
-  /* width: 800px;
-  height: 200px; */
-  width: 100%;
-  /* min-height: 80px; */
-  max-height: 350px;
-  overflow: auto;
-  scroll-behavior: auto;
-
-  padding: 1rem;
-  margin: 20px auto;
-  border-radius: 10px;
-
-  color: black;
-
-  background: rgb(239, 224, 253);
 }
 
-@keyframes color-animation {
-  0% {
-    color: var(--color-1);
-  }
-  32% {
-    color: var(--color-1);
-  }
-  33% {
-    color: var(--color-2);
-  }
-  65% {
-    color: var(--color-2);
-  }
-  66% {
-    color: var(--color-3);
-  }
-  99% {
-    color: var(--color-3);
-  }
-  100% {
-    color: var(--color-1);
-  }
+.media div {
+    margin: auto 15px;
 }
 
 .button {
@@ -143,6 +69,9 @@
   background-color: #fcfcfd;
   background-color: #5de9ff;
   background-color: rgb(213, 204, 255);
+  background-color: hsl(188, 100%, 77%);
+  background-color: #5de9ff;
+
   border-radius: 4px;
   border-width: 0;
   box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
@@ -171,9 +100,9 @@
   white-space: nowrap;
   will-change: box-shadow, transform;
   font-size: 18px;
-  margin: 30px auto;
+  margin: 15px auto;
   padding: 10px 15px;
-  min-width: 20%;
+  /* min-width: 20%; */
 }
 
 .button:focus {
@@ -193,29 +122,23 @@
 }
 
 @media screen and (max-width: 768px) {
-  .title {
-    font-size: 22px;
-  }
-
-  .publish {
-    text-align: center;
-    max-width: 100%;
-    padding: 1.5rem;
-    font-size: 16px;
-  }
-
-  .research_docs {
-    font-size: 14px;
-  }
-
-  .research_title,
-  .research_desc {
-    font-size: 16px;
-  }
-
   .button {
     font-size: 14px;
-    padding: 10px;
     margin: 10px auto;
+    padding: 10px;
+  }
+
+  .research {
+    padding: 0.5rem 1.5rem;
+    max-width: 90%;
+  }
+
+  .research p {
+    font-size: 14px;
+  }
+
+  .main h2 {
+    font-size: 18px;
+    margin: 0 15px;
   }
 }

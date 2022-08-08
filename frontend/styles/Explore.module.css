@@ -1,0 +1,85 @@
+.main {
+  padding-top: 6rem;
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  min-height: 92vh;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 34px;
+  margin: 15px;
+}
+
+.titleWord {
+  animation: color-animation 4s linear infinite;
+}
+
+.word1 {
+  --color-1: #a2cdff;
+  --color-2: #84daff;
+  --color-3: #c0ffa1;
+}
+
+.word2 {
+  --color-1: #6cffe4;
+  --color-2: #4dffea;
+  --color-3: rgb(114, 255, 208);
+}
+
+/* .researches {
+  margin: 200px auto;
+  min-width: 80%;
+  border: 1px solid rgb(110, 99, 160);
+  padding: 1.5rem 3rem;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  backdrop-filter: blur(14px);
+  background-color: rgba(94, 80, 109, 0.18);
+  transition: ease-in-out 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.researches:hover {
+  transform: scale(0.98);
+} */
+
+@keyframes color-animation {
+  0% {
+    color: var(--color-1);
+  }
+  32% {
+    color: var(--color-1);
+  }
+  33% {
+    color: var(--color-2);
+  }
+  65% {
+    color: var(--color-2);
+  }
+  66% {
+    color: var(--color-3);
+  }
+  99% {
+    color: var(--color-3);
+  }
+  100% {
+    color: var(--color-1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 22px;
+  }
+}

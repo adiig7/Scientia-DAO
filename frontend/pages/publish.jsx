@@ -1,21 +1,49 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "../styles/Publish.module.css";
+import Head from "next/head";
 
 export default function () {
+  // const [file, setFile] = useState([]);
+
   return (
     <>
+      <Head>
+        <title>Publish</title>
+        <meta
+          name="description"
+          content="PUBLISH and SHARE YOUR RESEARCH ON THE WORLD'S FIRST DAO COMMUNITY FOR SCIENTISTS"
+        />
+        <link rel="icon" href="/microscope.png" />
+      </Head>
+
       <main className={styles.main}>
         <div className={styles.title}>
           <span className={`${styles.titleWord} ${styles.word2}`}>
             Publish{" "}
           </span>
-          <span className={`${styles.titleWord} ${styles.word1}`}>Research</span>
+          <span className={`${styles.titleWord} ${styles.word1}`}>
+            Research
+          </span>
         </div>
 
         <div className={styles.publish}>
-          <p>Kushagra Kushagra Kushagra Kushagra Kushagra</p>
-
-          <p>Kushagra Kushagra Kushagra Kushagra Kushagra</p>
+          Enter Research Title
+          <input
+            className={styles.research_title}
+            type="text"
+            placeholder="Research Title Here"
+          />
+          Enter Research Description{" "}
+          <small className={styles.small}> &#40; Minimum 500 words &#41;</small>
+          <textarea
+            className={styles.research_desc}
+            name=""
+            id=""
+            placeholder="Enter Research Details Here"
+          ></textarea>
+          Select Research Media Files
+          <input className={styles.research_docs} type="file" multiple />
+          <button className={styles.button}> Upload Research to IPFS </button>
         </div>
       </main>
     </>

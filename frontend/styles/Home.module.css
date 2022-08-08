@@ -37,8 +37,6 @@
   animation: color-animation 4s linear infinite;
 }
 
-
-
 .word1 {
   --color-1: #a2cdff;
   --color-2: #84daff;
@@ -121,6 +119,11 @@
 
 .upcoming:hover {
   transform: scale(1.02);
+}
+
+.upcoming li {
+  list-style: none;
+  margin: 10px;
 }
 
 .button {
@@ -338,7 +341,7 @@
   .carousel p {
     font-size: 14px;
   }
-  
+
   .how_to_join .title {
     font-size: 20px;
   }
@@ -349,6 +352,7 @@
 
   .what_more p {
     font-size: 14px;
+    /* width: 120%; */
   }
 }
 

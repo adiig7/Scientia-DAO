@@ -37,7 +37,8 @@ contract MemberNFT is ERC721, ERC721Enumerable, Ownable {
     }
 
     /// to mint the token ID for the DAO user to join the DAO
-    function safeMint(address to) public onlyOwner {
+    /// can be called by anybody , but it will be called in backend just by the DAO members
+    function safeMint(address to) public {
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);

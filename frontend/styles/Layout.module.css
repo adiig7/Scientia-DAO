@@ -1,10 +1,10 @@
 .navbar {
-    z-index: 1000;
-    /* border-bottom: 1px solid #b1bdf8; */
-    background: #1e2124;
-    background: #111111;
-    /* background: #111111b5; */
-    /* background: #1e2124; */
+  z-index: 1000;
+  /* border-bottom: 1px solid #b1bdf8; */
+  background: #1e2124;
+  background: #111111;
+  /* background: #111111b5; */
+  /* background: #1e2124; */
   position: fixed;
   width: 100%;
   display: flex;
@@ -12,7 +12,7 @@
   justify-content: space-between;
   padding: 0 20px;
   align-items: center;
-  height: 8vh; 
+  height: 8vh;
 
   /* background: #ffffff;
   color: #000;
@@ -26,10 +26,10 @@
   background-color: rgb(120, 228, 255);
   background-color: #5d9aee;
   background-color: #1e80ff;
-  background: linear-gradient(176deg, #3D9DEA, #4A4EEE);
+  background: linear-gradient(176deg, #3d9dea, #4a4eee);
   background: transparent;
   border-radius: 10px;
-  border: 2px solid ;
+  border: 2px solid;
   padding: 5px 8px;
 }
 
@@ -55,8 +55,7 @@
 
 .navitem {
   margin: 0 1rem;
-  transition: ease-in-out .2s;
-
+  transition: ease-in-out 0.2s;
 }
 
 .navitem:hover {
@@ -68,32 +67,30 @@
   /* font-size: 18px; */
   color: white;
   /* color: black; */
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
 }
 
 .logo {
-    /* display: inline-block; */
-    /* max-width: 120px; */
-    margin: 0 25px;
-    padding: 10px 0;
-    display: flex;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #5d9aee;
-  }
-  
+  /* display: inline-block; */
+  /* max-width: 120px; */
+  margin: 0 25px;
+  padding: 10px 0;
+  display: flex;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #5d9aee;
+}
 
 .navlogo {
-    /* display: inline-block; */
+  /* display: inline-block; */
 
   max-width: 45px;
   margin: 0 10px;
   padding: 6px;
-
 }
 
 .container {
@@ -101,59 +98,71 @@
 }
 
 .titleWord {
-    animation: color-animation 4s linear infinite;
-  }
-  
-  .word1 {
-    --color-1: #a2cdff;
-    --color-2: #84daff;
-    --color-3: #c0ffa1;
-  }
-  
-  .word2 {
-    --color-1: #6cffe4;
-    --color-2: #4dffea;
-    --color-3: rgb(114, 255, 208);
-  }
+  animation: color-animation 4s linear infinite;
+}
 
-  
-  @keyframes color-animation {
-    0%    {color: var(--color-1)}
-    32%   {color: var(--color-1)}
-    33%   {color: var(--color-2)}
-    65%   {color: var(--color-2)}
-    66%   {color: var(--color-3)}
-    99%   {color: var(--color-3)}
-    100%  {color: var(--color-1)}
-  }
-  
-  /* Here are just some visual styles. 🖌 */
+.word1 {
+  --color-1: #a2cdff;
+  --color-2: #84daff;
+  --color-3: #c0ffa1;
+}
 
-  
-  .title {
-    /* font-family: "Montserrat", sans-serif; */
-    font-weight: 800;
-    font-size: 26px;
-    /* text-transform: uppercase; */
-  }
+.word2 {
+  --color-1: #6cffe4;
+  --color-2: #4dffea;
+  --color-3: rgb(114, 255, 208);
+}
 
+@keyframes color-animation {
+  0% {
+    color: var(--color-1);
+  }
+  32% {
+    color: var(--color-1);
+  }
+  33% {
+    color: var(--color-2);
+  }
+  65% {
+    color: var(--color-2);
+  }
+  66% {
+    color: var(--color-3);
+  }
+  99% {
+    color: var(--color-3);
+  }
+  100% {
+    color: var(--color-1);
+  }
+}
+
+/* Here are just some visual styles. 🖌 */
+
+.title {
+  /* font-family: "Montserrat", sans-serif; */
+  font-weight: 800;
+  font-size: 26px;
+  /* text-transform: uppercase; */
+}
 
 @media only screen and (max-width: 768px) {
-    .navbar {
-        justify-content: space-between;
-        background: #1e2124;
-    }
-    .navlogo {
-        max-width: 35px;
-    }
+  .navbar {
+    justify-content: space-between;
+    background: #1e2124;
+  }
+  .navlogo {
+    max-width: 35px;
+  }
 
-    .titleWord, .word1, .word2 {
-        display: inline;
-        /* margin: 5px; */
-        font-size: 16px;
-    }
+  .titleWord,
+  .word1,
+  .word2 {
+    display: inline;
+    /* margin: 5px; */
+    font-size: 16px;
+  }
 
-      
   .title {
     /* font-family: "Montserrat", sans-serif; */
     font-weight: 800;
@@ -167,7 +176,9 @@
   .navmenu {
     position: fixed;
     left: -100%;
-    top: 4.5rem;
+    top: 4.2rem;
+    /* min-height: 90%; */
+    /* max-width: 60%; */
     flex-direction: column;
     background-color: inherit;
     width: 100%;
@@ -182,7 +193,7 @@
   }
 
   .navitem {
-    margin: 2.5rem 0;
+    margin: 1.5rem 0;
   }
 
   .hamburger {
@@ -204,4 +215,3 @@
     transform: translateY(-8px) rotate(-45deg);
   }
 }
-
