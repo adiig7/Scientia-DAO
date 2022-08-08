@@ -1,8 +1,7 @@
 /// create a request to join the DAO , not allowed directly , will be approved by the intial DAO members
 /// Every user has to go through the same process, to create a request first
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAccount, useContract, useProvider, useSigner } from "wagmi";
-import { ethers } from "ethers";
 import {
   DAOMember_ABI,
   DAOMember_Contract_address,
@@ -11,6 +10,15 @@ import { StoreContent } from "./StoreResearch";
 
 /// we will use this component directly
 export const Request = async () => {
+  const [Name, setName] = useState("");
+  const [bio, setBio] = useState("");
+  const [pfp, setPfp] = useState([]);
+  const [researchFiles, setResearchFiles] = useState([]);
+  const [foR, setFoR] = useState("");
+
+  const [pfpURI, setPfpURI] = useState("");
+  const [researchURI, setResearchURI] = useState("");
+
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address, isConnected } = useAccount();
@@ -21,6 +29,7 @@ export const Request = async () => {
     signerOrProvider: signer || provider,
   });
 
+  // 1st pfp will be storded
   const storePfp = async () => {
     try {
       const cid = await StoreContent(pfp);
@@ -32,6 +41,7 @@ export const Request = async () => {
     }
   };
 
+  /// 2 . then store research files
   const StoreResearch = async () => {
     try {
       const cid = await StoreContent(researchFiles);
@@ -43,6 +53,7 @@ export const Request = async () => {
     }
   };
 
+  /// 3.  then add these files to the contract
   const request = async () => {
     try {
       console.log("Creating the request...");

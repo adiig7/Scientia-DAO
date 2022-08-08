@@ -3,6 +3,8 @@ pragma solidity ^0.8.10;
 
 interface MemberNFT {
     function balanceOf(address owner) external view virtual returns (uint256);
+
+    function safeMint(address to) external;
 }
 
 contract DAOMember {
@@ -69,7 +71,8 @@ contract DAOMember {
         );
     }
 
-    /// add member
+    /// add member to the members array
+    /// also mints the NFT from our contract directly to the user , will be easy to call it here
     function addMember(
         address _member,
         string memory _name,
