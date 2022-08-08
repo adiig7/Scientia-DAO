@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import styles from "../../styles/ResearchCard.module.css";
 
@@ -21,7 +22,9 @@ export default function ResearchCard() {
           ipsum dolor sit amet consectetur adipisicing elit. Nihil itaque
           repudiandae dolorum esse unde? Beatae sit cupiditate eveniet{" "}
         </p>
-        <button className={styles.button}>Read Research</button>
+        <Link href={'/research/1'}>
+            <button className={styles.button}>Read Research</button>
+        </Link>
       </div>
     </div>
   );

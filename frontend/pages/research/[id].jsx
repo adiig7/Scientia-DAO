@@ -4,8 +4,8 @@ import Head from "next/head";
 import Image from "next/image";
 
 export default function () {
-
-    let url = "https://ipfs.io/ipfs/bafybeiebtlvqo4tgm4gfgwnw4v7hlsoz7zf3coyvbt7j2d7ucabmiqyj7q/players/1.png";
+  let url =
+    "https://ipfs.io/ipfs/bafybeiebtlvqo4tgm4gfgwnw4v7hlsoz7zf3coyvbt7j2d7ucabmiqyj7q/players/1.png";
 
   return (
     <>
@@ -83,12 +83,22 @@ export default function () {
           </p>
           <h3>Research Media </h3>
           <div className={styles.media}>
-          <Image
-            src={url}
-            alt="Picture of the author"
-            width={200}
-            height={200}
-          />
+            <div>
+              <Image
+                src={url}
+                alt="Picture of the author"
+                width={200}
+                height={200}
+              />
+            </div>
+            <div>
+              <Image
+                src={url}
+                alt="Picture of the author"
+                width={200}
+                height={200}
+              />
+            </div>
           </div>
           <button className={styles.button}>Apply for Grants</button>
         </div>
