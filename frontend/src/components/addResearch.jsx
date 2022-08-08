@@ -6,6 +6,7 @@ import {
 } from "../../constants/constants";
 import { StoreContent } from "./StoreResearch";
 
+/// add the research tot the dao member contract
 export const AddResearch = async () => {
   const [researchFiles, setResearchFiles] = useState([]);
   const [researchURI, setResearchURI] = useState("");
@@ -20,6 +21,7 @@ export const AddResearch = async () => {
     signerOrProvider: signer || provider,
   });
 
+  // 1. stores the files onto IPFS via web3.storage
   const StoreResearch = async () => {
     try {
       const cid = await StoreContent(researchFiles);
@@ -32,6 +34,7 @@ export const AddResearch = async () => {
     }
   };
 
+  // 2. will be called later to add the uri to the contract
   const add = async () => {
     try {
       console.log("Adding the Research ....");

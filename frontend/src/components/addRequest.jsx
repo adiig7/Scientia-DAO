@@ -8,7 +8,7 @@ import {
 } from "../../constants/constants";
 import { StoreContent } from "./StoreResearch";
 
-/// we will use this component directly
+/// we will use this component directly to add a new user
 export const Request = async () => {
   const [Name, setName] = useState("");
   const [bio, setBio] = useState("");
