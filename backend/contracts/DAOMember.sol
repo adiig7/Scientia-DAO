@@ -19,7 +19,7 @@ contract DAOMember {
         string name;
         string bio;
         string pfpURI; /// profile picture URI
-        string foR; /// field od research
+        string foR; /// field of research
         string[] researchesURI; /// string array of ipfsURI
     }
 
