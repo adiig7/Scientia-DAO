@@ -17,8 +17,9 @@ contract DAOMember {
         address memberAddress;
         string name;
         string bio;
+        bool approved; /// if the person is approved by the DAO members or not
         string pfpURI; /// profile picture URI
-        string foR; /// field od research
+        string foR; /// field of research
         string[] researchesURI; /// string array of ipfsURI
     }
 
@@ -76,10 +77,23 @@ contract DAOMember {
     function addMember(
         address _member,
         string memory _name,
-        string memory _pfp
-    ) public onlyDAOMember {}
+        string memory _pfp,
+        bool approved
+    ) public onlyDAOMember {
 
-    function addRequest() public {}
+    }
+
+    function addRequest(string memory _name, string memory _bio, string memory _pfpURI, string memory _foR, string[] researchesURI) public {
+        requestList[counterRequestList] = Member(msg.sender, _name, _bio, false, _pfpURI, _foR, researchesURI);
+        counterRequestList+=1;
+    }
+    address memberAddress;
+        string name;
+        string bio;
+        bool approved; /// if the person is approved by the DAO members or not
+        string pfpURI; /// profile picture URI
+        string foR; /// field of research
+        string[] researchesURI;
 
     function approve() public {}
 
