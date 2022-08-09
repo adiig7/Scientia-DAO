@@ -1,0 +1,154 @@
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
+
+.wrap {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+
+  cursor: pointer;
+  margin: 10px 50px;
+  padding: 15px;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 0;
+}
+
+.content {
+  margin-right: 80px;
+  margin-left: 80px;
+  padding: 20px 10px;
+  max-height: inherit;
+  text-align: center;
+}
+
+.pfp {
+  max-width: 250px;
+}
+
+.main ul {
+  text-align: start;
+  font-size: 18px;
+}
+
+.stats_section {
+  border: 5px solid gray;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stats_heading {
+  margin-top: 40px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.tabs_section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tabs {
+  margin: 0 20px;
+}
+
+.tabs {
+  border-radius: 10px;
+  margin: auto 10px;
+  margin: auto ;
+  padding: 15px 2px;
+  text-align: center;
+  width: 25%;
+  font-size: 14px;
+  background: #a0d9ff;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.274);
+  box-sizing: content-box;
+  position: relative;
+  outline: none;
+  color: black;
+  
+  background-color: rgb(255, 247, 231);
+}
+.tabs:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.274);
+}
+
+.active_tab {
+  background: inherit;
+  background: rgba(42, 47, 123, 0.572);
+  background-color: #aba3ff;
+  background-image: linear-gradient(316deg, #1e136d 0%, #1e136d 74%);
+  color: wheat;
+
+  /* background: rgb(234, 234, 234);
+      background: rgb(129, 205, 255); */
+  border-bottom: 4px solid wheat;
+}
+
+.active_tab::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -5;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% + 2px);
+  height: 5px;
+}
+
+.content_tabs {
+  display: flex;
+  flex-grow: 1;
+}
+
+.tab1,
+.tab2,
+.tab3 {
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+.active_content {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .active_content {
+    padding: 0;
+    margin: 0;
+  }
+
+  .wrap {
+    margin: 0px auto;
+    margin-top: 20px;
+    /* flex-direction: column; */
+  }
+
+  .tabs {
+    /* width: 40%; */
+    font-size: 12px;
+
+    /* margin: auto 10px; */
+  }
+
+  .main {
+    margin: 0px auto;
+    margin-top: -15px;
+    width: 100%;
+    padding: 0rem;
+    /* font-size: 14px; */
+  }
+}
