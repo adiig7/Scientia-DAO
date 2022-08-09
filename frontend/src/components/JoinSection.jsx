@@ -11,7 +11,7 @@ import NewMember from "./NewMember";
 const customStyles = {
   content: {
     width: "80%",
-    height: "74%",
+    height: "80%",
     top: "50%",
     left: "50%",
     right: "auto",

@@ -1,5 +1,5 @@
 .main {
-  padding-top: 4rem;
+  padding-top: 5rem;
   padding-bottom: 1rem;
   display: flex;
   justify-content: flex-start;
@@ -12,7 +12,7 @@
 .title {
   /* font-family: "Montserrat", sans-serif; */
   font-weight: 800;
-  font-size: 26px;
+  font-size: 34px;
   margin: 8px auto;
   margin-top: 25px;
   /* text-transform: uppercase; */
@@ -67,7 +67,7 @@
   }
 
   .title {
-    font-size: 20px;
+    font-size: 22px;
     margin-top: 25px;
   }
 }
