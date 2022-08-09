@@ -1,9 +1,9 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-  const NFTContract = await ethers.getContractFactory("MemberNFT");
+  const NFTContract = await ethers.getContractFactory("ContributorNFT");
   const metadata =
-    "ipfs://bafkreifxtpdf5lcmkqjqmpe4wjgfl4rbov23ryn5merejridxk27pfzufq";
+    "ipfs://bafkreibbiafnz7x2tcgoa2uoj5weaxbvrreryems6ws2lfsfsnffrfeatu";
   // deploy the contract
   const nftContract = await NFTContract.deploy(metadata);
 

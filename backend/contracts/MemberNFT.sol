@@ -17,7 +17,9 @@ contract MemberNFT is ERC721, ERC721Enumerable, Ownable {
     event Attest(address indexed to, uint256 indexed tokenId);
     event Revoke(address indexed to, uint256 indexed tokenId);
 
-    constructor(string memory _base) ERC721("Scientia DAO Member", "SCI") {
+    constructor(string memory _base)
+        ERC721("Scientia DAO Member", "SCIMember")
+    {
         baseURI = _base;
     }
 
