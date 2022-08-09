@@ -10,7 +10,7 @@ async function main() {
   await WhitelistContract.deployed();
 
   // print the address of the deployed contract
-  console.log("VotingOnProposal Contract Address:", WhitelistContract.address);
+  console.log("Whitelist Contract Address:", WhitelistContract.address);
 }
 
 // Call the main function and catch if there is any error

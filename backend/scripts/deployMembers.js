@@ -1,16 +1,16 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-  const NFTContract = await ethers.getContractFactory("MemberNFT");
+  const MembersContract = await ethers.getContractFactory("DAOMembers");
 
   // deploy the contract
-  const nftContract = await NFTContract.deploy();
+  const membersContract = await MembersContract.deploy();
 
   // wait for it to finish deploying
-  await nftContract.deployed();
+  await membersContract.deployed();
 
   // print the address of the deployed contract
-  console.log("NFT Contract Address:", nftContract.address);
+  console.log("Members Contract Address:", membersContract.address);
 }
 
 // Call the main function and catch if there is any error
