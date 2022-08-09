@@ -55,7 +55,7 @@ export default function DashboardTabs() {
             className={
               toggleState === 1
                 ? `${styles.tab1} ${styles.active_content}`
-                : styles.tab1
+                : `${styles.tab1}`
             }
           >
             <Account />
@@ -65,7 +65,7 @@ export default function DashboardTabs() {
             className={
               toggleState === 2
                 ? `${styles.tab2} ${styles.active_content}`
-                : styles.tab2
+                : `${styles.tab2}`
             }
           >
             <ApproveEntry />
@@ -75,7 +75,7 @@ export default function DashboardTabs() {
             className={
               toggleState === 3
                 ? `${styles.tab3} ${styles.active_content}`
-                : styles.tab3
+                : `${styles.tab3}`
             }
           >
             <GrantsProposal />

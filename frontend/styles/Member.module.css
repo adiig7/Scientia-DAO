@@ -157,6 +157,55 @@
   }
 }
 
+
+.width {
+  width: 120px;
+}
+
+.entry_requests {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  margin: 0 a;
+}
+
+.card {
+  max-width: 500px;
+  transition: ease-in-out 0.3s;
+
+  /* margin: 1px ; */
+}
+
+.card:hover {
+  transform: scale(0.98);
+}
+
+
+/* proposal card */
+
+.proposalCard {
+margin: 12px 20px;
+/* max-width: 30%; */
+border: 1px solid rgb(110, 99, 160);
+padding: 1.5rem 3rem;
+margin-top: 20px;
+margin-bottom: 40px;
+border-radius: 10px;
+backdrop-filter: blur(14px);
+background-color: rgba(94, 80, 109, 0.18);
+transition: ease-in-out 0.3s;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+max-height: 332px;
+overflow: auto;
+/* scroll-behavior: auto; */
+}
+
+
+
 @media screen and (max-width: 768px) {
   .newMember {
     width: 100%;
@@ -182,6 +231,20 @@
 
   .member_name, .member_bio {
     font-size: 14px;
+  }
+
+  .card {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .proposalCard {
+    margin: 10px 25px;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .proposalCard p {
+    text-align: justify;
   }
 
 }
