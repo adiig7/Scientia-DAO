@@ -12,6 +12,7 @@ import Link from "next/link";
 // import grants from "../assets/grants.png";
 
 export default function Home() {
+
   return (
     <div className={styles.container}>
       <Head>

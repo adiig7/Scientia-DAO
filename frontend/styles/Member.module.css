@@ -1,0 +1,109 @@
+.button {
+  align-items: center;
+  appearance: none;
+  background-color: #fcfcfd;
+  background-color: #5de9ff;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395a;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: bold;
+  /* font-family: "JetBrains Mono",monospace; */
+  /* height: 48px; */
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+  margin: 10px 10px;
+  padding: 10px 15px;
+  width: 100px;
+  background-color: rgb(213, 204, 255);
+}
+
+.button:focus {
+  box-shadow: #d6d6e7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+}
+
+.button:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #d6d6e7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button:active {
+  box-shadow: #d6d6e7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.vote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newMember {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  margin: 200px auto;
+  min-width: 80%;
+  /* border: 1px solid rgb(110, 99, 160); */
+  padding: 1.5rem 3rem;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border-radius: 10px;
+  /* backdrop-filter: blur(14px); */
+  /* background-color: rgba(94, 80, 109, 0.18); */
+  /* transition: ease-in-out 0.3s; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+
+
+.member_name {
+    width: 100%;
+    min-height: 40px;
+    padding: 1rem;
+    border-radius: 10px;
+    margin: 20px auto;
+    background: rgb(239, 224, 253);
+    color: black;
+    font-size: 18px;
+  }
+  
+  .member_name {
+    width: 100%;
+    min-height: 250px;
+    padding: 1rem;
+    margin: 20px auto;
+    background: rgb(239, 224, 253);
+    color: black;
+    border-radius: 10px;
+    font-size: 18px;
+    scroll-behavior: auto;
+    resize: none;
+    scroll-behavior: auto;
+  }
