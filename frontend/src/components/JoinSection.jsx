@@ -76,7 +76,11 @@ export default function JoinSection() {
                 <br />
               </p>
             </div>
+
           </Carousel>
+          <button className={`${styles.button} ${styles.width}`} role="button">
+            Join DAO
+          </button>
           </div>
         </div>
       </div>
