@@ -3,16 +3,18 @@ pragma solidity ^0.8.10;
 import "@openzeppelin/contracts@4.7.2/access/Ownable.sol";
 
 contract DAOFunds is Ownable {
-    /// events to keep track of ether receive and Withdrawl
+
+    /// @dev events to keep track of ether receive and Withdrawl
     event received(address user, string amount);
     event withdrawal(address user, string amount);
 
-    /// to check the balance of the DAO at any point of time
+    /// @dev check the balance of the DAO at any point of time
+    /// @return returns balance of contract address (DAO)
     function getBalance() public view returns (uint256) {
         return address(this).balance;
     }
 
-    /// withdraw eth to a paricular address in case of grants
+    /// @dev withdraw eth to a particular address in case of grants
     function withdrawEthTo(address payable _to, uint256 _amount)
         public
         onlyOwner
@@ -23,11 +25,11 @@ contract DAOFunds is Ownable {
         return success;
     }
 
-    // Function to receive Ether. msg.data must be empty
+    /// @dev Function to receive Ether. msg.data must be empty
     receive() external payable {
         emit received(msg.sender, msg.value);
     }
 
-    // Fallback function is called when msg.data is not empty
+    /// @dev Fallback function is called when msg.data is not empty
     fallback() external payable {}
 }
