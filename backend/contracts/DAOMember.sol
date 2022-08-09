@@ -8,8 +8,8 @@ interface NFT {
 }
 
 /// issue
-/// mapping will overwrite the intial record for the particular address in the membersPaperList ,that way it will not return the whole collection
-/// return of the Whole mapping
+/// mapping will overwrite the initial record for the particular address in the membersPaperList ,that way it will not return the whole collection
+/// return of the whole mapping
 
 contract DAOMember {
     event ApprovalMemberRejected(address indexed rejectedAddress);
@@ -33,7 +33,7 @@ contract DAOMember {
         string[] researchesURI; /// string array of ipfsURI
     }
 
-    /// cases for voting for adding a member
+    /// @dev cases for voting for adding a member
     enum Vote {
         YES,
         NO
@@ -47,23 +47,24 @@ contract DAOMember {
 
     NFT nft;
 
-    /// record of all the members of the DAO for their details
+    /// @dev record of all the members of the DAO for their details
     mapping(uint256 => Member) public membersList;
 
-    /// requests to add new member
+    /// @dev requests to add new member
     mapping(uint256 => Member) public requestList;
 
-    /// mapping from memberAddress -->  research paper
+    /// @dev mapping from memberAddress -->  research paper
     mapping(address => ResearchPaper) public membersPaperList;
 
-    /// mapping from researchNo -->researchPaper
+    /// @dev mapping from researchNo -->researchPaper
     mapping(uint256 => ResearchPaper) public researchesPublishedList;
 
     constructor(address _NFT) {
         nft = NFT(_NFT);
     }
 
-    /// conditional functions
+    /// @dev conditional functions
+    /// requirements - user must own an NFT
     modifier onlyDAOMember() {
         require(nft.balanceOf(msg.sender) > 0, " You are not a DAO member");
         _;
