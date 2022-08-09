@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
-import "@openzeppelin/contracts@4.7.2/access/Ownable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 interface Funds {
-    function withdrawEthTo(address payable _to, uint256 _amount)
+    function withdrawEthTo(address _to, uint256 _amount)
         external
         returns (bool);
 }
 
-interface MemberNFT {
-    function balanceOf(address owner) external view virtual returns (uint256);
+interface NFT {
+    function balanceOf(address owner) external view returns (uint256);
 
     function safeMint(address to) external;
 }
@@ -39,7 +39,7 @@ contract Grants is Ownable {
     uint256 _collaborations = 0;
 
     uint256 TotalAmountPaid = 0;
-    uint256 votingPeroid = 7 days;
+    uint256 votingDuration = 7 days;
 
     mapping(uint256 => Request) GrantsRequests;
     mapping(uint256 => Request) GrantsApproved;
@@ -53,11 +53,11 @@ contract Grants is Ownable {
 
     event GrantRejected(address indexed rejectedAddress, uint256 _id);
 
-    MemberNFT nft;
+    NFT nft;
     Funds funds;
 
-    constructor(address NFT, address FUNDS) {
-        nft = MemberNFT(NFT);
+    constructor(address _NFT, address FUNDS) {
+        nft = NFT(_NFT);
         funds = Funds(FUNDS);
     }
 
@@ -86,7 +86,7 @@ contract Grants is Ownable {
         _GrantsRequests += 1;
     }
 
-    function Vote(Vote _vote, uint256 _id) public onlyDAOMember {
+    function vote(Vote _vote, uint256 _id) public onlyDAOMember {
         Request storage _request = GrantsRequests[_id];
         require(
             block.timestamp > _request.VotingStartTime,
@@ -96,7 +96,7 @@ contract Grants is Ownable {
             block.timestamp < _request.VotingStartTime + votingDuration,
             "Voting has already ended"
         );
-        if (_vote == Vote.YES) {
+        if (_vote == Vote.Yes) {
             _request.yayVotes += 1;
         } else {
             _request.nayVotes += 1;
@@ -136,23 +136,26 @@ contract Grants is Ownable {
         return GrantsApproved[_id];
     }
 
-    function OpenForCollabrations(uint256 _requestId) public onlyDAOMembers {
+    function OpenForCollabrations(
+        uint256 _requestId,
+        address[] memory collaborators
+    ) public onlyDAOMember {
         require(_requestId <= _GrantsRequests, "Request does not exsist");
         collabrations[_collaborations] = Collabration(
             _requestId,
             msg.sender,
-            0,
+            collaborators,
             true
         );
     }
 
-    function Collabrate(uint256 _id, address memory collaborator)
+    function Collabrate(uint256 _id, address collaborator)
         public
-        onlyDAOMembers
+        onlyDAOMember
     {
         require(_id <= _collaborations, "Not exsist");
         require(collaborator != address(0), "Address not valid");
-        Collabration memory _collaboration = collabrations[_id];
+        Collabration storage _collaboration = collabrations[_id];
         _collaboration.collabrators.push(collaborator);
     }
 

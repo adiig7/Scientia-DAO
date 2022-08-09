@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
-import "@openzeppelin/contracts@4.7.2/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts@4.7.2/token/ERC721/extensions/ERC721Enumerable.sol";
-import "@openzeppelin/contracts@4.7.2/access/Ownable.sol";
-import "@openzeppelin/contracts@4.7.2/utils/Counters.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 
 contract ContributorNFT is ERC721, ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
@@ -12,7 +12,7 @@ contract ContributorNFT is ERC721, ERC721Enumerable, Ownable {
     /// price =  0.05 ether
 
     Counters.Counter private _tokenIdCounter;
-    const baseURI;
+    string baseURI;
 
     event Attest(address indexed to, uint256 indexed tokenId);
     event Revoke(address indexed to, uint256 indexed tokenId);
@@ -91,5 +91,14 @@ contract ContributorNFT is ERC721, ERC721Enumerable, Ownable {
         } else if (to == address(0)) {
             emit Revoke(to, tokenId);
         }
+    }
+
+    function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        override(ERC721, ERC721Enumerable)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
     }
 }

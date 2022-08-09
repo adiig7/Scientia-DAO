@@ -4,7 +4,7 @@ async function main() {
   const whitelistContract = await ethers.getContractFactory("Whitelist");
 
   // deploy the contract
-  const WhitelistContract = await whitelistContract.deploy();
+  const WhitelistContract = await whitelistContract.deploy(100);
 
   // wait for it to finish deploying
   await WhitelistContract.deployed();

@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.10;
 
-interface MemberNFT {
+interface NFT {
     function balanceOf(address owner) external view virtual returns (uint256);
 
     function safeMint(address to) external;
@@ -45,7 +45,7 @@ contract DAOMember {
     uint256 public counterMembers = 0;
     uint256 public counterRequestList = 0;
 
-    MemberNFT nft;
+    NFT nft;
 
     /// record of all the members of the DAO for their details
     mapping(uint256 => Member) public membersList;
@@ -59,8 +59,8 @@ contract DAOMember {
     /// mapping from researchNo -->researchPaper
     mapping(uint256 => ResearchPaper) public researchesPublishedList;
 
-    constructor(address NFT) {
-        nft = MemberNFT(NFT);
+    constructor(address _NFT) {
+        nft = NFT(_NFT);
     }
 
     /// conditional functions

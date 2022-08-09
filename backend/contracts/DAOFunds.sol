@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
-import "@openzeppelin/contracts@4.7.2/access/Ownable.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract DAOFunds is Ownable {
     /// events to keep track of ether receive and Withdrawl
-    event received(address user, string amount);
-    event withdrawal(address user, string amount);
+    event received(address user, uint256 amount);
+    event withdrawal(address user, uint256 amount);
 
     /// to check the balance of the DAO at any point of time
     function getBalance() public view returns (uint256) {
