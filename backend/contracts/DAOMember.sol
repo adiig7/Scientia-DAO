@@ -69,9 +69,6 @@ contract DAOMember {
         _;
     }
 
-    /// @dev - To add the research
-    /// @param  researchPaperURI -ipfs uri for the research
-    /// @return success - mentions the success
     function addResearch(string memory researchPaperURI) public onlyDAOMember {
         /// add the research to the common ResearchPaper Array to show it to all s
         researchesPublishedList[counterResearches] = ResearchPaper(
@@ -147,14 +144,6 @@ contract DAOMember {
         else member.nayVotes += 1;
     }
 
-    // cannot return the whole mapping stored for the researches
-    /// solution, it can be converted to a 1-D array , to make it returnable
-    /// @dev - To get all the researches added in the DAO
-    /// @return - array that contains all the research papers
-    function getResearches() public view returns (ResearchPaper[] memory) {
-        return researchesPublishedList;
-    }
-
     /// @dev - To get a particular research
     /// @param  _index - the index of the research paper to be viewed in the researchesPublishedList
     /// @return - the research paper at the given index
@@ -166,11 +155,10 @@ contract DAOMember {
         return researchesPublishedList[_index];
     }
 
-    /// Issue : can not return the whole mapping
     /// @dev - To get all the members in the DAO
     /// @return - array that contains all the members
-    function getMembers() public view returns (Member[] memory) {
-        return membersList;
+    function getMembers(uint256 _id) public view returns (Member memory) {
+        return membersList[_id];
     }
 
     function getMembersResearch(uint256 _id)
