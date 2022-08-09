@@ -32,7 +32,8 @@
   font-size: 18px;
   margin: 10px 10px;
   padding: 10px 15px;
-  width: 100px;
+  /* width: 100px; */
+  /* width: 60%; */
   background-color: rgb(213, 204, 255);
 }
 
@@ -64,10 +65,10 @@
   justify-content: center;
   align-items: center;
 
-  margin: 200px auto;
+  /* margin: 200px auto; */
   min-width: 80%;
   /* border: 1px solid rgb(110, 99, 160); */
-  padding: 1.5rem 3rem;
+  padding: 0.5rem 1.5rem;
   margin-top: 20px;
   margin-bottom: 40px;
   border-radius: 10px;
@@ -81,29 +82,106 @@
   flex-wrap: wrap;
 }
 
-
-
 .member_name {
-    width: 100%;
-    min-height: 40px;
-    padding: 1rem;
-    border-radius: 10px;
-    margin: 20px auto;
-    background: rgb(239, 224, 253);
-    color: black;
-    font-size: 18px;
+  width: 100%;
+  min-height: 40px;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 20px auto;
+  background: rgb(239, 224, 253);
+  color: black;
+  font-size: 18px;
+}
+
+.member_bio {
+  width: 100%;
+  min-height: 150px;
+  padding: 1rem;
+  margin: 20px auto;
+  background: rgb(239, 224, 253);
+  color: black;
+  border-radius: 10px;
+  font-size: 18px;
+  scroll-behavior: auto;
+  resize: vertical;
+  scroll-behavior: auto;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 34px;
+  margin: 15px auto;
+}
+
+.titleWord {
+  animation: color-animation 4s linear infinite;
+}
+
+.word1 {
+  --color-1: #a2cdff;
+  --color-2: #84daff;
+  --color-3: #c0ffa1;
+}
+
+.word2 {
+  --color-1: #6cffe4;
+  --color-2: #4dffea;
+  --color-3: rgb(114, 255, 208);
+}
+
+@keyframes color-animation {
+  0% {
+    color: var(--color-1);
   }
-  
-  .member_name {
-    width: 100%;
-    min-height: 250px;
-    padding: 1rem;
-    margin: 20px auto;
-    background: rgb(239, 224, 253);
-    color: black;
-    border-radius: 10px;
-    font-size: 18px;
-    scroll-behavior: auto;
-    resize: none;
-    scroll-behavior: auto;
+  32% {
+    color: var(--color-1);
   }
+  33% {
+    color: var(--color-2);
+  }
+  65% {
+    color: var(--color-2);
+  }
+  66% {
+    color: var(--color-3);
+  }
+  99% {
+    color: var(--color-3);
+  }
+  100% {
+    color: var(--color-1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .newMember {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .title {
+    font-size: 24px;
+    max-width: 80%;
+    margin: 15px 0px;
+    /* margin: 10px; */
+  }
+
+  .newMember label {
+    font-size: 14px;
+  }
+
+  .button {
+    font-size: 16px;
+    padding: 10px 8px;
+  }
+
+  .member_name, .member_bio {
+    font-size: 14px;
+  }
+
+}

@@ -312,6 +312,41 @@
   background-color: transparent;
 }
 
+/* .close {
+  display: flex;
+  margin-right: auto;
+  position: absolute;
+  right: 50px;
+  top: 20px;
+} */
+
+.close_btn {
+  position: absolute;
+  right: 32px;
+  top: 32px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.6;
+}
+.close_btn:hover {
+  opacity: 1;
+}
+.close_btn:before, .close_btn:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: rgb(255, 255, 255);
+}
+.close_btn:before {
+  transform: rotate(45deg);
+}
+.close_btn:after {
+  transform: rotate(-45deg);
+}
+
+
 @media screen and (max-width: 768px) {
 
   .width {

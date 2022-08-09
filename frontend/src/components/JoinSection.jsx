@@ -11,16 +11,15 @@ import NewMember from "./NewMember";
 const customStyles = {
   content: {
     width: "80%",
-    height: "70%",
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
+    height: "74%",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
     // color: 'black',
-    background: 'linear-gradient(316deg, #13012f 0%, #110d10  150%)'
-
+    background: "linear-gradient(316deg, #13012f 0%, #110d10  150%)",
   },
 };
 
@@ -117,19 +116,22 @@ export default function JoinSection() {
               Join DAO
             </button>
             <div className={styles.modal}>
-
-            <Modal 
-            overlayClassName={styles.overlay}
-            onRequestClose={closeModal}
-            style={customStyles}
-            contentLabel="New Member Form"
-            isOpen={isOpen}>
-              <NewMember />
-              <button
-                className={styles.button}
-                onClick={closeModal}>Close</button>
-            </Modal>
+              <Modal
+                overlayClassName={styles.overlay}
+                onRequestClose={closeModal}
+                style={customStyles}
+                contentLabel="New Member Form"
+                isOpen={isOpen}
+              >
+                <NewMember />
+                <div  className={styles.close} >
+                <a href="#" onClick={closeModal} className={styles.close_btn} />
+                {/* <button className={styles.close_btn} onClick={closeModal}>
+                  x
+                </button> */}
                 </div>
+              </Modal>
+            </div>
           </div>
         </div>
       </div>
