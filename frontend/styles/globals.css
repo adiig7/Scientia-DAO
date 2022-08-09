@@ -54,6 +54,9 @@ a {
   box-sizing: border-box;
 }
 
+/* * {
+  border: 1px solid red;
+} */
 
 @media (prefers-color-scheme: dark) {
   html {

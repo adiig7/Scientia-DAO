@@ -59,10 +59,15 @@ export default function Layout({ children }) {
               </Link>
             </li>
             <li className={styles.navitem}>
+              <Link href="/dashboard">
+                <a className={styles.navlink}>Dashboard</a>
+              </Link>
+            </li>
+            {/* <li className={styles.navitem}>
               <Link href="/team">
                 <a className={styles.navlink}>Team</a>
               </Link>
-            </li>
+            </li> */}
             <li className={styles.navitem}>
               {/* <button>Connect Wallet</button> */}
               <ConnectButton />
