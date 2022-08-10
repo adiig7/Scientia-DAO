@@ -3,10 +3,11 @@ import { useAccount, useContract, useProvider, useSigner } from "wagmi";
 import {
   DAOMember_ABI,
   DAOMember_Contract_address,
-} from "../../constants/constants";
-import { StoreContent } from "./StoreResearch";
+} from "../../../constants/constants";
+import { StoreContent } from "./StoreContent";
 
 /// add the research tot the dao member contract
+///  will be used in the publish page
 export const AddResearch = async () => {
   const [researchFiles, setResearchFiles] = useState([]);
   const [researchURI, setResearchURI] = useState("");
@@ -29,18 +30,20 @@ export const AddResearch = async () => {
       console.log(URL);
       setResearchURI(URL);
       console.log("Research uploaded to IPFS");
+      await add(URL);
     } catch (err) {
       console.log(err);
     }
   };
 
   // 2. will be called later to add the uri to the contract
-  const add = async () => {
+  const add = async (url) => {
     try {
       console.log("Adding the Research ....");
-      const tx = await Member_contract.addResearch(researchURI);
+      const tx = await Member_contract.addResearch(url);
       await tx.wait();
       console.log("Research added to your profile");
+      console.log(tx);
     } catch (error) {
       console.log(error);
     }
