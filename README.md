@@ -1,4 +1,4 @@
-# Documentation
+# Welcome to Scientia DAO
 
 ![scientia_dao_logo](https://user-images.githubusercontent.com/11206675/183511519-021297a0-b855-41ca-a5ca-d50852554296.png)
 
@@ -34,3 +34,10 @@ After the second session we came up with the idea of this project and its name -
 We have set up a GitHub repository and began planning using Notion. First we wrote the smart contracts to come up with the logic behind the DAO. Soon we needed some first visualizations in order to keep going creating more ideas, logic and the dependend components.
 
 We met up via various online meeting tools to discuss, collaborate and even learn from one another!
+
+---
+
+### How can someone join the DAO?
+
+In order for someone to join the DAO, he/she has to click the "Join DAO"-Button on our homepage. A register form will appear where you can paste your name, bio, field of research and maybe even previous researches. After pasting your information, hit the "Submit Proposal"-button to start the joining-proposal.
+
