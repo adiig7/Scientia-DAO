@@ -6,13 +6,12 @@ import JoinSection from "../src/components/JoinSection";
 import FeaturesSection from "../src/components/FeaturesSection";
 import WhatMore from "../src/components/WhatMore";
 import Link from "next/link";
-
+import NFTSection from "../src/components/NFTSection";
 // import scientist from "../assets/scientist.png";
 // import image8 from "../assets/8_bg.png";
 // import grants from "../assets/grants.png";
 
 export default function Home() {
-
   return (
     <div className={styles.container}>
       <Head>
@@ -47,10 +46,10 @@ export default function Home() {
               community for SCIENTISTS
             </span>
           </div>
-          <Link href={'#join'}>
-          <button className={styles.button} role="button">
-            Explore DAO
-          </button>
+          <Link href={"#join"}>
+            <button className={styles.button} role="button">
+              Explore DAO
+            </button>
           </Link>
         </div>
 
@@ -64,11 +63,16 @@ export default function Home() {
         <FeaturesSection />
       </div>
 
+
       {/* join section */}
       <div className={styles.section}>
         <JoinSection />
       </div>
 
+      <div className={styles.section}>
+          <NFTSection/>
+      </div>
+      
       {/* what more */}
       <div className={styles.section}>
         <WhatMore />

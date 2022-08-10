@@ -60,6 +60,7 @@
 }
 
 .newMember {
+  background: "linear-gradient(316deg, #13012f 0%, #110d10  150%)";
   display: flex;
   flex-direction: column;
   justify-content: center;

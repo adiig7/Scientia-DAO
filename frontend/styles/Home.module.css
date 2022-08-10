@@ -99,8 +99,28 @@
   text-align: center;
 }
 
+.what_more {
+  padding: 4rem 0;
+  /* margin-top: 25px ; */
+}
+
+.nft_section {
+  /* min-height: 100vh; */
+  /* padding: 6rem 0; */
+  /* flex: 1; */
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
 .features .title,
-.what_more .title {
+.what_more .title,
+.nft_section .title {
   font-size: 28px;
 }
 
@@ -253,6 +273,7 @@
 .join_dao {
   /* min-height: 100vh; */
   padding: 4rem 0;
+  padding-bottom: 0;
   /* flex: 1; */
   display: flex;
   flex-direction: column;
@@ -331,10 +352,11 @@
 .close_btn:hover {
   opacity: 1;
 }
-.close_btn:before, .close_btn:after {
+.close_btn:before,
+.close_btn:after {
   position: absolute;
   left: 15px;
-  content: ' ';
+  content: " ";
   height: 33px;
   width: 2px;
   background-color: rgb(255, 255, 255);
@@ -346,9 +368,57 @@
   transform: rotate(-45deg);
 }
 
+.nfts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  /* max-width: 20%; */
+}
+
+.nft {
+}
+
+.nft {
+  max-width: 400px;
+  margin: 20px;
+  transition: 0.2s ease-in-out;
+  --angle: 0deg;
+  border: 2px solid;
+  border-image: linear-gradient(var(--angle),
+                 #12c2e9, 
+                 #4c0da5,
+                 #9679ff)1;
+  animation: 5s rotate linear infinite;
+  padding: 5px;
+  border-radius: 50px;
+}
+
+.nft:hover {
+  transform: scale(1.025);
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+@property --angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.show {
+  margin: 0 auto;
+  width: 60%;
+}
+
+.hide {
+  display: none;
+}
 
 @media screen and (max-width: 768px) {
-
   .width {
     max-width: 100%;
   }
@@ -420,10 +490,24 @@
     font-size: 20px;
   }
 
+  .what_more {
+    padding: 2rem 0;
+  }
+
   .what_more p {
     font-size: 14px;
     /* width: 120%; */
   }
+
+  .nft_section {
+    padding: 2rem 0;
+    margin-top: 0;
+  }
+
+  .show {
+    width: 90%;
+  }
+
 }
 
 @media (prefers-color-scheme: dark) {
