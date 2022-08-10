@@ -22,7 +22,7 @@ const fetchResearches = async () => {
   const Totalresearches = await Member_contract.counterResearches;
   const promises = [];
   for (let id of Totalresearches) {
-    const researchPromise = contract.getResearch(id); // NOTE: We did NOT use await here
+    const researchPromise = Member_contract.getResearch(id); // NOTE: We did NOT use await here
     promises.push(researchPromise);
   }
 
@@ -50,4 +50,4 @@ const fetchResearches = async () => {
   // });
 };
 
-export default fetchResearches();
+export default fetchResearches;
