@@ -5,11 +5,16 @@ import { useAccount, useContract, useProvider, useSigner } from "wagmi";
 import {
   DAOMember_ABI,
   DAOMember_Contract_address,
-} from "../../constants/constants";
-import { StoreContent } from "./StoreResearch";
+} from "../../../constants/constants";
+import {
+  MemberNFT_ABI,
+  MemberNFT_Contract_Address,
+} from "../../../constants/constants";
+import { StoreResearch } from "./StoreResearch";
+import { StoreContent } from "./StoreContent";
 
 /// we will use this component directly to add a new user
-export const Request = async () => {
+export const JoinDAO = async () => {
   const [Name, setName] = useState("");
   const [bio, setBio] = useState("");
   const [pfp, setPfp] = useState([]);
@@ -17,7 +22,7 @@ export const Request = async () => {
   const [foR, setFoR] = useState("");
 
   const [pfpURI, setPfpURI] = useState("");
-  const [researchURI, setResearchURI] = useState("");
+  const [researchURI, setResearchURI] = useState([]);
 
   const provider = useProvider();
   const { data: signer } = useSigner();
@@ -29,43 +34,66 @@ export const Request = async () => {
     signerOrProvider: signer || provider,
   });
 
+  const MemberNFT_contract = useContract({
+    addressOrName: MemberNFT_Contract_address,
+    contractInterface: MemberNFT_ABI,
+    signerOrProvider: signer || provider,
+  });
+
   // 1st pfp will be storded
-  const storePfp = async () => {
+  const StorePfp = async () => {
     try {
       const cid = await StoreContent(pfp);
       const URL = `https://ipfs.io/ipfs/${cid}`;
       console.log(URL);
       console.log("Pfp uploaded to IPFS");
+      setPfpURI(URL);
+      await StoreResearch();
     } catch (err) {
       console.log(err);
     }
   };
 
   /// 2 . then store research files
-  const StoreResearch = async () => {
+  const StoreResearch = async (pfpuri) => {
     try {
       const cid = await StoreContent(researchFiles);
       const URL = `https://ipfs.io/ipfs/${cid}`;
       console.log(URL);
       console.log("Research uploaded to IPFS");
+      setResearchURI(URL);
+      request(pfpuri, researchuri);
     } catch (err) {
       console.log(err);
     }
   };
 
-  /// 3.  then add these files to the contract
-  const request = async () => {
+  /// 3.  then add these record to the contract
+  const request = async (pfpuri, researchuri) => {
     try {
       console.log("Creating the request...");
       const tx = await Member_contract.addRequest(
         Name,
         bio,
-        pfpURI,
+        pfpuri,
         foR,
-        researchURI
+        researchuri
       );
       await tx.wait();
       console.log("Request added");
     } catch (error) {}
+  };
+
+  /// NFT  minting button will be available in the dashboard after approval from the users
+  const Mint = async () => {
+    try {
+      console.log("Minting the NFT");
+      const tx = await MemberNFT_contract.safeMint(address);
+      await tx.wait();
+      console.log("NFT minted , Congrats you are a DAO member");
+      console.log(tx);
+    } catch (error) {
+      console.log(error);
+    }
   };
 };

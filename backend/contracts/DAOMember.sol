@@ -49,6 +49,7 @@ contract DAOMember {
 
     /// @dev record of all the members of the DAO for their details
     mapping(uint256 => Member) public membersList;
+    mapping(address => bool) public Approved;
 
     /// @dev requests to add new member
     mapping(uint256 => Member) public requestList;
@@ -101,6 +102,7 @@ contract DAOMember {
         if (member.yayVotes > member.nayVotes) {
             membersList[counterMembers] = member;
             counterMembers += 1;
+            Approved[member.memberAddress] = true;
         } else {
             emit ApprovalMemberRejected(member.memberAddress);
         }
@@ -168,5 +170,9 @@ contract DAOMember {
         returns (string[] memory)
     {
         return membersList[_id].researchesURI;
+    }
+
+    function getApproval(address _address) public view returns (bool) {
+        return Approved[_address];
     }
 }

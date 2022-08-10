@@ -6,6 +6,10 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
+interface Members {
+    function getApproval(address _address) public view returns (bool);
+}
+
 contract MemberNFT is ERC721, ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
 
@@ -14,13 +18,16 @@ contract MemberNFT is ERC721, ERC721Enumerable, Ownable {
     Counters.Counter private _tokenIdCounter;
     string baseURI;
 
+    Members _member;
+
     event Attest(address indexed to, uint256 indexed tokenId);
     event Revoke(address indexed to, uint256 indexed tokenId);
 
-    constructor(string memory _base)
+    constructor(string memory _base, address _memberContract)
         ERC721("Scientia DAO Member", "SCIMember")
     {
         baseURI = _base;
+        _member = Members(_memberContract);
     }
 
     // to change the URI at any point of time , the URI is same for all the tokens as we DAO NFT is same for all
@@ -43,6 +50,10 @@ contract MemberNFT is ERC721, ERC721Enumerable, Ownable {
     /// to mint the token ID for the DAO user to join the DAO
     /// can be called by anybody , but it will be called in backend just by the DAO members
     function safeMint(address to) public {
+        require(
+            _member.getApproval(msg.sender),
+            "You are not a approved to mint"
+        );
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
