@@ -164,6 +164,11 @@ contract DAOMember {
         return membersList[_id];
     }
 
+    // to get a specific a request to be able to approve it
+    function getRequest(uint256 _id) public view returns (Member memory) {
+        return requestList[_id];
+    }
+
     function getMembersResearch(uint256 _id)
         public
         view

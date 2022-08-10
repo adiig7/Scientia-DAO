@@ -10,7 +10,7 @@ import {
   DAOMember_Contract_address,
 } from "../../../constants/constants";
 
-const fetchMembers = async () => {
+const fetchRequests = async () => {
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address, isConnected } = useAccount();
@@ -43,4 +43,4 @@ const fetchMembers = async () => {
   });
 };
 
-export default fetchMembers;
+export default fetchRequests;
