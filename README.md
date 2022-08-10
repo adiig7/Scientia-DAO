@@ -41,3 +41,42 @@ We met up via various online meeting tools to discuss, collaborate and even lear
 
 In order for someone to join the DAO, he/she has to click the "Join DAO"-Button on our homepage. A register form will appear where you can paste your name, bio, field of research and maybe even previous researches. After pasting your information, hit the "Submit Proposal"-button to start the joining-proposal.
 
+---
+
+### Founders
+
+### Dhruv Agarwal
+![dhruv_agarwal](https://user-images.githubusercontent.com/11206675/184015427-f41e8de0-8bf3-4dcd-b3a9-e04086e25255.jpg)
+
+**Fullstack Developer**
+
+Loves writing smart contracts and building fun projects.
+
+---
+
+### Nils Giebing
+![nils_giebing](https://user-images.githubusercontent.com/11206675/184015390-d2c35a52-9e33-4888-b619-e2bd59fe3e9c.jpg)
+
+**Backend Developer**
+
+Loves to travel and contribute to communities.
+
+---
+
+### Kushagra Sarathe
+![kushagra_sarathe](https://user-images.githubusercontent.com/11206675/184015363-3dbafff4-8e0e-43af-a69f-685351b6ccd2.jpg)
+
+**Frontend Developer**
+
+Experience in bug bounty hunting. Learning to code these days.
+
+---
+
+### Aditya Gupta
+![aditya_gupta](https://user-images.githubusercontent.com/11206675/184015293-d9fc4e74-9a6a-49e7-be93-f0c7d1ebac32.jpg)
+
+**Backend Developer**
+
+Experience in building android applications, loves writing smart contracts.
+
+---
