@@ -7,6 +7,8 @@ contract DAOFunds is Ownable {
     event received(address user, string amount);
     event withdrawal(address user, string amount);
 
+    mapping(address => bool) contributors;
+
     /// @dev check the balance of the DAO at any point of time
     /// @return returns balance of contract address (DAO)
     function getBalance() public view returns (uint256) {
@@ -24,8 +26,13 @@ contract DAOFunds is Ownable {
         return success;
     }
 
+    function getContribution(address _user) public view returns (bool) {
+        return contributors[_user];
+    }
+
     /// @dev Function to receive Ether. msg.data must be empty
     receive() external payable {
+        contributors[msg.sender] = false;
         emit received(msg.sender, msg.value);
     }
 

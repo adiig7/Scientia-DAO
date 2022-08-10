@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
 interface Members {
-    function getApproval(address _address) public view returns (bool);
+    function getApproval(address _address) external view returns (bool);
 }
 
 contract MemberNFT is ERC721, ERC721Enumerable, Ownable {

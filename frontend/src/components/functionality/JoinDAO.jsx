@@ -87,11 +87,17 @@ export const JoinDAO = async () => {
   /// NFT  minting button will be available in the dashboard after approval from the users
   const Mint = async () => {
     try {
-      console.log("Minting the NFT");
-      const tx = await MemberNFT_contract.safeMint(address);
-      await tx.wait();
-      console.log("NFT minted , Congrats you are a DAO member");
-      console.log(tx);
+      console.log("Checking Elgibility");
+      const check = await Member_contract.getApproval(address);
+      if (check) {
+        console.log("Minting the NFT");
+        const tx = await MemberNFT_contract.safeMint(address);
+        await tx.wait();
+        console.log("NFT minted , Congrats you are a DAO member");
+        console.log(tx);
+      } else {
+        console.log("Not eligible for NFT minting");
+      }
     } catch (error) {
       console.log(error);
     }

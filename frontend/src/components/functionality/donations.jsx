@@ -10,6 +10,8 @@ import {
 import {
   DAOFunds_ABI,
   DAOFunds_Contract_address,
+  ContributorNFT_ABI,
+  ContributorNFT_Contract_Address,
 } from "../../../constants/constants";
 import { ethers, utils } from "ethers";
 
@@ -22,6 +24,12 @@ const donation = async () => {
   const DAOFunds_contract = useContract({
     addressOrName: DAOFunds_Contract_address,
     contractInterface: DAOFunds_ABI,
+    signerOrProvider: signer || provider,
+  });
+
+  const ContributorNFT_contract = useContract({
+    addressOrName: ContributorNFT_Contract_Address,
+    contractInterface: ContributorNFT_ABI,
     signerOrProvider: signer || provider,
   });
 
@@ -40,6 +48,25 @@ const donation = async () => {
       const { data, sendTransaction } = await useSendTransaction(config);
       console.log("Transaction Completed");
       console.log("Thank you for your contribution");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const mint = async () => {
+    try {
+      console.log("Checking the Elgibility...");
+      const check = await DAOFunds_contract.getContribution(address);
+      console.log(check);
+      if (check) {
+        console.log("You are eligible...");
+        console.log("Minting the NFT");
+        const tx = await ContributorNFT_contract.safeMint(address);
+        await tx.wait();
+        console.log("NFT minted, Check the collection on OpenSea");
+      } else {
+        console.log("not eligible for NFT minting");
+      }
     } catch (error) {
       console.log(error);
     }

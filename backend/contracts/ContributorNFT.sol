@@ -6,6 +6,10 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";
 
+interface Contributors {
+    function getContribution(address _user) external view returns (bool);
+}
+
 contract ContributorNFT is ERC721, ERC721Enumerable, Ownable {
     using Counters for Counters.Counter;
 
@@ -14,13 +18,16 @@ contract ContributorNFT is ERC721, ERC721Enumerable, Ownable {
     Counters.Counter private _tokenIdCounter;
     string baseURI;
 
+    Contributors _contributor;
+
     event Attest(address indexed to, uint256 indexed tokenId);
     event Revoke(address indexed to, uint256 indexed tokenId);
 
-    constructor(string memory _base)
+    constructor(string memory _base, address _contributorContract)
         ERC721("Scientia DAO Contributor", "SCIContributor")
     {
         baseURI = _base;
+        _contributor = Contributors(_contributorContract);
     }
 
     // to change the URI at any point of time , the URI is same for all the tokens as we DAO NFT is same for all
@@ -42,7 +49,12 @@ contract ContributorNFT is ERC721, ERC721Enumerable, Ownable {
 
     /// to mint the token ID for the DAO user to join the DAO
     /// can be called by anybody , but it will be called in backend just by the DAO members
+    /// NFT will be minted only if the user has contriubuted , the option to mint a NFT will be shown but checked first and then only allowed to mint
     function safeMint(address to) public {
+        require(
+            _contributor.getContribution(msg.sender),
+            "You are not a contributor"
+        );
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
