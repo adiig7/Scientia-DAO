@@ -9,6 +9,8 @@ import { StoreContent } from "./StoreContent";
 /// add the research tot the dao member contract
 ///  will be used in the publish page
 export const AddResearch = async () => {
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const [researchFiles, setResearchFiles] = useState([]);
   const [researchURI, setResearchURI] = useState("");
 
@@ -22,10 +24,24 @@ export const AddResearch = async () => {
     signerOrProvider: signer || provider,
   });
 
-  // 1. stores the files onto IPFS via web3.storage
-  const StoreResearch = async () => {
+  // 1.all the Media Research files are stored on IPFS
+  const Storefiles = async () => {
     try {
       const cid = await StoreContent(researchFiles);
+      const URL = `https://ipfs.io/ipfs/${cid}`;
+      console.log(URL);
+      console.log("Media uploaded to IPFS");
+      await StoreResearch(URL);
+      setResearchURI(URL);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  // 2. stores the files onto IPFS via web3.storage
+  const StoreResearch = async (_contentURI) => {
+    try {
+      const cid = await StoreResearch(title, description, _contentURI);
       const URL = `https://ipfs.io/ipfs/${cid}`;
       console.log(URL);
       setResearchURI(URL);

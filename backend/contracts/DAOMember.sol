@@ -35,8 +35,8 @@ contract DAOMember {
 
     /// @dev cases for voting for adding a member
     enum Vote {
-        YES,
-        NO
+        YES, // YES = 0
+        NO // NO = 1
     }
 
     uint256 public votingDuration = 2 days;
