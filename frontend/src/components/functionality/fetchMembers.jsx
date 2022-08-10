@@ -1,8 +1,6 @@
-/// to show all the members profile on the page for Collabration on projects
+/// to show all the members profile on the page in the DAO
 /// just to showcase
-/// to fetch all the research work going on in the DAO stored in the contract
 // render the same
-// proposals now contains all proposal structs\
 import React, { useEffect, useState } from "react";
 import { useAccount, useContract, useProvider, useSigner } from "wagmi";
 import {

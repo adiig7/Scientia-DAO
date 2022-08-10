@@ -1,8 +1,5 @@
-/// to show all the members profile on the page for Collabration on projects
-/// just to showcase
-/// to fetch all the research work going on in the DAO stored in the contract
+/// fetches all the open requests for entering the DAO
 // render the same
-// proposals now contains all proposal structs\
 import React, { useEffect, useState } from "react";
 import { useAccount, useContract, useProvider, useSigner } from "wagmi";
 import {
@@ -24,15 +21,15 @@ const fetchRequests = async () => {
   /// getting all the members of the DAO , Scientists who have already joined the DAO
   const get = async () => {
     try {
-      const TotalMembers = await Member_contract.counterMembers;
+      const TotalRequest = await Member_contract.counterResearches;
       const promises = [];
-      for (let id of TotalMembers) {
-        const membersPromise = Member_contract.getMembers(id); // NOTE: We did NOT use await here
-        promises.push(membersPromise);
+      for (let id of TotalRequest) {
+        const requestsPromise = Member_contract.getRequest(id); // NOTE: We did NOT use await here
+        promises.push(requestsPromise);
       }
 
-      const members = await Promise.all(promises);
-      console.log(members);
+      const requests = await Promise.all(promises);
+      console.log(requests);
     } catch (error) {
       console.log(error);
     }

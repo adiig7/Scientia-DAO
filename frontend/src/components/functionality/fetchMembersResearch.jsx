@@ -1,6 +1,6 @@
-/// to fetch all the research work going on in the DAO stored in the contract
+/// to fetch all the research work by a certain member going on in the DAO stored in the contract
 // render the same
-// proposals now contains all proposal structs\
+
 import React, { useEffect, useState } from "react";
 import { useAccount, useContract, useProvider, useSigner } from "wagmi";
 import {
