@@ -3,16 +3,9 @@ pragma solidity ^0.8.10;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract DAOFunds is Ownable {
-<<<<<<< HEAD
-    /// events to keep track of ether receive and Withdrawl
-    event received(address user, uint256 amount);
-    event withdrawal(address user, uint256 amount);
-=======
-
     /// @dev events to keep track of ether receive and Withdrawl
     event received(address user, string amount);
     event withdrawal(address user, string amount);
->>>>>>> 0db7ec12c993bf2a4403535832ce9654f005a1f0
 
     /// @dev check the balance of the DAO at any point of time
     /// @return returns balance of contract address (DAO)

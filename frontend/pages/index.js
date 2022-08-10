@@ -6,13 +6,13 @@ import JoinSection from "../src/components/JoinSection";
 import FeaturesSection from "../src/components/FeaturesSection";
 import WhatMore from "../src/components/WhatMore";
 import Link from "next/link";
-
+import { fetchResearches } from "../src/components/functionality/fetchResearches";
 // import scientist from "../assets/scientist.png";
 // import image8 from "../assets/8_bg.png";
 // import grants from "../assets/grants.png";
 
 export default function Home() {
-
+  fetchResearches;
   return (
     <div className={styles.container}>
       <Head>
@@ -47,10 +47,10 @@ export default function Home() {
               community for SCIENTISTS
             </span>
           </div>
-          <Link href={'#join'}>
-          <button className={styles.button} role="button">
-            Explore DAO
-          </button>
+          <Link href={"#join"}>
+            <button className={styles.button} role="button">
+              Explore DAO
+            </button>
           </Link>
         </div>
 
