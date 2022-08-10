@@ -8,30 +8,34 @@ import { useState } from "react";
 import Modal from "react-modal";
 import NewMember from "./NewMember";
 
-const customStyles = {
-  content: {
-    width: "80%",
-    height: "80%",
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    // color: 'black',
-    background: "linear-gradient(316deg, #13012f 0%, #110d10  150%)",
-  },
-};
+// const customStyles = {
+//   content: {
+//     width: "80%",
+//     height: "80%",
+//     top: "50%",
+//     left: "50%",
+//     right: "auto",
+//     bottom: "auto",
+//     marginRight: "-50%",
+//     transform: "translate(-50%, -50%)",
+//     background: "linear-gradient(316deg, #13012f 0%, #110d10  150%)",
+//   },
+// };
 
 export default function JoinSection() {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
+  // function closeModal() {
+  //   setIsOpen(false);
+  // }
+  // function closeModal() {
+  //   setIsOpen(false);
+  // }
 
-  function openModal() {
-    setIsOpen(true);
-  }
+  const [openForm, setOpenForm] = useState(false);
 
-  function closeModal() {
-    setIsOpen(false);
+  function joinForm() {
+    setOpenForm(!openForm);
+    console.log(openForm);
   }
 
   return (
@@ -109,29 +113,29 @@ export default function JoinSection() {
               </div>
             </Carousel>
             <button
-              onClick={openModal}
+              // onClick={openModal}
+              onClick={joinForm}
               className={`${styles.button} ${styles.width}`}
               role="button"
             >
               Join DAO
             </button>
-            <div className={styles.modal}>
+            {/* <div className={styles.modal}>
               <Modal
                 overlayClassName={styles.overlay}
                 onRequestClose={closeModal}
                 style={customStyles}
                 contentLabel="New Member Form"
                 isOpen={isOpen}
-              >
-                <NewMember />
-                <div  className={styles.close} >
+              > */}
+            {/* <div  className={styles.close} >
                 <a href="#" onClick={closeModal} className={styles.close_btn} />
-                {/* <button className={styles.close_btn} onClick={closeModal}>
-                  x
-                </button> */}
                 </div>
-              </Modal>
-            </div>
+                </Modal>
+              </div> */}
+          </div>
+          <div className={openForm ? styles.show : styles.hide}>
+            <NewMember />
           </div>
         </div>
       </div>
