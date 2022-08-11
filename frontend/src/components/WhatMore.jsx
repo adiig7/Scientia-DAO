@@ -16,16 +16,16 @@ export default function WhatMore() {
         </div>
         <div className={styles.upcoming}>
           <p>
-            We have planned to add more feature to <b>Scientia DAO</b> in future
+            We have planned to add more features to <b>Scientia DAO</b> in the future
             and will be working on implementing those as we move forward with the project.
-            To give you all a glimpse of of what we are planning, here are the few things that we
+            To give you all a glimpse of what we are planning, here are a few things that we
             will be working on to improve this project:
           </p>
 
-            <li>🚀 Colloborate &#38; Contribute feature for DAO Members</li> 
-            <li>🚀 Milestone feature for Grants</li> 
-            <li>🚀 Token and Governance Setup</li> 
-            <li>🚀 License and Patent feature for published researches</li> 
+            <li>🚀 Collaborate &#38; contribute feature for DAO Members</li> 
+            <li>🚀 Milestone feature for grants</li> 
+            <li>🚀 Token and governance setup</li> 
+            <li>🚀 License and patent feature for published researches</li> 
         </div>
       </div>
     </>
