@@ -6,7 +6,7 @@ import {
   Grants_Contract_Address,
 } from "../../../constants/constants";
 
-const VoteEntry = async () => {
+const VoteGrant = async () => {
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address, isConnected } = useAccount();
@@ -52,4 +52,4 @@ const VoteEntry = async () => {
   });
 };
 
-export default VoteEntry;
+export default VoteGrant;
