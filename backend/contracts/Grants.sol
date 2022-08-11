@@ -125,6 +125,7 @@ contract Grants is Ownable {
             "The grant can not be processed"
         );
         _grant.paid = true;
+        TotalAmountPaid += _grant.amountApproved;
         funds.withdrawEthTo(_grant.creator, _grant.amountApproved);
     }
 

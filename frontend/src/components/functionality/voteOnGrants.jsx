@@ -30,7 +30,22 @@ const VoteEntry = async () => {
     }
   };
 
-  const fetch = async () => {};
+  /// fetching the requested grants
+  const fetch = async () => {
+    try {
+      const TotalGrants = await Grant_contract._GrantsRequests;
+      const promises = [];
+      for (let id of TotalGrants) {
+        const requestsPromise = Grant_contract.getRequests(id); // NOTE: We did NOT use await here
+        promises.push(requestsPromise);
+      }
+
+      const requests = await Promise.all(promises);
+      console.log(requests);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   useEffect(() => {
     get();
