@@ -1,3 +1,5 @@
+export const OwnerAddress = "";
+
 export const Whitelist_Contract_Address =
   "0x1e5b01FaA5784E4A75c75F6d0f0dbeF8c40eCc74";
 export const MemberNFT_Contract_Address =

@@ -1,5 +1,6 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.10;
+import "@openzeppelin/contracts/access/Ownable.sol";
 
 interface NFT {
     function balanceOf(address owner) external view virtual returns (uint256);
@@ -11,7 +12,7 @@ interface NFT {
 /// mapping will overwrite the initial record for the particular address in the membersPaperList ,that way it will not return the whole collection
 /// return of the whole mapping
 
-contract DAOMember {
+contract DAOMember is Ownable {
     event ApprovalMemberRejected(address indexed rejectedAddress);
 
     struct ResearchPaper {
@@ -109,6 +110,15 @@ contract DAOMember {
         delete requestList[_id];
         // TODO : delete the member from the requestList
     }
+
+    // /// to end the vote and add the member to the Members List
+    // function endVote(uint256 _id) public onlyOwner {
+    //     Member storage member = requestList[_id];
+    //     require(
+    //         block.timestamp > member.votingStartTime + votingDuration,
+    //         "Voting hasn't ended yet for this member!"
+    //     );
+    // }
 
     function addRequest(
         string memory _name,

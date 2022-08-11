@@ -32,7 +32,7 @@ contract DAOFunds is Ownable {
 
     /// @dev Function to receive Ether. msg.data must be empty
     receive() external payable {
-        contributors[msg.sender] = false;
+        contributors[msg.sender] = true;
         emit received(msg.sender, msg.value);
     }
 
