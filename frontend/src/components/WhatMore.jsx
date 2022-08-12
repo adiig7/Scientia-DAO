@@ -22,10 +22,10 @@ export default function WhatMore() {
             will be working on to improve this project:
           </p>
 
-            <li>🚀 Collaborate &#38; contribute feature for DAO Members</li> 
             <li>🚀 Milestone feature for grants</li> 
             <li>🚀 Token and governance setup</li> 
-            <li>🚀 License and patent feature for published researches</li> 
+            <li>🚀 Collaborate &#38; contribute feature for DAO Members</li> 
+            {/* <li>🚀 License and patent feature for published researches</li>  */}
         </div>
       </div>
     </>

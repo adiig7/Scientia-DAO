@@ -47,7 +47,7 @@ export default function Home() {
           </div>
           <Link href={"#join"}>
             <button className={styles.button} role="button">
-              Explore DAO
+              Explore
             </button>
           </Link>
         </div>
