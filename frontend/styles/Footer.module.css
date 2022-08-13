@@ -3,6 +3,12 @@
     /* padding: 20px; */
     background: #151515;
     max-height: 8vh;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+    /* padding: 1.2rem; */
+
 }
 
 
@@ -62,6 +68,19 @@
     animation: animatedgradient 3s ease alternate infinite;
     background-size: 300% 300%;
   }
+
+  .team_members {
+    display: flex;
+    display: list-item;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* .team_members span {
+    display: inline-block;
+    margin: auto 15px ;
+  } */
   
   
   @keyframes animatedgradient {

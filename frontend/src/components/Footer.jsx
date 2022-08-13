@@ -8,9 +8,12 @@ export default function () {
   return (
     <>
       <footer className={styles.footer}>
-        <div className={`${styles.githubs} `}>
-        {/* <hr /> */}
-        </div>
+        {/* <div className={styles.team_members}>
+          <span>Dhruv Agarwal</span>
+          <span>Kushagra Sarathe</span>
+          <span>Nils Giebing</span>
+          <span>Aditya Gupta</span>
+        </div> */}
         <div className={styles.footer_items}>
           {/* <Image src={logo} /> */}
 
@@ -18,7 +21,12 @@ export default function () {
             © 2022 ALL RIGHTS RESERVED - Scientia DAO
           </span>
           <div className={`${styles.github} `}>
-            <Image src={github} />
+            <a
+              href="https://github.com/adiig7/Polygon-BUIDL-IT/"
+              target="_blank"
+            >
+              <Image src={github} />
+            </a>
           </div>
         </div>
       </footer>

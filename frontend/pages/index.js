@@ -6,6 +6,7 @@ import JoinSection from "../src/components/JoinSection";
 import FeaturesSection from "../src/components/FeaturesSection";
 import WhatMore from "../src/components/WhatMore";
 import Link from "next/link";
+import Poweredby from "../src/components/Poweredby";
 // import scientist from "../assets/scientist.png";
 // import image8 from "../assets/8_bg.png";
 // import grants from "../assets/grants.png";
@@ -45,11 +46,11 @@ export default function Home() {
               community for SCIENTISTS
             </span>
           </div>
-          <Link href={"#join"}>
+          {/* <Link href={"#join"}> */}
             <button className={styles.button} role="button">
               Explore
             </button>
-          </Link>
+          {/* </Link> */}
         </div>
 
         <div className={styles.hero}>
@@ -70,6 +71,11 @@ export default function Home() {
       {/* what more */}
       <div className={styles.section}>
         <WhatMore />
+      </div>
+      
+      {/* powered by */}
+      <div className={styles.section}>
+        <Poweredby />
       </div>
     </div>
   );

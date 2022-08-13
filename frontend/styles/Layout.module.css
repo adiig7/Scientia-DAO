@@ -3,6 +3,8 @@
   /* border-bottom: 1px solid #b1bdf8; */
   background: #1e2124;
   background: #111111;
+  background: #111111ad;
+  backdrop-filter: blur(6px);  
   /* background: #111111b5; */
   /* background: #1e2124; */
   position: fixed;
@@ -11,7 +13,7 @@
   justify-content: flex-start;
   justify-content: space-between;
   justify-content: space-evenly;
-  padding: 0 20px;
+  padding: 15px 20px;
   align-items: center;
   height: 8vh;
 
