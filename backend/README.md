@@ -17,7 +17,7 @@ This is our repo for the Polygon BUIDL IT Hackathon
 ## Grants Contract Address: 0xe6C50E500d30E6E5BeDb4b001F0be55584274a88
 
 ## DAO Funds Contract Address: 0x52E1f8418679423D5E30E5D2cDe15c720BB243Ca
-
+-
 ## Contributor NFT (to be minted separetly from the contract)
 ## NFT2 Contract Address: 0xC44a35ada27107FFB64D0cD17C4ED1E4549f66cC
 -
