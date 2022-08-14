@@ -2,6 +2,8 @@
 
 ![scientia_dao_logo](https://user-images.githubusercontent.com/11206675/183511519-021297a0-b855-41ca-a5ca-d50852554296.png)
 
+If you're looking for the technical documentation, click the following link: https://www.notion.so/Technical-Documentation-cff42d31769842709d9325ea6eddeb19
+
 ### What is our main idea?
 
 Scientia DAO is the first DAO Community for Scientists & Researchers.
@@ -40,6 +42,8 @@ We met up via various online meeting tools to discuss, collaborate and even lear
 ### How can someone join the DAO?
 
 In order for someone to join the DAO, he/she has to click the "Join DAO"-Button on our homepage. A register form will appear where you can paste your name, bio, field of research and maybe even previous researches. After pasting your information, hit the "Submit Proposal"-button to start the joining-proposal.
+
+---
 
 ---
 
