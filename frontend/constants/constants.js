@@ -1,17 +1,22 @@
 export const OwnerAddress = "";
 
+export const WEB3STORAGE_TOKEN =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweDMxQjM3MjRlN2E2RjgyMTg3NEFEYzMyYjEzZDQwNjM2YkFiMDA0NzEiLCJpc3MiOiJ3ZWIzLXN0b3JhZ2UiLCJpYXQiOjE2NTg0MTc0ODY2ODksIm5hbWUiOiJDYXplIn0.BoGp0mNQc_syBHBZFj6Mb2dTUjAlpLWHd6DwCwFSc_4";
+export const NFT_STORAGE_API_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkaWQ6ZXRocjoweEVERWJCMEZCNTk3REI4MTUxNkU5M2Y4YmM3RjJmQ0Q2ODYzNDAyOEUiLCJpc3MiOiJuZnQtc3RvcmFnZSIsImlhdCI6MTY1NjU3MTMwMzkzMCwibmFtZSI6Im1pbnQifQ.tsBchH1uaXC6DKp5g5nL16mjT0rWsBFhi-mKp3x72WQ";
+
 export const Whitelist_Contract_Address =
   "0x1e5b01FaA5784E4A75c75F6d0f0dbeF8c40eCc74";
 export const MemberNFT_Contract_Address =
-  "0x5bbE072fAeE291af2E4D611B24F4B20B74f62A0f";
+  "0x2669e2b28FDf9002F691bB30C637b66290DEF5e0";
 export const ContributorNFT_Contract_Address =
-  "0x7Ac592a5253FB0899b0e86974F2857838407C1aA";
+  "0xC44a35ada27107FFB64D0cD17C4ED1E4549f66cC";
 export const DAOFunds_Contract_Address =
-  "0xfcE1392cE135869a6c904e1Ca7C15c427D8aEA2E";
+  "0x52E1f8418679423D5E30E5D2cDe15c720BB243Ca";
 export const DAOMember_Contract_Address =
-  "0x9c713F26B2E1ed2Ba0048ea46Efc0ee8c1D4580e";
+  "0x6058CB9fD0fD5ADCEe4D954F17721B8AB95CBf56";
 export const Grants_Contract_Address =
-  "0xe6C50E500d30E6E5BeDb4b001F0be55584274a88";
+  "0xF05D2EFA3CA1bA110A49AF1A4ED21045E4fDB03a";
 
 export const Whitelist_ABI = [
   {
@@ -627,6 +632,11 @@ export const ContributorNFT_ABI = [
         name: "_base",
         type: "string",
       },
+      {
+        internalType: "address",
+        name: "_contributorContract",
+        type: "address",
+      },
     ],
     stateMutability: "nonpayable",
     type: "constructor",
@@ -1236,6 +1246,25 @@ export const DAOFunds_ABI = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_user",
+        type: "address",
+      },
+    ],
+    name: "getContribution",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "owner",
     outputs: [
@@ -1321,6 +1350,44 @@ export const DAOMember_ABI = [
     ],
     name: "ApprovalMemberRejected",
     type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
+        indexed: true,
+        internalType: "address",
+        name: "previousOwner",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "OwnershipTransferred",
+    type: "event",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "Approved",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
   },
   {
     inputs: [
@@ -1423,6 +1490,25 @@ export const DAOMember_ABI = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "_address",
+        type: "address",
+      },
+    ],
+    name: "getApproval",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "uint256",
         name: "_id",
         type: "uint256",
@@ -1505,6 +1591,77 @@ export const DAOMember_ABI = [
         internalType: "string[]",
         name: "",
         type: "string[]",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "_id",
+        type: "uint256",
+      },
+    ],
+    name: "getRequest",
+    outputs: [
+      {
+        components: [
+          {
+            internalType: "address",
+            name: "memberAddress",
+            type: "address",
+          },
+          {
+            internalType: "string",
+            name: "name",
+            type: "string",
+          },
+          {
+            internalType: "string",
+            name: "bio",
+            type: "string",
+          },
+          {
+            internalType: "uint256",
+            name: "yayVotes",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "nayVotes",
+            type: "uint256",
+          },
+          {
+            internalType: "uint256",
+            name: "votingStartTime",
+            type: "uint256",
+          },
+          {
+            internalType: "bool",
+            name: "approval",
+            type: "bool",
+          },
+          {
+            internalType: "string",
+            name: "pfpURI",
+            type: "string",
+          },
+          {
+            internalType: "string",
+            name: "foR",
+            type: "string",
+          },
+          {
+            internalType: "string[]",
+            name: "researchesURI",
+            type: "string[]",
+          },
+        ],
+        internalType: "struct DAOMember.Member",
+        name: "",
+        type: "tuple",
       },
     ],
     stateMutability: "view",
@@ -1635,6 +1792,26 @@ export const DAOMember_ABI = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "owner",
+    outputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "renounceOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "uint256",
@@ -1725,6 +1902,19 @@ export const DAOMember_ABI = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "newOwner",
+        type: "address",
+      },
+    ],
+    name: "transferOwnership",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "enum DAOMember.Vote",
         name: "_vote",
         type: "uint8",
@@ -1764,7 +1954,7 @@ export const Grants_ABI = [
       },
       {
         internalType: "address",
-        name: "FUNDS",
+        name: "_Funds",
         type: "address",
       },
     ],

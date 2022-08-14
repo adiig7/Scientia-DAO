@@ -56,9 +56,9 @@ contract Grants is Ownable {
     NFT nft;
     Funds funds;
 
-    constructor(address _NFT, address FUNDS) {
+    constructor(address _NFT, address _Funds) {
         nft = NFT(_NFT);
-        funds = Funds(FUNDS);
+        funds = Funds(_Funds);
     }
 
     /// conditional functions

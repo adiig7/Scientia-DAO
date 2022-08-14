@@ -3,7 +3,7 @@ import styles from "../../styles/Member.module.css";
 import { useAccount, useContract, useProvider, useSigner } from "wagmi";
 import {
   DAOMember_ABI,
-  DAOMember_Contract_address,
+  DAOMember_Contract_Address,
   MemberNFT_ABI,
   MemberNFT_Contract_Address,
 } from "../../constants/constants";
@@ -20,19 +20,19 @@ export default function NewMember() {
 
   const provider = useProvider();
   const { data: signer } = useSigner();
-  const { address, isConnected } = useAccount();
+  // const { address, isConnected } = useAccount();
 
   const Member_contract = useContract({
-    addressOrName: DAOMember_Contract_address,
+    addressOrName: DAOMember_Contract_Address,
     contractInterface: DAOMember_ABI,
     signerOrProvider: signer || provider,
   });
 
-  const MemberNFT_contract = useContract({
-    addressOrName: MemberNFT_Contract_Address,
-    contractInterface: MemberNFT_ABI,
-    signerOrProvider: signer || provider,
-  });
+  // const MemberNFT_contract = useContract({
+  //   addressOrName: MemberNFT_Contract_Address,
+  //   contractInterface: MemberNFT_ABI,
+  //   signerOrProvider: signer || provider,
+  // });
 
   // 1st pfp will be storded
   const StorePfp = async () => {
@@ -51,6 +51,7 @@ export default function NewMember() {
   /// 2 . then store research files
   const StoreResearch = async (_pfpuri) => {
     try {
+      console.log("Storing the files ");
       const cid = await StoreContent(research);
       const URL = `https://ipfs.io/ipfs/${cid}`;
       console.log(URL);
@@ -66,13 +67,7 @@ export default function NewMember() {
   const request = async (_pfpuri, _researchuri) => {
     try {
       console.log("Creating the request...");
-      const tx = await Member_contract.addRequest(
-        name,
-        bio,
-        _pfpuri,
-        foR,
-        _researchuri
-      );
+      const tx = await Member_contract.addRequest(name, bio, "", foR, []);
       await tx.wait();
       console.log("Request added");
     } catch (error) {}
@@ -139,7 +134,7 @@ export default function NewMember() {
         <input
           className={styles.member_name}
           type="file"
-          onChange={(e) => setResearch(e.target.files[0])}
+          onChange={(e) => setResearch(e.target.files)}
           multiple
         />
         <div className={styles.center}>

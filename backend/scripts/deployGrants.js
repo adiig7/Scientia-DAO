@@ -1,8 +1,8 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-  const nft = "0x5bbE072fAeE291af2E4D611B24F4B20B74f62A0f";
-  const funds = "0xfcE1392cE135869a6c904e1Ca7C15c427D8aEA2E";
+  const nft = "0x2669e2b28FDf9002F691bB30C637b66290DEF5e0";
+  const funds = "0x52E1f8418679423D5E30E5D2cDe15c720BB243Ca";
   const GrantsContract = await ethers.getContractFactory("Grants");
 
   // deploy the contract
