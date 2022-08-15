@@ -2,10 +2,12 @@ const { ethers } = require("hardhat");
 
 async function main() {
   const NFTContract = await ethers.getContractFactory("ContributorNFT");
+  const DAO_Funds = "0x52E1f8418679423D5E30E5D2cDe15c720BB243Ca";
   const metadata =
     "ipfs://bafkreibbiafnz7x2tcgoa2uoj5weaxbvrreryems6ws2lfsfsnffrfeatu";
+
   // deploy the contract
-  const nftContract = await NFTContract.deploy(metadata);
+  const nftContract = await NFTContract.deploy(metadata, DAO_Funds);
 
   // wait for it to finish deploying
   await nftContract.deployed();

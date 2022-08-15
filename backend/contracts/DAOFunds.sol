@@ -4,8 +4,8 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract DAOFunds is Ownable {
     /// @dev events to keep track of ether receive and Withdrawl
-    event received(address user, string amount);
-    event withdrawal(address user, string amount);
+    event received(address user, uint256 amount);
+    event withdrawal(address user, uint256 amount);
 
     mapping(address => bool) contributors;
 

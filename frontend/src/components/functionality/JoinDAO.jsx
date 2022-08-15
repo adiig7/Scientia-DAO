@@ -12,6 +12,7 @@ import {
 } from "../../../constants/constants";
 import { StoreResearch } from "./StoreResearch";
 import { StoreContent } from "./StoreContent";
+import { _toEscapedUtf8String } from "ethers/lib/utils";
 
 /// we will use this component directly to add a new user
 export const JoinDAO = async () => {
@@ -40,7 +41,7 @@ export const JoinDAO = async () => {
     signerOrProvider: signer || provider,
   });
 
-  // 1st pfp will be storded
+  // 1st pfp will be stored
   const StorePfp = async () => {
     try {
       const cid = await StoreContent(pfp);
@@ -48,7 +49,7 @@ export const JoinDAO = async () => {
       console.log(URL);
       console.log("Pfp uploaded to IPFS");
       setPfpURI(URL);
-      await StoreResearch();
+      await StoreResearch(URL);
     } catch (err) {
       console.log(err);
     }
