@@ -43,6 +43,8 @@ We met up via various online meeting tools to discuss, collaborate and even lear
 
 In order for someone to join the DAO, he/she has to click the "Join DAO"-Button on our homepage. A register form will appear where you can paste your name, bio, field of research and maybe even previous researches. After pasting your information, hit the "Submit Proposal"-button to start the joining-proposal.
 
+The first 50 people can join the DAO directly after paying the inital deposit of 0.05 Ether. After the 50 first members, members can only join after being voted by te other DAO members into the DAO.
+
 ---
 
 ---
