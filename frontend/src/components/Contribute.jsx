@@ -59,7 +59,9 @@ export default function Contribute() {
       // });
       // /// sendTransaction is called whenever we want to create the transaction
       // const { data, sendTransaction } = useSendTransaction(config);
-      await sendTransaction();
+      const tx = await sendTransaction();
+      await tx.wait();
+      check();
       console.log("Transaction Completed");
       console.log("Thank you for your contribution");
     } catch (error) {
@@ -85,6 +87,10 @@ export default function Contribute() {
       console.log(error);
     }
   };
+
+  // useEffect(() => {
+  //   check();
+  // }, []);
 
   const check = async () => {
     try {
