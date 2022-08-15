@@ -5,6 +5,7 @@ import { useAccount, useContract, useProvider, useSigner } from "wagmi";
 import { Grants_ABI, Grants_Contract_Address } from "../../constants/constants";
 import { StoreContent } from "./functionality/StoreContent";
 import { StoreResearch } from "./functionality/StoreResearch";
+import ApproveGrant from "./ApproveGrant";
 
 export default function GrantsProposal() {
   const [amount, setAmount] = useState("");
@@ -72,39 +73,76 @@ export default function GrantsProposal() {
   };
 
   return (
-    <main className={styles.main}>
-      <div className={styles.idea}>
-        Enter Research Idea
-        <input
-          className={styles.research_title}
-          type="text"
-          placeholder="Research Idea Here"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <label htmlFor="">Describe your Idea</label>
-        <small className={styles.small}> &#40; minimum 200 words &#41;</small>
-        <textarea
-          className={styles.research_desc}
-          name=""
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          id=""
-          placeholder="Describe the research idea "
-        ></textarea>
-        Upload any media files
-        <input
-          className={styles.research_docs}
-          type="file"
-          multiple
-          onChange={(e) => setFiles(e.target.files)}
-        />
-        <div className={styles.center}>
-          <button className={styles.button} onClick={handleSubmit}>
-            Submit Proposal{" "}
-          </button>
+    <>
+      <main className={styles.main}>
+        <div className={styles.title}>
+          <span className={`${styles.titleWord} ${styles.word1}`}>Create </span>
+          <span className={`${styles.titleWord} ${styles.word2}`}>
+            Grant
+          </span>
+          <span className={`${styles.titleWord} ${styles.word1}`}> Proposal</span>
+        </div>
+        <div className={styles.idea}>
+          Enter Research Idea
+          <input
+            className={styles.research_title}
+            type="text"
+            placeholder="Research Idea Here"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <label htmlFor="">Describe your Idea</label>
+          <small className={styles.small}> &#40; minimum 200 words &#41;</small>
+          <textarea
+            className={styles.research_desc}
+            name=""
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            id=""
+            placeholder="Describe the research idea "
+          ></textarea>
+          Upload any media files
+          <input
+            className={styles.research_docs}
+            type="file"
+            multiple
+            onChange={(e) => setFiles(e.target.files)}
+          />
+          <div className={styles.center}>
+            <button className={styles.button} onClick={handleSubmit}>
+              Submit Proposal{" "}
+            </button>
+          </div>
+        </div>
+      </main>
+      
+
+      <div className={styles.flex}>
+
+
+      <div className={styles.title}>
+        <span className={`${styles.titleWord} ${styles.word2}`}>Open </span>
+        <span className={`${styles.titleWord} ${styles.word1}`}>Grant </span>
+        <span className={`${styles.titleWord} ${styles.word2}`}>Proposals</span>
+      </div>
+      <div className={styles.grant_proposal}>
+        <div className={styles.grant_card}>
+          <ApproveGrant
+            idea_title={`Research On Resuable Automobile Parts`}
+            idea_desc={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis eum ipsam, adipisci, officiis ut corrupti laborum dignissimos omnis at quae natus veritatis excepturi aliquam voluptatum nostrum exercitationem et debitis. Illo?`}
+            idea_field={`Automobile`}
+          />
+        </div>
+        <div className={styles.grant_card}>
+          <ApproveGrant
+            idea_title={`Research On Resuable Automobile Parts`}
+            idea_desc={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis eum ipsam, adipisci, officiis ut corrupti laborum dignissimos omnis at quae natus veritatis excepturi aliquam voluptatum nostrum exercitationem et debitis. Illo?`}
+            idea_field={`Automobile`}
+          />
         </div>
       </div>
-    </main>
+      </div>
+
+    </>
   );
 }

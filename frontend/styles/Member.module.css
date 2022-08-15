@@ -174,11 +174,26 @@
   flex-wrap: wrap;
   justify-content: center;
   align-content: flex-start;
-  margin: 0 a;
+  margin: 0 auto;
+}
+
+.grant_proposal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  margin: 0 auto;
 }
 
 .card {
   max-width: 500px;
+  transition: ease-in-out 0.3s;
+
+  /* margin: 1px ; */
+}
+
+.grant_card {
+  max-width: 600px;
   transition: ease-in-out 0.3s;
 
   /* margin: 1px ; */
@@ -211,6 +226,26 @@ overflow: auto;
 /* scroll-behavior: auto; */
 }
 
+.grant_proposalCard {
+margin: 12px 20px;
+/* max-width: 30%; */
+border: 1px solid rgb(110, 99, 160);
+padding: 1.5rem 3rem;
+margin-top: 20px;
+margin-bottom: 40px;
+border-radius: 10px;
+backdrop-filter: blur(14px);
+background-color: rgba(94, 80, 109, 0.18);
+transition: ease-in-out 0.3s;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: flex-start;
+max-height: 600px;
+overflow: auto;
+/* scroll-behavior: auto; */
+}
+
 /* grants section */
 
 .main {
@@ -223,6 +258,14 @@ overflow: auto;
   flex-direction: column;
 }
 
+.title {
+  font-size: 22px;
+  text-align: center;
+}
+
+.align {
+  margin: 0 auto;
+}
 
 .idea {
   /* width: 100%; */
@@ -300,6 +343,12 @@ overflow: auto;
   font-size: 16px;
 }
 
+.flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 
 @media screen and (max-width: 768px) {
