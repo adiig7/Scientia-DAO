@@ -35,7 +35,7 @@ export default function DashboardTabs() {
         >
           Approve Entry
         </div>
-        
+
         <div
           className={
             toggleState === 3
@@ -47,7 +47,6 @@ export default function DashboardTabs() {
           Apply for Grants
         </div>
       </div>
-
 
       <main className={styles.main}>
         <div className={styles.content}>

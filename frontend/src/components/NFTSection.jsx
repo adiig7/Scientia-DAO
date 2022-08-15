@@ -18,10 +18,10 @@ export default function NFTSection() {
         
         <div className={styles.nfts}>
           <div className={styles.nft}>
-            <Image className={styles.nft} src={nft1} />
+            <Image className={styles.nft_} src={nft1} />
           </div>
           <div className={styles.nft}>
-            <Image className={styles.nft} src={nft2} />
+            <Image className={styles.nft_} src={nft2} />
           </div>
         </div>
     </div>

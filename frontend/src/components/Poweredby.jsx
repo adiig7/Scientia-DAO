@@ -12,8 +12,8 @@ export default function Poweredby() {
     <>
     <div className={styles.poweredby}>
         <div className={styles.title}>
-          <span className={`${styles.titleWord} ${styles.word1}`}>Powered </span>
-          <span className={`${styles.titleWord} ${styles.word2}`}>By</span>
+          <span className={`${styles.titleWord} ${styles.word2}`}>Powered </span>
+          <span className={`${styles.titleWord} ${styles.word1}`}>By</span>
         </div>
         <div className={styles.sponsor_images}>
           <div className={styles.sponsor}>

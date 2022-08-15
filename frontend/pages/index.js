@@ -7,6 +7,8 @@ import FeaturesSection from "../src/components/FeaturesSection";
 import WhatMore from "../src/components/WhatMore";
 import Link from "next/link";
 import Poweredby from "../src/components/Poweredby";
+import NFTSection from "../src/components/NFTSection";
+import Contribute from "../src/components/Contribute";
 // import scientist from "../assets/scientist.png";
 // import image8 from "../assets/8_bg.png";
 // import grants from "../assets/grants.png";
@@ -47,9 +49,9 @@ export default function Home() {
             </span>
           </div>
           {/* <Link href={"#join"}> */}
-            <button className={styles.button} role="button">
-              Explore
-            </button>
+          <button className={styles.button} role="button">
+            Explore
+          </button>
           {/* </Link> */}
         </div>
 
@@ -72,7 +74,31 @@ export default function Home() {
       <div className={styles.section}>
         <WhatMore />
       </div>
-      
+
+      {/* nft showcase */}
+      <div className={styles.section}>
+        <NFTSection />
+      </div>
+
+      {/* contribute section */}
+      <div className={styles.section}>
+        <div className={styles.center}>
+          <div className={styles.title}>
+            <span className={`${styles.titleWord} ${styles.word1}`}>
+              Support{" "}
+            </span>
+            <span className={`${styles.titleWord} ${styles.word2}`}>DAO </span>
+            <span className={`${styles.titleWord} ${styles.word1}`}>For</span>
+            <span className={`${styles.titleWord} ${styles.word2}`}>
+              {" "}
+              Social
+            </span>
+            <span className={`${styles.titleWord} ${styles.word1}`}> Good</span>
+          </div>
+          <Contribute />
+        </div>
+      </div>
+
       {/* powered by */}
       <div className={styles.section}>
         <Poweredby />

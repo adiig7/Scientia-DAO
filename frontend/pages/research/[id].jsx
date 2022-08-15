@@ -2,6 +2,8 @@ import React from "react";
 import styles from "../../styles/Research.module.css";
 import Head from "next/head";
 import Image from "next/image";
+import Contribute from "../../src/components/Contribute";
+// import { Contribute } from "../index";
 
 export default function () {
   let url =
@@ -100,7 +102,7 @@ export default function () {
               />
             </div>
           </div>
-          <button className={styles.button}>Apply for Grants</button>
+          <Contribute />
         </div>
       </main>
     </>

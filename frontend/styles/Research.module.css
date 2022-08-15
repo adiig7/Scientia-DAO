@@ -5,8 +5,9 @@
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  flex-direction: column;
+  /* flex-direction: column; */
   min-height: 92vh;
+  /* max-width: 1200px; */
 }
 
 .main h2 {
@@ -121,6 +122,33 @@
   transform: translateY(2px);
 }
 
+.contribute{
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid rgb(170, 210, 255);
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  flex-wrap: wrap;
+  width: 50%;
+  /* max-width: 500px; */
+}
+
+.contribute h2 {
+  text-align: center;
+}
+
+.amount {
+  padding: 8px 12px;
+  font-size: 16px;
+  color: #232536;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 60%;
+  background-color: whitesmoke;
+}
+
 @media screen and (max-width: 768px) {
   .button {
     font-size: 14px;
@@ -140,5 +168,9 @@
   .main h2 {
     font-size: 18px;
     margin: 0 15px;
+  }
+
+  .contribute {
+    width: 100%;
   }
 }

@@ -9,6 +9,11 @@
   min-height: 92vh;
 }
 
+/* 
+.main * {
+  border: 1px solid red;
+} */
+
 .title {
   /* font-family: "Montserrat", sans-serif; */
   font-weight: 800;

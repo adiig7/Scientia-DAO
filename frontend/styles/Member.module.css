@@ -223,6 +223,7 @@ overflow: auto;
   flex-direction: column;
 }
 
+
 .idea {
   /* width: 100%; */
   /* min-width: 80%; */
@@ -236,9 +237,26 @@ overflow: auto;
   transition: ease-in-out 0.3s;
   display: flex;
   flex-direction: column;
+  display: block;
+
+  /* position: fixed;
+  top: 250px;
+  right: 50px; */
+
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
+  width: inherit;
+
+  margin-left: auto;
+  font-size: 16px;
+  max-width: 1200px;
+  /* width: 1200px; */
+  /* max-width: 80%; */
+  /* max-width: calc(50% - 20px); */
+
+  /* width: 1200px;
+  max-width: 100%; */
 }
 
 .idea:hover {
@@ -253,18 +271,18 @@ overflow: auto;
   margin: 20px auto;
   background: rgb(239, 224, 253);
   color: black;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .research_desc {
   width: 100%;
-  min-height: 250px;
+  min-height: 150px;
   padding: 1rem;
   margin: 20px auto;
   background: rgb(239, 224, 253);
   color: black;
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 16px;
   scroll-behavior: auto;
   resize: vertical;
   scroll-behavior: auto;
@@ -332,7 +350,10 @@ overflow: auto;
   .idea {
     font-size: 14px;
     padding: 1rem;
-    margin: 15px 25px;
+    margin: 15px auto;
+    /* width: 80%; */
+    width: 80%;
+
   }
 
   .research_desc, .research_title {
