@@ -155,8 +155,8 @@ contract newDAOMember is Ownable {
 
     /// just a mock function for the chainlink keepers to be able to close the open requestss
     function _perform() public {
-        for (id = 0; id <= counterRequestList; id++) {
-            Member storage member = requestList[_id];
+        for (uint256 id = 0; id <= counterRequestList; id++) {
+            Member storage member = requestList[id];
             require(
                 block.timestamp > member.votingStartTime + votingDuration,
                 "Voting hasn't ended yet for this member!"

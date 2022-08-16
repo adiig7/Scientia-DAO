@@ -12,7 +12,7 @@ function MakeStorageClient() {
 }
 
 // stores the details of the members with the file name , memebr.json on the ipfs from the customized data propvided
-export const StoreMembers = async (name, bio, foR) => {
+export const StoreMember = async (name, bio, foR) => {
   const obj = { Name: name, Bio: bio, FoR: foR };
   const blob = new Blob([JSON.stringify(obj)], { type: "application/json" });
   const files = [new File([blob], "member.json")];

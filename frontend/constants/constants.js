@@ -14,7 +14,7 @@ export const ContributorNFT_Contract_Address =
 export const DAOFunds_Contract_Address =
   "0x52E1f8418679423D5E30E5D2cDe15c720BB243Ca";
 export const DAOMember_Contract_Address =
-  "0x6058CB9fD0fD5ADCEe4D954F17721B8AB95CBf56";
+  "0x28FCCb7D287C4C92e49C3163B6898d20766aDefF";
 export const Grants_Contract_Address =
   "0xF05D2EFA3CA1bA110A49AF1A4ED21045E4fDB03a";
 
@@ -1390,6 +1390,13 @@ export const DAOMember_ABI = [
     type: "function",
   },
   {
+    inputs: [],
+    name: "_perform",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
     inputs: [
       {
         internalType: "uint256",
@@ -1406,22 +1413,7 @@ export const DAOMember_ABI = [
     inputs: [
       {
         internalType: "string",
-        name: "_name",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_bio",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_pfpURI",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "_foR",
+        name: "ipfsURI",
         type: "string",
       },
       {
@@ -1524,16 +1516,6 @@ export const DAOMember_ABI = [
             type: "address",
           },
           {
-            internalType: "string",
-            name: "name",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "bio",
-            type: "string",
-          },
-          {
             internalType: "uint256",
             name: "yayVotes",
             type: "uint256",
@@ -1555,12 +1537,7 @@ export const DAOMember_ABI = [
           },
           {
             internalType: "string",
-            name: "pfpURI",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "foR",
+            name: "ipfsURI",
             type: "string",
           },
           {
@@ -1569,7 +1546,7 @@ export const DAOMember_ABI = [
             type: "string[]",
           },
         ],
-        internalType: "struct DAOMember.Member",
+        internalType: "struct newDAOMember.Member",
         name: "",
         type: "tuple",
       },
@@ -1614,16 +1591,6 @@ export const DAOMember_ABI = [
             type: "address",
           },
           {
-            internalType: "string",
-            name: "name",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "bio",
-            type: "string",
-          },
-          {
             internalType: "uint256",
             name: "yayVotes",
             type: "uint256",
@@ -1645,12 +1612,7 @@ export const DAOMember_ABI = [
           },
           {
             internalType: "string",
-            name: "pfpURI",
-            type: "string",
-          },
-          {
-            internalType: "string",
-            name: "foR",
+            name: "ipfsURI",
             type: "string",
           },
           {
@@ -1659,7 +1621,7 @@ export const DAOMember_ABI = [
             type: "string[]",
           },
         ],
-        internalType: "struct DAOMember.Member",
+        internalType: "struct newDAOMember.Member",
         name: "",
         type: "tuple",
       },
@@ -1695,7 +1657,7 @@ export const DAOMember_ABI = [
             type: "string",
           },
         ],
-        internalType: "struct DAOMember.ResearchPaper",
+        internalType: "struct newDAOMember.ResearchPaper",
         name: "",
         type: "tuple",
       },
@@ -1719,16 +1681,6 @@ export const DAOMember_ABI = [
         type: "address",
       },
       {
-        internalType: "string",
-        name: "name",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "bio",
-        type: "string",
-      },
-      {
         internalType: "uint256",
         name: "yayVotes",
         type: "uint256",
@@ -1750,12 +1702,7 @@ export const DAOMember_ABI = [
       },
       {
         internalType: "string",
-        name: "pfpURI",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "foR",
+        name: "ipfsURI",
         type: "string",
       },
     ],
@@ -1827,16 +1774,6 @@ export const DAOMember_ABI = [
         type: "address",
       },
       {
-        internalType: "string",
-        name: "name",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "bio",
-        type: "string",
-      },
-      {
         internalType: "uint256",
         name: "yayVotes",
         type: "uint256",
@@ -1858,12 +1795,7 @@ export const DAOMember_ABI = [
       },
       {
         internalType: "string",
-        name: "pfpURI",
-        type: "string",
-      },
-      {
-        internalType: "string",
-        name: "foR",
+        name: "ipfsURI",
         type: "string",
       },
     ],
@@ -1915,7 +1847,7 @@ export const DAOMember_ABI = [
   {
     inputs: [
       {
-        internalType: "enum DAOMember.Vote",
+        internalType: "enum newDAOMember.Vote",
         name: "_vote",
         type: "uint8",
       },
@@ -1928,6 +1860,30 @@ export const DAOMember_ABI = [
     name: "vote",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "voters",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {

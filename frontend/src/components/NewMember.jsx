@@ -8,7 +8,7 @@ import {
   MemberNFT_Contract_Address,
 } from "../../constants/constants";
 import { StoreContent } from "./functionality/StoreContent";
-
+import { StoreMember } from "./functionality/StoreMembers";
 export default function NewMember() {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
@@ -48,27 +48,56 @@ export default function NewMember() {
   //   }
   // };
 
-  /// 2 . then store research files
-  const StoreResearch = async (_pfpuri) => {
+  ///setting the profile of the the user
+  const storeMember = async () => {
     try {
+      /// show storing Member details to IPFS notification
       console.log("Storing the files ");
+      /// Start loading
+      const cid = await StoreMember(name, bio, foR);
+      const URL = `https://ipfs.io/ipfs/${cid}`;
+      console.log(URL);
+      /// end loading and show the URL to the user to browse
+      console.log("Member details uploaded to IPFS");
+      setPfpURI(URL);
+      if (research == 0) {
+        await request(cid, "");
+      } else {
+        await StoreResearch(cid);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  /// 2 . then store research files
+  const StoreResearch = async (_pfpCID) => {
+    try {
+      /// show storing research to IPFS notification
+      console.log("Storing the files ");
+      /// startLoading
       const cid = await StoreContent(research);
       const URL = `https://ipfs.io/ipfs/${cid}`;
       console.log(URL);
       console.log("Research uploaded to IPFS");
+      /// end loading and show the URL to the user
       setResearchURI(URL);
-      request(_pfpuri, URL);
+      /// calling request with the users detail CID and the CID of the research
+      request(_pfpCID, cid);
     } catch (err) {
       console.log(err);
     }
   };
 
   /// 3.  then add these record to the contract
-  const request = async (_pfpuri, _researchuri) => {
+  const request = async (_pfpCID, _researchCID) => {
     try {
+      /// show creating tx request notification
       console.log("Creating the request...");
-      const tx = await Member_contract.addRequest(name, bio, "", foR, []);
+      const tx = await Member_contract.addRequest(_pfpCID, [_researchCID]);
+      // start Loading
       await tx.wait();
+      // end loading
       console.log("Request added");
     } catch (error) {}
   };
@@ -95,11 +124,12 @@ export default function NewMember() {
 
   const handleSubmit = async () => {
     try {
-      if (!research == 0) {
-        await StoreResearch("");
-      } else {
-        await request("", "");
-      }
+      // if (!research == 0) {
+      //   await StoreResearch("");
+      // } else {
+      //   await request("", "");
+      // }
+      await storeMember();
     } catch (error) {
       console.log(error);
     }
