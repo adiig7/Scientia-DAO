@@ -34,15 +34,17 @@ contract Grants is Ownable {
         bool open;
     }
 
-    uint256 _GrantsRequests = 0;
-    uint256 _GrantsApproved = 0;
-    uint256 _collaborations = 0;
+    uint256 public _GrantsRequests = 0;
+    uint256 public _GrantsApproved = 0;
+    uint256 public _collaborations = 0;
 
-    uint256 TotalAmountPaid = 0;
-    uint256 votingDuration = 7 days;
+    uint256 public TotalAmountPaid = 0;
+    uint256 public votingDuration = 7 days;
 
-    mapping(uint256 => Request) GrantsRequests;
-    mapping(uint256 => Request) GrantsApproved;
+    mapping(uint256 => Request) public GrantsRequests;
+    mapping(uint256 => Request) public GrantsApproved;
+
+    mapping(uint256 => mapping(address => bool)) public voters;
 
     mapping(uint256 => Collabration) collabrations;
 
@@ -96,23 +98,38 @@ contract Grants is Ownable {
             block.timestamp < _request.VotingStartTime + votingDuration,
             "Voting has already ended"
         );
+        require(voters[_id][msg.sender] == false, "You have already voted");
         if (_vote == Vote.Yes) {
             _request.yayVotes += 1;
         } else {
             _request.nayVotes += 1;
         }
+        voters[_id][msg.sender] == true;
     }
 
-    function endRequest(uint256 _id) public onlyOwner {
+    function endRequest(uint256 _id) public onlyDAOMember {
         Request storage _request = GrantsRequests[_id];
         require(
             block.timestamp > _request.VotingStartTime + votingDuration,
             "Voting has not yet ended"
         );
         if (_request.yayVotes > _request.nayVotes) {
+            _request.approved = true;
             GrantsApproved[_GrantsApproved] = _request;
         } else {
             emit GrantRejected(_request.creator, _id);
+        }
+    }
+
+    /// just a mock function for the chainlink keepers to be able to close the open requestss
+    function _perform() public {
+        for (uint256 id = 0; id <= _GrantsRequests; id++) {
+            Request storage _request = GrantsRequests[id];
+            require(
+                block.timestamp > _request.VotingStartTime + votingDuration,
+                "Voting hasn't ended yet for this member!"
+            );
+            endRequest(id);
         }
     }
 
@@ -165,5 +182,14 @@ contract Grants is Ownable {
         returns (Collabration memory)
     {
         return collabrations[_id];
+    }
+
+    ///returns the status of a voter whether they have voted or not
+    function getVoterStatus(address _user, uint256 _id)
+        public
+        view
+        returns (bool)
+    {
+        return voters[_id][_user];
     }
 }
