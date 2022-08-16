@@ -121,11 +121,7 @@ export default function GrantsProposal() {
       console.log(total);
       for (let id = 0; id < total; id++) {
         const requestsPromise = fetchRequests(id);
-        if (requestsPromise == undefined) {
-          continue;
-        } else {
-          promises.push(requestsPromise);
-        }
+        promises.push(requestsPromise);
       }
       const _Grantrequests = await Promise.all(promises);
       console.log(_Grantrequests);

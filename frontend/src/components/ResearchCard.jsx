@@ -1,12 +1,14 @@
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../../styles/ResearchCard.module.css";
 
-export default function ResearchCard() {
+export default function ResearchCard(props) {
+  // it will display the shortend research description and all other logic on research page
+
   return (
     <div className={styles.main}>
       <div className={styles.researches}>
-        <h3>Research Title Here</h3>
+        <h3>{props.title}</h3>
         {/* <div className={styles.wrap}>
           <div>
             <h3>Research Title Here</h3>
@@ -15,15 +17,9 @@ export default function ResearchCard() {
             <button className={styles.arrow}></button>
           </div>
         </div> */}
-
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil itaque
-          repudiandae dolorum esse unde? Beatae sit cupiditate eveniet Lorem
-          ipsum dolor sit amet consectetur adipisicing elit. Nihil itaque
-          repudiandae dolorum esse unde? Beatae sit cupiditate eveniet{" "}
-        </p>
-        <Link href={'/research/1'}>
-            <button className={styles.button}>Read Research</button>
+        <p>{props.description}</p>
+        <Link href={`/research/${props.id}`}>
+          <button className={styles.button}>Read Research</button>
         </Link>
       </div>
     </div>
