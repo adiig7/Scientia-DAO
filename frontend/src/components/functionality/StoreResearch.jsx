@@ -11,8 +11,8 @@ function MakeStorageClient() {
   return new Web3Storage({ token: getAccessToken() });
 }
 
-export const StoreResearch = async (title, description, contentURI) => {
-  const obj = { Name: title, Description: description, Content: contentURI };
+export const StoreResearch = async (title, description, contentURL) => {
+  const obj = { Name: title, Description: description, Content: contentURL };
   const blob = new Blob([JSON.stringify(obj)], { type: "application/json" });
   const files = [new File([blob], "research.json")];
   console.log("Uploading data to IPFS with web3.storage....");
