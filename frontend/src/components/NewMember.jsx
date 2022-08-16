@@ -18,6 +18,8 @@ export default function NewMember() {
   const [pfpURI, setPfpURI] = useState("");
   const [researchURI, setResearchURI] = useState([]);
 
+  const [eligibleToMint, setEligibleToMint] = useState(false);
+
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address, isConnected } = useAccount();
@@ -104,11 +106,7 @@ export default function NewMember() {
 
   const Mint = async () => {
     try {
-      console.log("Checking Elgibility");
-      const check = await Member_contract.getApproval(address);
-      const data = await MemberNFT_contract.balanceOf(address);
-      ////data will return a value , that returns and check if the user is not the owner of any NFT earlier
-      if (check && data == 0) {
+      if (eligibleToMint) {
         console.log("Minting the NFT");
         const tx = await MemberNFT_contract.safeMint(address);
         await tx.wait();
@@ -120,6 +118,17 @@ export default function NewMember() {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const check = async () => {
+    console.log("Checking Elgibility");
+    const check = await Member_contract.getApproval(address);
+    const data = await MemberNFT_contract.balanceOf(address);
+    const value = parseInt(data.value._hex);
+    if (check && value == 0) {
+      setEligibleToMint(true);
+    }
+    ////data will return a value , that returns and check if the user is not the owner of any NFT earlier
   };
 
   const handleSubmit = async () => {
@@ -191,9 +200,13 @@ export default function NewMember() {
           <button className={styles.button} onClick={handleSubmit}>
             Submit Proposal
           </button>
-          <button className={styles.button} onClick={Mint}>
-            Mint NFT
-          </button>
+          {eligibleToMint ? (
+            <button className={styles.button} onClick={Mint}>
+              Mint NFT
+            </button>
+          ) : (
+            <a>Not yet Approved</a>
+          )}
         </div>
       </div>
     </>
