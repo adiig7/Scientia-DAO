@@ -30,10 +30,6 @@ const VoteEntry = async () => {
       console.log(error);
     }
   };
-
-  useEffect(() => {
-    get();
-  });
 };
 
 export default VoteEntry;

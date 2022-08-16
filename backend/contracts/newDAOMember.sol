@@ -198,4 +198,13 @@ contract newDAOMember is Ownable {
     function getApproval(address _address) public view returns (bool) {
         return Approved[_address];
     }
+
+    ///returns the status of a voter whether they have voted or not
+    function getVoterStatus(address _user, uint256 _id)
+        public
+        view
+        returns (bool)
+    {
+        return voters[_id][_user];
+    }
 }

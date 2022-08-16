@@ -6,6 +6,8 @@ async function main() {
   const metadata =
     "ipfs://bafkreibbiafnz7x2tcgoa2uoj5weaxbvrreryems6ws2lfsfsnffrfeatu";
 
+  const newMetadata =
+    "ipfs://bafybeibz4dfk6zxsorvq5xiul7ncwuytfewpjchmhr5kf3scimst7vaete";
   // deploy the contract
   const nftContract = await NFTContract.deploy(metadata, DAO_Funds);
 

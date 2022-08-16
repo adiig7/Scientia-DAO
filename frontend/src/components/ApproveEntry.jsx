@@ -9,6 +9,7 @@ import {
 
 export default function ApproveEntry() {
   const [requests, setRequests] = useState([]);
+
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address, isConnected } = useAccount();
@@ -19,27 +20,11 @@ export default function ApproveEntry() {
     signerOrProvider: signer || provider,
   });
 
-  const fetchRequests = async (_id) => {
-    try {
-      const request = await Member_contract.getRequest(_id);
-      const response = await fetchIPFS(request.ipfsURI);
-      const parsedRequest = {
-        Id: _id,
-        Name: response.Name,
-        Bio: response.Bio,
-        For: response.FoR,
-      };
-      return parsedRequest;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   // fetched the member.json
-  const fetchIPFS = async (metadataURl) => {
+  const fetchIPFS = async (metadataURI) => {
     try {
       console.log("Fetching from IPFS ...");
-      const URL = `${metadataURL}/member.json`;
+      const URL = `https://ipfs.io/ipfs/${metadataURI}/member.json`;
       const response = await fetch(URL);
       const data = await response.json();
       return data;
@@ -47,21 +32,44 @@ export default function ApproveEntry() {
       console.log(error);
     }
   };
+
+  // fetch the data from the contract and then fetched the same from IPFS
+  // returns an object that is then stored in the Array of request
+  const fetchRequests = async (_id) => {
+    try {
+      const request = await Member_contract.getRequest(_id);
+      console.log(request.ipfsURI);
+      const response = await fetchIPFS(request.ipfsURI);
+      const parsedRequest = {
+        Id: _id,
+        Name: response.Name,
+        Bio: response.Bio,
+        For: response.FoR,
+      };
+      console.log(parsedRequest);
+      return parsedRequest;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // fetches the no. of requests , then fetches the each request and store the result in the array of requests
   const get = async () => {
     try {
       console.log("starting ...");
       const TotalRequest = await Member_contract.counterRequestList();
       const total = parseInt(TotalRequest._hex);
       const promises = [];
-      // console.log(TotalRequest);
-      // console.log(total);
-      for (let id = 1; id <= total; id++) {
+      console.log(TotalRequest);
+      console.log(total);
+      for (let id = 0; id < total; id++) {
         const requestsPromise = fetchRequests(id);
         promises.push(requestsPromise);
       }
-      console.log("ending...");
       const _requests = await Promise.all(promises);
       console.log(_requests);
+      console.log("ending...");
+      /// set the array of the objects of the requests is stored and can be rendered then
       setRequests(_requests);
     } catch (error) {
       console.log(error);
@@ -70,22 +78,31 @@ export default function ApproveEntry() {
 
   useEffect(() => {
     get();
-  });
+  }, []);
 
   // pass the id to the member card , the id is the requestId for the member to add
   // Render the request Array and pass the details to this Member Card
   return (
     <>
       <div className={styles.entry_requests}>
+        {requests ? (
+          requests.map((request) => {
+            return (
+              <div className={styles.card}>
+                <MemberCard
+                  member_name={request.Name}
+                  member_bio={request.Bio}
+                  member_field={request.For}
+                  id={request.Id}
+                />
+              </div>
+            );
+          })
+        ) : (
+          <a>No new Requests</a>
+        )}
+
         {/* <div className={styles.card}>
-          <MemberCard
-            member_name={request.Name}
-            member_bio={request.Bio}
-            member_field={request.For}
-            id={request.Id}
-          />
-        </div> */}
-        <div className={styles.card}>
           <MemberCard
             member_name={"Aditya Gupta"}
             member_bio={
@@ -123,7 +140,7 @@ export default function ApproveEntry() {
             }
             member_field={"Frontend Development"}
           />
-        </div>
+        </div> */}
       </div>
     </>
   );
