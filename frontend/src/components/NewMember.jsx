@@ -20,7 +20,7 @@ export default function NewMember() {
 
   const provider = useProvider();
   const { data: signer } = useSigner();
-  // const { address, isConnected } = useAccount();
+  const { address, isConnected } = useAccount();
 
   const Member_contract = useContract({
     addressOrName: DAOMember_Contract_Address,
@@ -28,25 +28,25 @@ export default function NewMember() {
     signerOrProvider: signer || provider,
   });
 
-  // const MemberNFT_contract = useContract({
-  //   addressOrName: MemberNFT_Contract_Address,
-  //   contractInterface: MemberNFT_ABI,
-  //   signerOrProvider: signer || provider,
-  // });
+  const MemberNFT_contract = useContract({
+    addressOrName: MemberNFT_Contract_Address,
+    contractInterface: MemberNFT_ABI,
+    signerOrProvider: signer || provider,
+  });
 
-  // 1st pfp will be storded
-  const StorePfp = async () => {
-    try {
-      const cid = await StoreContent(pfp);
-      const URL = `https://ipfs.io/ipfs/${cid}`;
-      console.log(URL);
-      console.log("Pfp uploaded to IPFS");
-      setPfpURI(URL);
-      await StoreResearch(URL);
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  // // 1st pfp will be storded
+  // const StorePfp = async () => {
+  //   try {
+  //     const cid = await StoreContent(pfp);
+  //     const URL = `https://ipfs.io/ipfs/${cid}`;
+  //     console.log(URL);
+  //     console.log("Pfp uploaded to IPFS");
+  //     setPfpURI(URL);
+  //     await StoreResearch(URL);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   /// 2 . then store research files
   const StoreResearch = async (_pfpuri) => {
@@ -71,6 +71,26 @@ export default function NewMember() {
       await tx.wait();
       console.log("Request added");
     } catch (error) {}
+  };
+
+  const Mint = async () => {
+    try {
+      console.log("Checking Elgibility");
+      const check = await Member_contract.getApproval(address);
+      const data = await MemberNFT_contract.balanceOf(address);
+      ////data will return a value , that returns and check if the user is not the owner of any NFT earlier
+      if (check && data == 0) {
+        console.log("Minting the NFT");
+        const tx = await MemberNFT_contract.safeMint(address);
+        await tx.wait();
+        console.log("NFT minted , Congrats you are a DAO member");
+        console.log(tx);
+      } else {
+        console.log("Not eligible for NFT minting");
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleSubmit = async () => {
@@ -140,6 +160,9 @@ export default function NewMember() {
         <div className={styles.center}>
           <button className={styles.button} onClick={handleSubmit}>
             Submit Proposal
+          </button>
+          <button className={styles.button} onClick={Mint}>
+            Mint NFT
           </button>
         </div>
       </div>

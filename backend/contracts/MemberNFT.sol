@@ -19,6 +19,7 @@ contract MemberNFT is ERC721, ERC721Enumerable, Ownable {
     string baseURI;
 
     // Members _member;
+    mapping(address => bool) public approved;
 
     event Attest(address indexed to, uint256 indexed tokenId);
     event Revoke(address indexed to, uint256 indexed tokenId);

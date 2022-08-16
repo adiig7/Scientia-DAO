@@ -7,6 +7,7 @@ import {
   useSigner,
   useSendTransaction,
   usePrepareSendTransaction,
+  useWaitForTransaction,
 } from "wagmi";
 import {
   DAOFunds_ABI,
@@ -44,6 +45,10 @@ export default function Contribute() {
   });
 
   const { data, sendTransaction } = useSendTransaction(config);
+
+  const { isLoading, isSuccess } = useWaitForTransaction({
+    hash: data?.hash,
+  });
 
   const donate = async () => {
     try {
@@ -89,8 +94,8 @@ export default function Contribute() {
   };
 
   // useEffect(() => {
-  //   check();
-  // }, []);
+  //   check;
+  // }, [isSuccess]);
 
   const check = async () => {
     try {

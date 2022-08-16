@@ -92,7 +92,7 @@ export const JoinDAO = async () => {
       const check = await Member_contract.getApproval(address);
       if (check) {
         console.log("Minting the NFT");
-        const tx = await MemberNFT_contract.safeMint(address);
+        const tx = await MemberNFT_contr act.safeMint(address);
         await tx.wait();
         console.log("NFT minted , Congrats you are a DAO member");
         console.log(tx);

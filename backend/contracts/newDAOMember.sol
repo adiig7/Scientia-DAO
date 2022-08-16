@@ -12,7 +12,7 @@ interface NFT {
 /// mapping will overwrite the initial record for the particular address in the membersPaperList ,that way it will not return the whole collection
 /// return of the whole mapping
 
-contract DAOMember is Ownable {
+contract newDAOMember is Ownable {
     event ApprovalMemberRejected(address indexed rejectedAddress);
 
     struct ResearchPaper {
@@ -23,14 +23,11 @@ contract DAOMember is Ownable {
 
     struct Member {
         address memberAddress;
-        string name;
-        string bio;
         uint256 yayVotes;
         uint256 nayVotes;
         uint256 votingStartTime;
         bool approval;
-        string pfpURI; /// profile picture URI
-        string foR; /// field of research
+        string ipfsURI;
         string[] researchesURI; /// string array of ipfsURI
     }
 
@@ -51,6 +48,9 @@ contract DAOMember is Ownable {
     /// @dev record of all the members of the DAO for their details
     mapping(uint256 => Member) public membersList;
     mapping(address => bool) public Approved;
+
+    // to track the voting for the requests to disable multi voting
+    mapping(uint256 => mapping(address => bool)) public voters;
 
     /// @dev requests to add new member
     mapping(uint256 => Member) public requestList;
@@ -104,6 +104,7 @@ contract DAOMember is Ownable {
             membersList[counterMembers] = member;
             counterMembers += 1;
             Approved[member.memberAddress] = true;
+            nft.safeMint(member.memberAddress);
         } else {
             emit ApprovalMemberRejected(member.memberAddress);
         }
@@ -120,23 +121,16 @@ contract DAOMember is Ownable {
     //     );
     // }
 
-    function addRequest(
-        string memory _name,
-        string memory _bio,
-        string memory _pfpURI,
-        string memory _foR,
-        string[] memory researchesURI
-    ) public {
+    function addRequest(string memory ipfsURI, string[] memory researchesURI)
+        public
+    {
         requestList[counterRequestList] = Member(
             msg.sender,
-            _name,
-            _bio,
             0,
             0,
             block.timestamp,
             false,
-            _pfpURI,
-            _foR,
+            ipfsURI,
             researchesURI
         );
         counterRequestList += 1;
@@ -153,8 +147,22 @@ contract DAOMember is Ownable {
             member.votingStartTime + votingDuration < block.timestamp,
             "Voting has already ended"
         );
+        require(voters[_id][msg.sender] == false, "You have already voted");
         if (_vote == Vote.YES) member.yayVotes += 1;
         else member.nayVotes += 1;
+        voters[_id][msg.sender] == true;
+    }
+
+    /// just a mock function for the chainlink keepers to be able to close the open requestss
+    function _perform() public {
+        for (id = 0; id <= counterRequestList; id++) {
+            Member storage member = requestList[_id];
+            require(
+                block.timestamp > member.votingStartTime + votingDuration,
+                "Voting hasn't ended yet for this member!"
+            );
+            addMember(id);
+        }
     }
 
     /// @dev - To get a particular research

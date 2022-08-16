@@ -1,6 +1,7 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.10;
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@chainlink/contracts/src/v0.8/KeeperCompatible.sol";
 
 interface NFT {
     function balanceOf(address owner) external view virtual returns (uint256);
@@ -12,7 +13,11 @@ interface NFT {
 /// mapping will overwrite the initial record for the particular address in the membersPaperList ,that way it will not return the whole collection
 /// return of the whole mapping
 
-contract DAOMember is Ownable {
+contract newDAOMember2 is Ownable {
+    uint256 public counter;
+    uint256 public immutable interval = 86400;
+    uint256 public lastTimeStamp;
+
     event ApprovalMemberRejected(address indexed rejectedAddress);
 
     struct ResearchPaper {
@@ -23,14 +28,11 @@ contract DAOMember is Ownable {
 
     struct Member {
         address memberAddress;
-        string name;
-        string bio;
         uint256 yayVotes;
         uint256 nayVotes;
         uint256 votingStartTime;
         bool approval;
-        string pfpURI; /// profile picture URI
-        string foR; /// field of research
+        string ipfsURI;
         string[] researchesURI; /// string array of ipfsURI
     }
 
@@ -52,6 +54,9 @@ contract DAOMember is Ownable {
     mapping(uint256 => Member) public membersList;
     mapping(address => bool) public Approved;
 
+    // to track the voting for the requests to disable multi voting
+    mapping(uint256 => mapping(address => bool)) public voters;
+
     /// @dev requests to add new member
     mapping(uint256 => Member) public requestList;
 
@@ -61,8 +66,11 @@ contract DAOMember is Ownable {
     /// @dev mapping from researchNo -->researchPaper
     mapping(uint256 => ResearchPaper) public researchesPublishedList;
 
-    constructor(address _NFT) {
+    constructor(address _NFT, uint256 updateInterval) {
         nft = NFT(_NFT);
+        interval = updateInterval;
+        lastTimeStamp = block.timestamp;
+        counter = 0;
     }
 
     /// @dev conditional functions
@@ -104,6 +112,7 @@ contract DAOMember is Ownable {
             membersList[counterMembers] = member;
             counterMembers += 1;
             Approved[member.memberAddress] = true;
+            nft.safeMint(member.memberAddress);
         } else {
             emit ApprovalMemberRejected(member.memberAddress);
         }
@@ -120,23 +129,16 @@ contract DAOMember is Ownable {
     //     );
     // }
 
-    function addRequest(
-        string memory _name,
-        string memory _bio,
-        string memory _pfpURI,
-        string memory _foR,
-        string[] memory researchesURI
-    ) public {
+    function addRequest(string memory ipfsURI, string[] memory researchesURI)
+        public
+    {
         requestList[counterRequestList] = Member(
             msg.sender,
-            _name,
-            _bio,
             0,
             0,
             block.timestamp,
             false,
-            _pfpURI,
-            _foR,
+            ipfsURI,
             researchesURI
         );
         counterRequestList += 1;
@@ -153,8 +155,54 @@ contract DAOMember is Ownable {
             member.votingStartTime + votingDuration < block.timestamp,
             "Voting has already ended"
         );
+        require(voters[_id][msg.sender] == false, "You have already voted");
         if (_vote == Vote.YES) member.yayVotes += 1;
         else member.nayVotes += 1;
+        voters[_id][msg.sender] == true;
+    }
+
+    function checkUpkeep(
+        bytes calldata /* checkData */
+    )
+        external
+        view
+        override
+        returns (
+            bool upkeepNeeded,
+            bytes memory /* performData */
+        )
+    {
+        upkeepNeeded = (block.timestamp - lastTimeStamp) > interval;
+        // We don't use the checkData in this example. The checkData is defined when the Upkeep was registered.
+    }
+
+    function _perform() public {
+        for (id = 0; id <= counterRequestList; id++) {
+            Member storage member = requestList[_id];
+            require(
+                block.timestamp > member.votingStartTime + votingDuration,
+                "Voting hasn't ended yet for this member!"
+            );
+            addMember(id);
+        }
+    }
+
+    function performUpkeep(
+        bytes calldata /* performData */
+    ) external override {
+        //We highly recommend revalidating the upkeep in the performUpkeep function
+        if ((block.timestamp - lastTimeStamp) > interval) {
+            lastTimeStamp = block.timestamp;
+            counter = counter + 1;
+            for (id = 0; id <= counterRequestList; id++) {
+                require(
+                    block.timestamp > member.votingStartTime + votingDuration,
+                    "Voting hasn't ended yet for this member!"
+                );
+                addMember(id);
+            }
+        }
+        // We don't use the performData in this example. The performData is generated by the Keeper's call to your checkUpkeep function
     }
 
     /// @dev - To get a particular research
