@@ -6,6 +6,7 @@ import {
   DAOMember_Contract_Address,
 } from "../../constants/constants";
 
+/// check Voting Remaining
 export default function MemberCard(props) {
   const [hasVoted, setHasVoted] = useState(false);
   const provider = useProvider();

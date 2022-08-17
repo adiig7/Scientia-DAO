@@ -4,7 +4,9 @@ import Image from "next/image";
 import { useAccount, useContract, useProvider, useSigner } from "wagmi";
 import { Grants_ABI, Grants_Contract_Address } from "../../constants/constants";
 
+// check voting remaining
 export default function ApproveGrant(props) {
+  const [hasVoted, setHasVoted] = useState(false);
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address, isConnected } = useAccount();
@@ -65,6 +67,24 @@ export default function ApproveGrant(props) {
               }
             />
           </div> */}
+          {/* {hasVoted ? (
+            <div className={styles.vote}>
+              <button
+                onClick={() => Vote("YES", props.id)}
+                className={`${styles.button} ${styles.width}`}
+              >
+                Approve
+              </button>
+              <button
+                onClick={() => Vote("NO", props.id)}
+                className={`${styles.button} ${styles.width}`}
+              >
+                Deny
+              </button>
+            </div>
+          ) : (
+            <a> Already voted</a>
+          )} */}
           <div className={styles.vote}>
             <button
               onClick={() => Vote("YES", props.id)}
