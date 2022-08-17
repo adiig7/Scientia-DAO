@@ -5,10 +5,12 @@ import { useAccount, useContract, useProvider, useSigner } from "wagmi";
 import {
   DAOMember_ABI,
   DAOMember_Contract_Address,
+  MemberNFT_ABI,
+  MemberNFT_Contract_Address,
 } from "../constants/constants";
 import { StoreContent } from "../src/components/functionality/StoreContent2";
 import { StoreResearch } from "../src/components/functionality/StoreResearch";
-import { TokenGating } from "../src/components/functionality/TokenGating";
+
 export default function () {
   const [isMember, setIsMember] = useState(false);
   const [title, setTitle] = useState("");
@@ -26,6 +28,33 @@ export default function () {
     contractInterface: DAOMember_ABI,
     signerOrProvider: signer || provider,
   });
+
+  const MemberNFT_contract = useContract({
+    addressOrName: MemberNFT_Contract_Address,
+    contractInterface: MemberNFT_ABI,
+    signerOrProvider: signer || provider,
+  });
+
+  const check = async () => {
+    try {
+      console.log("Checking Member status ");
+      const check = await MemberNFT_contract.balanceOf(address);
+      console.log(check);
+      const value = parseInt(check._hex);
+      console.log(value);
+      if (value > 0) {
+        setIsMember(true);
+        console.log("Congrats !! You are a DAO member, Enjoy ");
+      } else {
+        console.log(
+          "Oops ! You are not a DAO member , Join DAO to acces the website "
+        );
+        // Response.Redirect("url#JoinSection");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // 1.all the Media Research files are stored on IPFS
   const storefiles = async () => {
@@ -81,11 +110,61 @@ export default function () {
     }
   };
 
-  // useEffect(() => {
-  //   const check = TokenGating();
-  //   setIsMember(check);
-  // }, []);
+  // const RenderForm  = () => {
+  //   return(
+  //     {isMember ? (<main className={styles.main}>
+  //       <div className={styles.title}>
+  //         <span className={`${styles.titleWord} ${styles.word2}`}>
+  //           Publish{" "}
+  //         </span>
+  //         <span className={`${styles.titleWord} ${styles.word1}`}>
+  //           Research
+  //         </span>
+  //       </div>
 
+  //       <div className={styles.publish}>
+  //         Enter Research Title
+  //         <input
+  //           className={styles.research_title}
+  //           type="text"
+  //           placeholder="Research Title Here"
+  //           value={title}
+  //           onChange={(e) => setTitle(e.target.value)}
+  //         />
+  //         Enter Research Description{" "}
+  //         <small className={styles.small}> &#40; Minimum 500 words &#41;</small>
+  //         <textarea
+  //           className={styles.research_desc}
+  //           name=""
+  //           id=""
+  //           placeholder="Enter Research Details Here"
+  //           value={description}
+  //           onChange={(e) => setDescription(e.target.value)}
+  //         ></textarea>
+  //         Select Research Media Files
+  //         <input
+  //           className={styles.research_docs}
+  //           type="file"
+  //           multiple
+  //           onChange={(e) => setResearchFiles(e.target.files)}
+  //         />
+  //         <button className={styles.button} onClick={handleSubmit}>
+  //           {" "}
+  //           Upload Research to IPFS{" "}
+  //         </button>
+  //       </div>
+  //     </main> : }
+  //   )
+  // }
+
+  useEffect(() => {
+    if (isConnected) {
+      check();
+    } else {
+      ConnectButton();
+      window.alert("Connect your wallet first");
+    }
+  }, []);
   return (
     <>
       <Head>
@@ -98,46 +177,55 @@ export default function () {
       </Head>
 
       <main className={styles.main}>
-        <div className={styles.title}>
-          <span className={`${styles.titleWord} ${styles.word2}`}>
-            Publish{" "}
-          </span>
-          <span className={`${styles.titleWord} ${styles.word1}`}>
-            Research
-          </span>
-        </div>
+        {isMember ? (
+          <div>
+            <div className={styles.title}>
+              <span className={`${styles.titleWord} ${styles.word2}`}>
+                Publish{" "}
+              </span>
+              <span className={`${styles.titleWord} ${styles.word1}`}>
+                Research
+              </span>
+            </div>
 
-        <div className={styles.publish}>
-          Enter Research Title
-          <input
-            className={styles.research_title}
-            type="text"
-            placeholder="Research Title Here"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          Enter Research Description{" "}
-          <small className={styles.small}> &#40; Minimum 500 words &#41;</small>
-          <textarea
-            className={styles.research_desc}
-            name=""
-            id=""
-            placeholder="Enter Research Details Here"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          ></textarea>
-          Select Research Media Files
-          <input
-            className={styles.research_docs}
-            type="file"
-            multiple
-            onChange={(e) => setResearchFiles(e.target.files)}
-          />
-          <button className={styles.button} onClick={handleSubmit}>
-            {" "}
-            Upload Research to IPFS{" "}
-          </button>
-        </div>
+            <div className={styles.publish}>
+              Enter Research Title
+              <input
+                className={styles.research_title}
+                type="text"
+                placeholder="Research Title Here"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              Enter Research Description{" "}
+              <small className={styles.small}>
+                {" "}
+                &#40; Minimum 500 words &#41;
+              </small>
+              <textarea
+                className={styles.research_desc}
+                name=""
+                id=""
+                placeholder="Enter Research Details Here"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              ></textarea>
+              Select Research Media Files
+              <input
+                className={styles.research_docs}
+                type="file"
+                multiple
+                onChange={(e) => setResearchFiles(e.target.files)}
+              />
+              <button className={styles.button} onClick={handleSubmit}>
+                {" "}
+                Upload Research to IPFS{" "}
+              </button>
+            </div>
+          </div>
+        ) : (
+          <a>Not a DAO member , First regsiter for DAO </a>
+        )}
       </main>
     </>
   );
