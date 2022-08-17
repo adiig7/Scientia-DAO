@@ -48,11 +48,11 @@ export default function Home() {
               community for SCIENTISTS
             </span>
           </div>
-          {/* <Link href={"#join"}> */}
+          <Link href={"#join"}>
           <button className={styles.button} role="button">
             Explore
           </button>
-          {/* </Link> */}
+          </Link>
         </div>
 
         <div className={styles.hero}>
