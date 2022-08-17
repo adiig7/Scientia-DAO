@@ -122,7 +122,7 @@ export default function NewMember() {
   };
 
   const check = async () => {
-    console.log("Checking Elgibility");
+    console.log("Checking Eligibility");
     const check = await Member_contract.getApproval(address);
     const data = await MemberNFT_contract.balanceOf(address);
     const value = parseInt(data.value._hex);
