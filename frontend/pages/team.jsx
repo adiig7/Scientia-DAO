@@ -29,35 +29,51 @@ export default function team() {
 
             <div className={styles.upcoming}>
                 <h1>Nils Giebing</h1>
-                <Image src={nils_giebing} alt="Nils Giebing" />
+                <Image src={nils_giebing} alt="Nils Giebing" className="socials" />
                 <p><b>Backend Developer</b></p><br/>
                 <p>Loves to travel and contribute to communities.</p>
+                <a href="https://twitter.com/NilsGiebing" target="_blank" rel="noreferrer">
                 <Image src={twitter} alt="Twitter Logo" />
+                </a>
+                <a href="https://github.com/nilsgiebing" target="_blank" rel="noreferrer">
                 <Image src={github} alt="Github Logo" />
+                </a>
             </div>
             <div className={styles.upcoming}>
                 <h1>Kushagra Sarathe</h1>
                 <Image src={kushagra_sarathe} alt="Kushagra Sarathe" />
                 <p><b>Frontend Developer</b></p><br/>
                 <p>Experience in bug bounty hunting. Learning to code these days.</p>
+                <a href="https://twitter.com/kushagrasarathe" target="_blank" rel="noreferrer">
                 <Image src={twitter} alt="Twitter Logo" />
+                </a>
+                <a href="https://github.com/kushagrasarathe" target="_blank" rel="noreferrer">
                 <Image src={github} alt="Github Logo" />
+                </a>
             </div>
             <div className={styles.upcoming}>
                 <h1>Dhruv Agarwal</h1>
                 <Image src={dhruv_agarwal} alt="Dhruv Agarwal" />
                 <p><b>Fullstack Developer</b></p><br/>
                 <p>Loves writing smart contracts and building fun projects</p>
+                <a href="https://twitter.com/0xdhruva" target="_blank" rel="noreferrer">
                 <Image src={twitter} alt="Twitter Logo" />
+                </a>
+                <a href="https://github.com/Dhruv-2003" target="_blank" rel="noreferrer">
                 <Image src={github} alt="Github Logo" />
+                </a>
             </div>
             <div className={styles.upcoming}>
                 <h1>Aditya Gupta</h1>
                 <Image src={aditya_gupta} alt="Aditya Gupta"/>
                 <p><b>Backend Developer</b></p><br/>
                 <p>Experience in building android applications, loves writing smart contracts.</p>
+                <a href="https://twitter.com/adiig7" target="_blank" rel="noreferrer">
                 <Image src={twitter} alt="Twitter Logo" />
+                </a>
+                <a href="https://github.com/adiig7" target="_blank" rel="noreferrer">
                 <Image src={github} alt="Github Logo" />
+                </a>
             </div>
 
         </main>

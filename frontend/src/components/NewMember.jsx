@@ -101,6 +101,7 @@ export default function NewMember() {
       await tx.wait();
       // end loading
       console.log("Request added");
+      alert("Request added");
     } catch (error) {}
   };
 
