@@ -69,6 +69,7 @@ export default function Contribute() {
       check();
       console.log("Transaction Completed");
       console.log("Thank you for your contribution");
+      mint();
     } catch (error) {
       console.log(error);
     }
@@ -132,13 +133,13 @@ export default function Contribute() {
           <button className={styles.button} onClick={handleSubmit}>
             Contribute
           </button>
-          {hasDonated ? (
+          {/* {hasDonated ? (
             <button className={styles.button} onClick={mint}>
               Mint NFT
             </button>
           ) : (
             <a>Not yet Donated</a>
-          )}
+          )} */}
         </div>
       </>
     </>
