@@ -8,9 +8,14 @@
     flex-direction: column;
   } */
 
+
+.main * {
+  border: 1x solid red;
+}
+
 .researches {
   margin: 200px auto;
-  max-width: 80%;
+  /* max-width: 80%; */
   border: 1px solid rgb(110, 99, 160);
   padding: 1.5rem 3rem;
   margin-top: 20px;
@@ -26,6 +31,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   text-align: justify;
+  width: 100%;
 }
 
 .researches:hover {
@@ -153,7 +159,18 @@
   border-right: solid 30px transparent;
 }
 
+
 @media screen and (max-width: 768px) {
+  
+  .main {
+    margin: 0;
+    padding: 0;
+  }
+
+  .researches {
+    /* margin: 0; */
+  }
+
   .researches h3 {
     margin: 10px auto;
     font-size: 16px;
