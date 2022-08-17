@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "../../styles/Layout.module.css";
 import Footer from "./Footer";
-import logo from "../assets/logo2.png";
 import scope from "../assets/scope-128.png";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,7 +31,7 @@ export default function Layout({ children }) {
               </div>
             </Link>
             <div className={styles.navlogo}>
-              <Image src={scope} />
+              <Image src={scope} alt="Scope" />
             </div>
           </div>
           <ul
@@ -61,6 +60,11 @@ export default function Layout({ children }) {
             <li className={styles.navitem}>
               <Link href="/dashboard">
                 <a className={styles.navlink}>Dashboard</a>
+              </Link>
+            </li>
+            <li className={styles.navitem}>
+              <Link href="/team">
+                <a className={styles.navlink}>Team</a>
               </Link>
             </li>
             {/* <li className={styles.navitem}>

@@ -7,7 +7,7 @@ export default function dashboard() {
   return (
     <>
     <Head>
-        <title>Dashoard</title>
+        <title>Dashboard</title>
         <meta
           name="description"
           content="PUBLISH and SHARE YOUR RESEARCH ON THE WORLD'S FIRST DAO COMMUNITY FOR SCIENTISTS"
