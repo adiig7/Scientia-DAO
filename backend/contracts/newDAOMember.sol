@@ -56,7 +56,7 @@ contract newDAOMember is Ownable {
     mapping(uint256 => Member) public requestList;
 
     /// @dev mapping from memberAddress -->  research paper
-    mapping(address => ResearchPaper) public membersPaperList;
+    mapping(address => ResearchPaper[]) public membersPaperList;
 
     /// @dev mapping from researchNo -->researchPaper
     mapping(uint256 => ResearchPaper) public researchesPublishedList;
@@ -83,10 +83,8 @@ contract newDAOMember is Ownable {
         counterResearches += 1;
 
         /// adds the research for the specific member
-        membersPaperList[msg.sender] = ResearchPaper(
-            msg.sender,
-            block.timestamp,
-            researchPaperURI
+        membersPaperList[msg.sender].push(
+            ResearchPaper(msg.sender, block.timestamp, researchPaperURI)
         );
     }
 
@@ -188,7 +186,7 @@ contract newDAOMember is Ownable {
     }
 
     /// get the researches for a specific Members
-    function getMembersResearch() public view returns (ResearchPaper memory) {
+    function getMembersResearch() public view returns (ResearchPaper[] memory) {
         return membersPaperList[msg.sender];
     }
 
