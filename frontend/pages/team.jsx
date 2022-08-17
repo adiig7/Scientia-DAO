@@ -29,7 +29,7 @@ export default function team() {
 
             <div className={styles.upcoming}>
                 <h1>Nils Giebing</h1>
-                <Image src={nils_giebing} alt="Nils Giebing" className="socials" />
+                <Image src={nils_giebing} alt="Nils Giebing" />
                 <p><b>Backend Developer</b></p><br/>
                 <p>Loves to travel and contribute to communities.</p>
                 <a href="https://twitter.com/NilsGiebing" target="_blank" rel="noreferrer">
