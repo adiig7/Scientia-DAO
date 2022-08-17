@@ -5,7 +5,7 @@
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
-  /* flex-direction: column; */
+  flex-direction: column;
   min-height: 92vh;
   /* max-width: 1200px; */
 }
@@ -38,6 +38,7 @@
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
+  max-width: 100%;
 }
 
 /* .research:hover {
@@ -135,7 +136,7 @@
   /* max-width: 500px; */
 }
 
-.contribute h2 {
+.contribute * {
   text-align: center;
 }
 
