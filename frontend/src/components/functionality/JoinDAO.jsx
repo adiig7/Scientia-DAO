@@ -13,6 +13,7 @@ import {
 import { StoreResearch } from "./StoreResearch";
 import { StoreContent } from "./StoreContent";
 import { _toEscapedUtf8String } from "ethers/lib/utils";
+import { ethers } from "ethers";
 
 /// we will use this component directly to add a new user
 export const JoinDAO = async () => {
@@ -85,6 +86,23 @@ export const JoinDAO = async () => {
     } catch (error) {}
   };
 
+  /// sending a value of 0.05 ether for the 1st 50 people
+  const request50 = async (pfpuri, researchuri) => {
+    try {
+      console.log("Creating the request...");
+      const tx = await Member_contract.addRequest(
+        Name,
+        bio,
+        pfpuri,
+        foR,
+        researchuri,
+        { value: ethers.utils.parseEther("0.05") }
+      );
+      await tx.wait();
+      console.log("Request added");
+    } catch (error) {}
+  };
+
   /// NFT  minting button will be available in the dashboard after approval from the users
   const Mint = async () => {
     try {
@@ -92,7 +110,7 @@ export const JoinDAO = async () => {
       const check = await Member_contract.getApproval(address);
       if (check) {
         console.log("Minting the NFT");
-        const tx = await MemberNFT_contr act.safeMint(address);
+        const tx = await MemberNFT_contract.safeMint(address);
         await tx.wait();
         console.log("NFT minted , Congrats you are a DAO member");
         console.log(tx);

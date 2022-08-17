@@ -42,7 +42,7 @@ export default function Account() {
   // returns an object that is then stored in the Array of request
   const fetchRequests = async () => {
     try {
-      const researches = await Member_contract.getMembersResearch();
+      const researches = await Member_contract.getMembersResearch(address);
       /// researches will be an array of all  the research papers
       const promises = [];
       /// we need to fetch the data from ipfs for each element

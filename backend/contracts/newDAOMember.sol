@@ -186,8 +186,12 @@ contract newDAOMember is Ownable {
     }
 
     /// get the researches for a specific Members
-    function getMembersResearch() public view returns (ResearchPaper[] memory) {
-        return membersPaperList[msg.sender];
+    function getMembersResearch(address _user)
+        public
+        view
+        returns (ResearchPaper[] memory)
+    {
+        return membersPaperList[_user];
     }
 
     // to check the status of approval for address
