@@ -10,8 +10,7 @@ import {
   Grants_Contract_Address,
 } from "../../../constants/constants";
 import { StoreContent } from "./StoreContent";
-import { StoreResearch } from "./StoreResearch";
-
+import { StoreRequests } from "./StoreRequests";
 const requestGrant = async () => {
   const [amount, setAmount] = useState("");
   const [title, setTitle] = useState("");
@@ -36,30 +35,30 @@ const requestGrant = async () => {
       console.log(URL);
       console.log("Media uploaded to IPFS");
       await StoreIdea(URL);
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
   };
 
   // 2.  Stores the Idea JSON file on IPFS
   const StoreIdea = async (contentURI) => {
     try {
-      const cid = await StoreResearch(title, description, contentURI);
+      const cid = await StoreRequests(title, description, contentURI);
       const URL = `https://ipfs.io/ipfs/${cid}`;
       console.log(URL);
       console.log("Request JSON uploaded to IPFS");
-      await request(URL);
+      await request(cid);
     } catch (err) {
       console.log(err);
     }
   };
 
   // Add this request to the contract , creating a transaction
-  const request = async (_contentURI) => {
+  const request = async (_cid) => {
     try {
       console.log("Creating the Request...");
       const _amount = ethers.utils.parseEther(amount);
-      const tx = await Grants_contract.requestGrant(_contentURI, _amount);
+      const tx = await Grants_contract.requestGrant(_cid, _amount);
       await tx.wait();
       console.log("Request Completed");
     } catch (error) {

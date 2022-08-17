@@ -16,7 +16,7 @@ export const DAOFunds_Contract_Address =
 export const DAOMember_Contract_Address =
   "0x28FCCb7D287C4C92e49C3163B6898d20766aDefF";
 export const Grants_Contract_Address =
-  "0xF05D2EFA3CA1bA110A49AF1A4ED21045E4fDB03a";
+  "0x306F31D3C8459F7FADE9DDC4b9D8F98AfF3B7ed7";
 
 export const Whitelist_ABI = [
   {
@@ -1977,6 +1977,124 @@ export const Grants_ABI = [
     inputs: [
       {
         internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "GrantsApproved",
+    outputs: [
+      {
+        internalType: "address",
+        name: "creator",
+        type: "address",
+      },
+      {
+        internalType: "string",
+        name: "content",
+        type: "string",
+      },
+      {
+        internalType: "uint256",
+        name: "amountRequested",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "amountApproved",
+        type: "uint256",
+      },
+      {
+        internalType: "bool",
+        name: "approved",
+        type: "bool",
+      },
+      {
+        internalType: "bool",
+        name: "paid",
+        type: "bool",
+      },
+      {
+        internalType: "uint256",
+        name: "yayVotes",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "nayVotes",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "VotingStartTime",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "GrantsRequests",
+    outputs: [
+      {
+        internalType: "address",
+        name: "creator",
+        type: "address",
+      },
+      {
+        internalType: "string",
+        name: "content",
+        type: "string",
+      },
+      {
+        internalType: "uint256",
+        name: "amountRequested",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "amountApproved",
+        type: "uint256",
+      },
+      {
+        internalType: "bool",
+        name: "approved",
+        type: "bool",
+      },
+      {
+        internalType: "bool",
+        name: "paid",
+        type: "bool",
+      },
+      {
+        internalType: "uint256",
+        name: "yayVotes",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "nayVotes",
+        type: "uint256",
+      },
+      {
+        internalType: "uint256",
+        name: "VotingStartTime",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
         name: "_requestId",
         type: "uint256",
       },
@@ -1987,6 +2105,65 @@ export const Grants_ABI = [
       },
     ],
     name: "OpenForCollabrations",
+    outputs: [],
+    stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "TotalAmountPaid",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "_GrantsApproved",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "_GrantsRequests",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "_collaborations",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "_perform",
     outputs: [],
     stateMutability: "nonpayable",
     type: "function",
@@ -2178,6 +2355,30 @@ export const Grants_ABI = [
     type: "function",
   },
   {
+    inputs: [
+      {
+        internalType: "address",
+        name: "_user",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_id",
+        type: "uint256",
+      },
+    ],
+    name: "getVoterStatus",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
     inputs: [],
     name: "owner",
     outputs: [
@@ -2257,6 +2458,43 @@ export const Grants_ABI = [
     name: "vote",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "voters",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [],
+    name: "votingDuration",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
 ];

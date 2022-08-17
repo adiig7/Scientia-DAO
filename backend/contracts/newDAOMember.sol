@@ -56,7 +56,7 @@ contract newDAOMember is Ownable {
     mapping(uint256 => Member) public requestList;
 
     /// @dev mapping from memberAddress -->  research paper
-    mapping(address => ResearchPaper) public membersPaperList;
+    mapping(address => ResearchPaper[]) public membersPaperList;
 
     /// @dev mapping from researchNo -->researchPaper
     mapping(uint256 => ResearchPaper) public researchesPublishedList;
@@ -83,10 +83,8 @@ contract newDAOMember is Ownable {
         counterResearches += 1;
 
         /// adds the research for the specific member
-        membersPaperList[msg.sender] = ResearchPaper(
-            msg.sender,
-            block.timestamp,
-            researchPaperURI
+        membersPaperList[msg.sender].push(
+            ResearchPaper(msg.sender, block.timestamp, researchPaperURI)
         );
     }
 
@@ -137,14 +135,14 @@ contract newDAOMember is Ownable {
     }
 
     // voting function for requested member
-    function vote(Vote _vote, uint256 _id) public {
+    function vote(Vote _vote, uint256 _id) public onlyDAOMember {
         Member storage member = requestList[_id];
         require(
             block.timestamp > member.votingStartTime,
             "You can't approve this person before the voting starts."
         );
         require(
-            member.votingStartTime + votingDuration < block.timestamp,
+            block.timestamp < member.votingStartTime + votingDuration,
             "Voting has already ended"
         );
         require(voters[_id][msg.sender] == false, "You have already voted");
@@ -187,14 +185,16 @@ contract newDAOMember is Ownable {
         return requestList[_id];
     }
 
-    function getMembersResearch(uint256 _id)
+    /// get the researches for a specific Members
+    function getMembersResearch(address _user)
         public
         view
-        returns (string[] memory)
+        returns (ResearchPaper[] memory)
     {
-        return membersList[_id].researchesURI;
+        return membersPaperList[_user];
     }
 
+    // to check the status of approval for address
     function getApproval(address _address) public view returns (bool) {
         return Approved[_address];
     }

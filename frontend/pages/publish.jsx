@@ -8,8 +8,9 @@ import {
 } from "../constants/constants";
 import { StoreContent } from "../src/components/functionality/StoreContent2";
 import { StoreResearch } from "../src/components/functionality/StoreResearch";
-
+import { TokenGating } from "../src/components/functionality/TokenGating";
 export default function () {
+  const [isMember, setIsMember] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [researchFiles, setResearchFiles] = useState([]);
@@ -79,6 +80,11 @@ export default function () {
       console.log(error);
     }
   };
+
+  // useEffect(() => {
+  //   const check = TokenGating();
+  //   setIsMember(check);
+  // }, []);
 
   return (
     <>

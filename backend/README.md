@@ -44,3 +44,9 @@ This is our repo for the Polygon BUIDL IT Hackathon
 
 --- Latest
 Members Contract Address: 0x28FCCb7D287C4C92e49C3163B6898d20766aDefF
+
+Grants Contract Address: 0x0FE3794c2110C3954605050a5cD1402445B52240
+
+Grants Contract Address: 0x306F31D3C8459F7FADE9DDC4b9D8F98AfF3B7ed7
+
+extra : 0x917828CfF1668EEeF06538bBa40Cc444f326AC70 (memeber )
