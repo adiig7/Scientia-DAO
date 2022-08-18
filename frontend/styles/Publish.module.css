@@ -29,6 +29,17 @@
   margin: 15px;
 }
 
+.msg {
+  font-weight: 800;
+  font-size: 24px;
+  margin: 15px;
+  text-align: center;
+}
+
+.research_link {
+  /* padding: 15px; */
+}
+
 .titleWord {
   animation: color-animation 4s linear infinite;
 }

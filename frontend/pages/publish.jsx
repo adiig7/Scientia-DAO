@@ -181,9 +181,42 @@ export default function Publish() {
               <>
                 {isUploaded ? (
                   <>
-                    <a>Research Upload Completed</a>
-                    <a>Check out research on {researchURI}</a>
-                    <a>Upload More ??</a>
+                    {/* <div className={styles.main}>
+                      <a>Research Upload Completed</a>
+                      <a>Check out research on {researchURI}</a>
+                      <a>Upload More ??</a>
+                    </div> */}
+
+                    <div className={styles.message}>
+                      <div className={styles.msg}>
+                        <h4 className={`${styles.titleWord} ${styles.word1}`}>
+                          Research Uploaded Successfully
+                        </h4>
+                        <div className={`${styles.titleWord} ${styles.word2}`}>
+                          Check it out here:
+                        </div>
+                        <div>
+                          <div
+                            className={`${styles.titleWord} ${styles.word1}`}
+                          >
+                            <a
+                              className={styles.research_link}
+                              href={researchURI}
+                            >
+                              {" "}
+                              <u> {researchURI} </u>
+                            </a>
+                          </div>
+                        </div>
+                        <div>
+                          <Link href={"/publish"}>
+                            <button className={styles.button}>
+                              Upload another research
+                            </button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
                   </>
                 ) : (
                   <>
@@ -229,7 +262,7 @@ export default function Publish() {
                         {" "}
                         Upload Research to IPFS{" "}
                       </button>
-                      {isUploaded ? (
+                      {/* {isUploaded ? (
                         <>
                           <a>Research Upload Completed</a>
                           <a>Check out research on {researchURI}</a>
@@ -237,7 +270,7 @@ export default function Publish() {
                         </>
                       ) : (
                         <a>Research Not yet uploaded</a>
-                      )}
+                      )} */}
                     </div>
                   </>
                 )}
