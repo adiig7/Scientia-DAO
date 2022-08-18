@@ -25,6 +25,7 @@ export default function () {
   const [researchURI, setResearchURI] = useState("");
   const [filesURI, setfilesURI] = useState("");
 
+  const [isUploaded, setIsUploaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -64,6 +65,7 @@ export default function () {
       setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -82,15 +84,19 @@ export default function () {
       /// saving the direct URL to the file in the research json
       await storeResearch(URL);
       setfilesURI(URL);
+      setLoading(false);
     } catch (err) {
       console.log(err);
+      notify(err);
+      setLoading(false);
     }
   };
 
   // 2. stores the files onto IPFS via web3.storage
   const storeResearch = async (_contentURI) => {
     try {
-      setMessage("Starting the Research file upload...")
+      setLoading(true);
+      setMessage("Starting the Research file upload...");
       console.log("Starting the Research upload...");
       const cid = await StoreResearch(title, description, _contentURI);
       /// need to fetch from this link
@@ -99,11 +105,13 @@ export default function () {
       setResearchURI(URL);
       console.log("Research uploaded to IPFS");
       /// saving the CID in the contract
-      setMessage("Research uploaded to IPFS")
+      setMessage("Research uploaded to IPFS");
       await add(cid);
       setLoading(false);
     } catch (err) {
       console.log(err);
+      notify(err);
+      setLoading(false);
     }
   };
 
@@ -111,7 +119,7 @@ export default function () {
   const add = async (_cid) => {
     try {
       setLoading(true);
-      setMessage("Adding the Research ....")
+      setMessage("Adding the Research ....");
       console.log("Adding the Research ....");
       const tx = await Member_contract.addResearch(_cid);
       await tx.wait();
@@ -119,8 +127,12 @@ export default function () {
       console.log(tx);
       setMessage("Research added to your profile");
       setLoading(false);
+      setIsUploaded(true);
     } catch (error) {
       console.log(error);
+      notify(error.message);
+      notify("Please try again !!");
+      setLoading(false);
     }
   };
 
@@ -129,65 +141,67 @@ export default function () {
       await storefiles();
     } catch (error) {
       console.log(error);
+      notify(error.message);
     }
   };
 
-  // const RenderForm  = () => {
-  //   return(
-  //     {isMember ? (<main className={styles.main}>
-  //       <div className={styles.title}>
-  //         <span className={`${styles.titleWord} ${styles.word2}`}>
-  //           Publish{" "}
-  //         </span>
-  //         <span className={`${styles.titleWord} ${styles.word1}`}>
-  //           Research
-  //         </span>
-  //       </div>
+  const RenderForm = () => {
+    return (
+      <>
+        <div className={styles.title}>
+          <span className={`${styles.titleWord} ${styles.word2}`}>
+            Publish{" "}
+          </span>
+          <span className={`${styles.titleWord} ${styles.word1}`}>
+            Research
+          </span>
+        </div>
 
-  //       <div className={styles.publish}>
-  //         Enter Research Title
-  //         <input
-  //           className={styles.research_title}
-  //           type="text"
-  //           placeholder="Research Title Here"
-  //           value={title}
-  //           onChange={(e) => setTitle(e.target.value)}
-  //         />
-  //         Enter Research Description{" "}
-  //         <small className={styles.small}> &#40; Minimum 500 words &#41;</small>
-  //         <textarea
-  //           className={styles.research_desc}
-  //           name=""
-  //           id=""
-  //           placeholder="Enter Research Details Here"
-  //           value={description}
-  //           onChange={(e) => setDescription(e.target.value)}
-  //         ></textarea>
-  //         Select Research Media Files
-  //         <input
-  //           className={styles.research_docs}
-  //           type="file"
-  //           multiple
-  //           onChange={(e) => setResearchFiles(e.target.files)}
-  //         />
-  //         <button className={styles.button} onClick={handleSubmit}>
-  //           {" "}
-  //           Upload Research to IPFS{" "}
-  //         </button>
-  //       </div>
-  //     </main> : }
-  //   )
-  // }
+        <div className={styles.publish}>
+          Enter Research Title
+          <input
+            className={styles.research_title}
+            type="text"
+            placeholder="Research Title Here"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          Enter Research Description{" "}
+          <small className={styles.small}> &#40; Minimum 500 words &#41;</small>
+          <textarea
+            className={styles.research_desc}
+            name=""
+            id=""
+            placeholder="Enter Research Details Here"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          ></textarea>
+          Select Research Media Files
+          <input
+            className={styles.research_docs}
+            type="file"
+            multiple
+            onChange={(e) => setResearchFiles(e.target.files)}
+          />
+          <button className={styles.button} onClick={handleSubmit}>
+            {" "}
+            Upload Research to IPFS{" "}
+          </button>
+        </div>
+      </>
+    );
+  };
 
   useEffect(() => {
-    setIsMember(true)
+    setIsMember(true);
     if (isConnected) {
       check();
     } else {
       // ConnectButton();
-      window.alert("Connect your wallet first");
+      notify("Connect your wallet first");
     }
   }, []);
+
   return (
     <>
       <Head>
@@ -202,57 +216,16 @@ export default function () {
       <main className={styles.main}>
         {isMember ? (
           <>
-            {!loading ? (
+            {isUploaded ? (
               <>
-                <div className={styles.title}>
-                  <span className={`${styles.titleWord} ${styles.word2}`}>
-                    Publish{" "}
-                  </span>
-                  <span className={`${styles.titleWord} ${styles.word1}`}>
-                    Research
-                  </span>
-                </div>
-
-                <div className={styles.publish}>
-                  Enter Research Title
-                  <input
-                    className={styles.research_title}
-                    type="text"
-                    placeholder="Research Title Here"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                  />
-                  Enter Research Description{" "}
-                  <small className={styles.small}>
-                    {" "}
-                    &#40; Minimum 500 words &#41;
-                  </small>
-                  <textarea
-                    className={styles.research_desc}
-                    name=""
-                    id=""
-                    placeholder="Enter Research Details Here"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                  ></textarea>
-                  Select Research Media Files
-                  <input
-                    className={styles.research_docs}
-                    type="file"
-                    multiple
-                    onChange={(e) => setResearchFiles(e.target.files)}
-                  />
-                  <button className={styles.button} onClick={handleSubmit}>
-                    {" "}
-                    Upload Research to IPFS{" "}
-                  </button>
-                </div>
+                <a>Research Upload Completed</a>
+                <a>Check out research on {researchURI}</a>
+                <a>Upload More ??</a>
               </>
             ) : (
-              <div className={styles.masin}>
-                {/* <h1>Kushagra Sarathe</h1> */}
-                <Loading _loading={loading} _message={message} />
-              </div>
+              <>
+                <RenderForm />
+              </>
             )}
           </>
         ) : (
@@ -264,6 +237,16 @@ export default function () {
               </Link>
             </div>
           </div>
+        )}
+        {loading ? (
+          <div className={styles.main}>
+            {/* <h1>Kushagra Sarathe</h1> */}
+            <Loading _loading={loading} _message={message} />
+          </div>
+        ) : (
+          <>
+            <a></a>
+          </>
         )}
         <ToastContainer autoClose={2000} />
       </main>

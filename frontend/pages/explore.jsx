@@ -18,6 +18,7 @@ export default function explore() {
   const { address, isConnected } = useAccount();
 
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
 
   const Member_contract = useContract({
     addressOrName: DAOMember_Contract_Address,
@@ -62,6 +63,7 @@ export default function explore() {
   const get = async () => {
     try {
       setLoading(true);
+      setMessage("Fetching the details from contract... , Hang On !!");
       console.log("starting ...");
       const TotalRequest = await Member_contract.counterResearches();
       const total = parseInt(TotalRequest._hex);
@@ -77,7 +79,6 @@ export default function explore() {
       /// set the array of the objects of the requests is stored and can be rendered then
       setResearches(_researches);
       setLoading(false);
-      
     } catch (error) {
       console.log(error);
     }
@@ -87,13 +88,10 @@ export default function explore() {
     get();
   }, []);
 
-
   // useEffect(() => {
   //   // setLoading(true);
   //   setTimeout(() => setLoading(true), 1000);
   // }, []);
-
-
 
   return (
     <>
@@ -135,7 +133,7 @@ export default function explore() {
       ) : (
         <div className={styles.masin}>
           {/* <h1>Kushagra Sarathe</h1> */}
-          <Loading _loading={loading} />
+          <Loading _loading={loading} _message={message} />
         </div>
       )}
 
