@@ -85,26 +85,39 @@ export default function Contribute() {
       setLoading(true);
       setMessage("Checking the Elgibility..");
       console.log("Checking the Elgibility...");
-      const check = await DAOFunds_contract.getContribution(address);
-      console.log(check);
-      if (check) {
+      const _check = await DAOFunds_contract.getContribution(address);
+      console.log(_check);
+      await check();
+      if (_check) {
         console.log("You are eligible...");
         console.log("Minting the NFT");
-        setMessage("Minitng the NFT , Confirm tx -->");
-        const tx = await ContributorNFT_contract.safeMint(address);
-        setMessage("Waiting for confirmation...");
-        await tx.wait();
-        console.log("NFT minted, Check the collection on OpenSea");
-        notify("NFT minted, Check the collection on OpenSea");
+        try {
+          setMessage("Minitng the NFT , Confirm tx -->");
+          const tx = await ContributorNFT_contract.safeMint(address);
+          setMessage("Waiting for confirmation...");
+          await tx.wait();
+          console.log("NFT minted, Check the collection on OpenSea");
+          notify("NFT minted, Check the collection on OpenSea");
+          setLoading(false);
+        } catch (error) {
+          setLoading(false);
+          notify(error.message);
+          console.log(error);
+        }
       } else {
         console.log("not eligible for NFT minting");
         notify("not eligible for NFT minting");
+        setLoading(false);
       }
       setLoading(false);
     } catch (error) {
       console.log(error);
       setLoading(false);
-      notify(error.message);
+      if (error.message) {
+        notify(error.message);
+      } else {
+        notify(error);
+      }
     }
   };
 
@@ -121,12 +134,10 @@ export default function Contribute() {
   const check = async () => {
     try {
       console.log("checking User");
-      /// connect wallet first then only allow the user to move ahead
-      // create a check first
       const data = await DAOFunds_contract.getContribution(address);
       /// filter the bool value from the response
-      console.log(check);
-      setHasDonated(check);
+      console.log(data);
+      setHasDonated(data);
     } catch (error) {
       console.log(error);
     }

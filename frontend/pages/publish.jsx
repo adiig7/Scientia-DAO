@@ -147,7 +147,6 @@ export default function Publish() {
   };
 
   useEffect(() => {
-    setIsMember(true);
     if (isConnected) {
       check();
     } else {
