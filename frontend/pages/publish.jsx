@@ -11,7 +11,6 @@ import {
 import { StoreContent } from "../src/components/functionality/StoreContent2";
 import { StoreResearch } from "../src/components/functionality/StoreResearch";
 
-
 export default function () {
   const [isMember, setIsMember] = useState(false);
   const [title, setTitle] = useState("");
@@ -162,7 +161,7 @@ export default function () {
     if (isConnected) {
       check();
     } else {
-      ConnectButton();
+      // ConnectButton();
       window.alert("Connect your wallet first");
     }
   }, []);
