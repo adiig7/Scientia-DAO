@@ -8,9 +8,9 @@ import {
   Grants_ABI,
   Grants_Contract_Address,
   DAOMember_ABI,
-  DAOMember_ABI,
   OwnerAddress,
 } from "../../../constants/constants";
+import styles from '../../../styles/Home.module.css'
 
 const Owner = async () => {
   const [isOwner, setIsOwner] = useState(false);
@@ -80,6 +80,21 @@ const Owner = async () => {
   useEffect(() => {
     checkOwner();
   });
-
-  // return()
 };
+
+export default function OwnerUI() {
+
+  return(
+    <>
+      <div className={styles.owner}>
+        <h1>Admin Section</h1>
+        <input className={styles.owner_input} type="text" />
+        <div>
+        <button className={styles.button}>End Member Vote</button>
+        <button className={styles.button}>End Grants Vote</button>
+        <button className={styles.button}>Pay Grant</button>
+        </div>
+      </div>
+    </>
+  )
+}
