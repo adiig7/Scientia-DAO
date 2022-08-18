@@ -6,9 +6,16 @@ import {
   DAOMember_ABI,
   DAOMember_Contract_Address,
 } from "../../constants/constants";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Loading from "./Loading";
 
 export default function ApproveEntry() {
   const [requests, setRequests] = useState([]);
+
+  const notify = (message) => toast(`${message}`);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const provider = useProvider();
   const { data: signer } = useSigner();
@@ -56,6 +63,8 @@ export default function ApproveEntry() {
   // fetches the no. of requests , then fetches the each request and store the result in the array of requests
   const get = async () => {
     try {
+      setLoading(true);
+      setMessage("Fetching Entries from the contract , Hang On !!");
       console.log("starting ...");
       const TotalRequest = await Member_contract.counterRequestList();
       const total = parseInt(TotalRequest._hex);
@@ -71,8 +80,10 @@ export default function ApproveEntry() {
       console.log("ending...");
       /// set the array of the objects of the requests is stored and can be rendered then
       setRequests(_requests);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -84,64 +95,31 @@ export default function ApproveEntry() {
   // Render the request Array and pass the details to this Member Card
   return (
     <>
-      <div className={styles.entry_requests}>
-        {requests ? (
-          requests.map((request) => {
-            return (
-              <div className={styles.card}>
-                <MemberCard
-                  member_name={request.Name}
-                  member_bio={request.Bio}
-                  member_field={request.For}
-                  id={request.Id}
-                />
-              </div>
-            );
-          })
-        ) : (
-          <a>No new Requests</a>
-        )}
-
-        {/* <div className={styles.card}>
-          <MemberCard
-            member_name={"Aditya Gupta"}
-            member_bio={
-              "Backend Developer with experience in building android applications, loves writing smart contracts   "
-            }
-            member_field={"Backend Development"}
-            // id={}
-          />
+      <ToastContainer autoClose={2000} />
+      {loading ? (
+        <>
+          <Loading _loading={loading} _message={message} />
+        </>
+      ) : (
+        <div className={styles.entry_requests}>
+          {requests ? (
+            requests.map((request) => {
+              return (
+                <div className={styles.card}>
+                  <MemberCard
+                    member_name={request.Name}
+                    member_bio={request.Bio}
+                    member_field={request.For}
+                    id={request.Id}
+                  />
+                </div>
+              );
+            })
+          ) : (
+            <a>No new Requests</a>
+          )}
         </div>
-        <div className={styles.card}>
-          <MemberCard
-            member_name={"Dhruv Agarwal"}
-            member_bio={
-              "Fullstack Developer who loves writing smart contracts and building fun projects "
-            }
-            member_field={"Fullstack Development"}
-          />
-        </div>
-
-        <div className={styles.card}>
-          <MemberCard
-            member_name={"Nils Giebing"}
-            member_bio={
-              "Backend Developer Based in Germany, loves to travel and contribute to communities."
-            }
-            member_field={"Backend Developer"}
-          />
-        </div>
-
-        <div className={styles.card}>
-          <MemberCard
-            member_name={"Kusahgra Sarathe"}
-            member_bio={
-              "I am a frontend developer with experience in bug bounty hunting. I am learning to code these days"
-            }
-            member_field={"Frontend Development"}
-          />
-        </div> */}
-      </div>
+      )}
     </>
   );
 }

@@ -223,9 +223,7 @@ export default function () {
                 <a>Upload More ??</a>
               </>
             ) : (
-              <>
-                <RenderForm />
-              </>
+              <RenderForm />
             )}
           </>
         ) : (
