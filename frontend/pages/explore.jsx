@@ -133,7 +133,7 @@ export default function explore() {
           </div>
         </div>
       ) : (
-        <div className={styles.main}>
+        <div className={styles.masin}>
           {/* <h1>Kushagra Sarathe</h1> */}
           <Loading _loading={loading} />
         </div>

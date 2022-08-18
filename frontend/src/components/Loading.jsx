@@ -63,16 +63,18 @@ const Balls = styled.div`
   }
 `;
 
-export default function Loading( _loading ) {
+export default function Loading( props) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  
+  const [message, setMessage] = useState("")
 
   React.useEffect(() => {
-    setLoading(_loading);
-  }, [_loading]);
-
-
+    setLoading(props._loading);
+  }, [props._loading]);
+ 
+  React.useEffect(() => {
+    setMessage(props._message)
+  }, [props._message]);
   return (
     <>
      <Screen>
@@ -81,9 +83,9 @@ export default function Loading( _loading ) {
         <div className="ball two"></div>
         <div className="ball three"></div>
       </Balls>
-      {/* <div>
-        { props.message }
-      </div> */}
+      <div>
+        { message }
+      </div>
     </Screen>
     </>
   );
