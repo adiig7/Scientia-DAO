@@ -29,7 +29,7 @@ export default function FeaturesSection() {
             width={"100%"}
             // axis={"verticals"}
             // verticalSwipe={'vertical'}
-            autoFocus={true}
+            // autoFocus={true}
             // autoPlay={true}
             interval={6000}
             useKeyboardArrows={true}
