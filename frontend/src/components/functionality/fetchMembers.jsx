@@ -8,7 +8,7 @@ import {
   DAOMember_Contract_address,
 } from "../../../constants/constants";
 
-const fetchMembers = async () => {
+const FetchMembers = async () => {
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address, isConnected } = useAccount();

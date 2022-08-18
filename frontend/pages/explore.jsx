@@ -11,7 +11,7 @@ import {
 import Loading from "../src/components/Loading";
 // import Loading from "../src/components/Loading";
 
-export default function explore() {
+export default function Explore() {
   const [researches, setResearches] = useState([]);
   const provider = useProvider();
   const { data: signer } = useSigner();
@@ -122,6 +122,7 @@ export default function explore() {
                     title={research.Title}
                     description={research.Description}
                     id={research.Id}
+                    key={research.Id}
                   />
                 );
               })

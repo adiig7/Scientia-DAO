@@ -11,7 +11,8 @@ import {
 } from "../../../constants/constants";
 import { StoreContent } from "./StoreContent";
 import { StoreRequests } from "./StoreRequests";
-const requestGrant = async () => {
+
+const RequestGrant = async () => {
   const [amount, setAmount] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");

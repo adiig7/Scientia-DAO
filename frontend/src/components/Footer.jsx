@@ -4,7 +4,7 @@ import Image from "next/image";
 import github from "../assets/github.svg";
 import logo from "../assets/logo1.png";
 
-export default function () {
+export default function Footer() {
   return (
     <>
       <footer className={styles.footer}>
@@ -24,6 +24,7 @@ export default function () {
             <a
               href="https://github.com/adiig7/Polygon-BUIDL-IT/"
               target="_blank"
+              rel="noreferrer"
             >
               <Image src={github} />
             </a>

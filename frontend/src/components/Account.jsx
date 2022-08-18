@@ -79,12 +79,13 @@ export default function Account() {
     <main>
       <div>
         {researches ? (
-          researches.map((research) => {
+          researches.map((research, key) => {
             return (
               <ResearchCard
                 title={research.Title}
                 description={research.Description}
                 id={research.Id}
+                key={key}
               />
             );
           })

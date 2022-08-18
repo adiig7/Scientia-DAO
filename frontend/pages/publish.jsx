@@ -15,7 +15,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "../src/components/Loading";
 
-export default function () {
+export default function Publish() {
   const notify = (message) => toast(`${message}`);
 
   const [isMember, setIsMember] = useState(false);

@@ -108,7 +108,7 @@ export default function ApproveEntry() {
           {requests ? (
             requests.map((request) => {
               return (
-                <div className={styles.card}>
+                <div className={styles.card} key={request.Id}>
                   <MemberCard
                     member_name={request.Name}
                     member_bio={request.Bio}

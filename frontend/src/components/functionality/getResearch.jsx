@@ -8,7 +8,7 @@ import {
   DAOMember_Contract_Address,
 } from "../../../constants/constants";
 
-const getResearch = async () => {
+const GetResearch = async () => {
   const [researches, setResearches] = useState([]);
   const provider = useProvider();
   const { data: signer } = useSigner();

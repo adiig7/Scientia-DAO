@@ -297,11 +297,12 @@ export default function GrantsProposal() {
             {grants ? (
               grants.map((grant) => {
                 return (
-                  <div className={styles.grant_card}>
+                  <div className={styles.grant_card} key={request.Id}>
                     <ApproveGrant
                       idea_title={grant.Title}
                       idea_desc={grant.Description}
                       id={grant.Id}
+                      key={grant.Id}
                     />
                   </div>
                 );

@@ -11,7 +11,7 @@ import {
   DAOMember_Contract_Address,
 } from "../../constants/constants";
 
-export default function () {
+export default function Research() {
   const [research, setResearch] = useState({});
   const router = useRouter();
   const { id } = router.query;

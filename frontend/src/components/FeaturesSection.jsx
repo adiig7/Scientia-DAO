@@ -1,17 +1,17 @@
-import React from 'react'
-import Image from 'next/image'
+import React from "react";
+import Image from "next/image";
 import exp from "../assets/exp.png";
 import chemist from "../assets/chemist.png";
 import image from "../assets/genius-bg.png";
 import one from "../assets/13_bg.png";
-import styles from '../../styles/Home.module.css'
-import { Carousel } from 'react-responsive-carousel'
+import styles from "../../styles/Home.module.css";
+import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 export default function FeaturesSection() {
   return (
     <>
-    <div className={styles.features}>
+      <div className={styles.features}>
         <div className={styles.title}>
           <span className={`${styles.titleWord} ${styles.word2}`}>Why</span>
           <span className={`${styles.titleWord} ${styles.word1}`}> Join</span>
@@ -22,7 +22,6 @@ export default function FeaturesSection() {
           <span className={`${styles.titleWord} ${styles.word1}`}> DAO</span>
           <span className={`${styles.titleWord} ${styles.word2}`}> ?</span>
         </div>
-
 
         <div className={styles.carousel}>
           <Carousel
@@ -67,8 +66,8 @@ export default function FeaturesSection() {
                     Researchers.
                     <br />
                     <br />
-                    Researchers from around the world can become a DAO member and
-                    get access to a lot more
+                    Researchers from around the world can become a DAO member
+                    and get access to a lot more
                     <br />
                     <br />
                     Slide next &#38; see what else
@@ -132,8 +131,8 @@ export default function FeaturesSection() {
                     </span>
                   </div>
                   <p>
-                    Now you must be thinking: 'If this DAO is for scientists,
-                    what's there for me?'
+                    Now you must be thinking: &apos;If this DAO is for
+                    scientists, what&apos;s there for me?&apos;
                     <br />
                     <br />
                     Well, we got you covered! 😉
@@ -169,8 +168,9 @@ export default function FeaturesSection() {
                     Once you publish your research you can apply for grants.
                     <br />
                     <br />
-                    This will help you to take your research to the next level. And as
-                    you achieve milestones, you will move to the next phase! :D
+                    This will help you to take your research to the next level.
+                    And as you achieve milestones, you will move to the next
+                    phase! :D
                   </p>
                 </div>
                 <Image src={one} />
@@ -180,5 +180,5 @@ export default function FeaturesSection() {
         </div>
       </div>
     </>
-  )
+  );
 }
