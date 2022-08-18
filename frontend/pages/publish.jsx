@@ -82,14 +82,17 @@ export default function () {
       /// saving the direct URL to the file in the research json
       await storeResearch(URL);
       setfilesURI(URL);
+      setLoading(false);
     } catch (err) {
       console.log(err);
+      notify(err);
     }
   };
 
   // 2. stores the files onto IPFS via web3.storage
   const storeResearch = async (_contentURI) => {
     try {
+      setLoading(true);
       setMessage("Starting the Research file upload...");
       console.log("Starting the Research upload...");
       const cid = await StoreResearch(title, description, _contentURI);
@@ -104,6 +107,7 @@ export default function () {
       setLoading(false);
     } catch (err) {
       console.log(err);
+      notify(err);
     }
   };
 
@@ -121,6 +125,7 @@ export default function () {
       setLoading(false);
     } catch (error) {
       console.log(error);
+      notify(error.message);
     }
   };
 
@@ -129,6 +134,7 @@ export default function () {
       await storefiles();
     } catch (error) {
       console.log(error);
+      notify(error.message);
     }
   };
 
@@ -188,6 +194,7 @@ export default function () {
       window.alert("Connect your wallet first");
     }
   }, []);
+
   return (
     <>
       <Head>
@@ -202,58 +209,49 @@ export default function () {
       <main className={styles.main}>
         {isMember ? (
           <>
-            {!loading ? (
-              <>
-                <div className={styles.title}>
-                  <span className={`${styles.titleWord} ${styles.word2}`}>
-                    Publish{" "}
-                  </span>
-                  <span className={`${styles.titleWord} ${styles.word1}`}>
-                    Research
-                  </span>
-                </div>
+            <div className={styles.title}>
+              <span className={`${styles.titleWord} ${styles.word2}`}>
+                Publish{" "}
+              </span>
+              <span className={`${styles.titleWord} ${styles.word1}`}>
+                Research
+              </span>
+            </div>
 
-                <div className={styles.publish}>
-                  Enter Research Title
-                  <input
-                    className={styles.research_title}
-                    type="text"
-                    placeholder="Research Title Here"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                  />
-                  Enter Research Description{" "}
-                  <small className={styles.small}>
-                    {" "}
-                    &#40; Minimum 500 words &#41;
-                  </small>
-                  <textarea
-                    className={styles.research_desc}
-                    name=""
-                    id=""
-                    placeholder="Enter Research Details Here"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                  ></textarea>
-                  Select Research Media Files
-                  <input
-                    className={styles.research_docs}
-                    type="file"
-                    multiple
-                    onChange={(e) => setResearchFiles(e.target.files)}
-                  />
-                  <button className={styles.button} onClick={handleSubmit}>
-                    {" "}
-                    Upload Research to IPFS{" "}
-                  </button>
-                </div>
-              </>
-            ) : (
-              <div className={styles.masin}>
-                {/* <h1>Kushagra Sarathe</h1> */}
-                <Loading _loading={loading} _message={message} />
-              </div>
-            )}
+            <div className={styles.publish}>
+              Enter Research Title
+              <input
+                className={styles.research_title}
+                type="text"
+                placeholder="Research Title Here"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              Enter Research Description{" "}
+              <small className={styles.small}>
+                {" "}
+                &#40; Minimum 500 words &#41;
+              </small>
+              <textarea
+                className={styles.research_desc}
+                name=""
+                id=""
+                placeholder="Enter Research Details Here"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              ></textarea>
+              Select Research Media Files
+              <input
+                className={styles.research_docs}
+                type="file"
+                multiple
+                onChange={(e) => setResearchFiles(e.target.files)}
+              />
+              <button className={styles.button} onClick={handleSubmit}>
+                {" "}
+                Upload Research to IPFS{" "}
+              </button>
+            </div>
           </>
         ) : (
           <div className={styles.message}>
@@ -264,6 +262,16 @@ export default function () {
               </Link>
             </div>
           </div>
+        )}
+        {loading ? (
+          <div className={styles.main}>
+            {/* <h1>Kushagra Sarathe</h1> */}
+            <Loading _loading={loading} _message={message} />
+          </div>
+        ) : (
+          <>
+            <a></a>
+          </>
         )}
         <ToastContainer autoClose={2000} />
       </main>
