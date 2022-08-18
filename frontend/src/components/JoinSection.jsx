@@ -52,7 +52,7 @@ export default function JoinSection() {
           <Image src={img2} />
           <div className={styles.carousel}>
             <Carousel
-              autoFocus={true}
+              // autoFocus={true}
               // autoPlay={true}
               interval={6000}
               useKeyboardArrows={true}
