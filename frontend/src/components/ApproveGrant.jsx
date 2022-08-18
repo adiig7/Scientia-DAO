@@ -43,9 +43,11 @@ export default function ApproveGrant(props) {
     }
   };
 
-  // useEffect(() => {
-  //   await check();
-  // }, []);
+  useEffect(() => {
+    if (!isConnected) {
+      notify("Connect your wallet first");
+    }
+  }, []);
 
   return (
     <>

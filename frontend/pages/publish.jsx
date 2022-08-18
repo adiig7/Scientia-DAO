@@ -147,13 +147,10 @@ export default function () {
   };
 
   useEffect(() => {
-    // setLoading(true)
-    // setMessage("Testing")
     setIsMember(true);
     if (isConnected) {
       check();
     } else {
-      // ConnectButton();
       notify("Connect your wallet first");
     }
   }, []);

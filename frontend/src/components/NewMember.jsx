@@ -9,6 +9,10 @@ import {
 } from "../../constants/constants";
 import { StoreContent } from "./functionality/StoreContent";
 import { StoreMember } from "./functionality/StoreMembers";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Loading from "./Loading";
+
 export default function NewMember() {
   const [name, setName] = useState("");
   const [bio, setBio] = useState("");
@@ -17,6 +21,12 @@ export default function NewMember() {
 
   const [pfpURI, setPfpURI] = useState("");
   const [researchURI, setResearchURI] = useState([]);
+
+  const [isUploaded, setIsUploaded] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const notify = (message) => toast(`${message}`);
 
   const [eligibleToMint, setEligibleToMint] = useState(false);
 
@@ -53,6 +63,8 @@ export default function NewMember() {
   ///setting the profile of the the user
   const storeMember = async () => {
     try {
+      setLoading(true);
+      setMessage("Storing the Details on IPFS...");
       /// show storing Member details to IPFS notification
       console.log("Storing the files ");
       /// Start loading
@@ -62,6 +74,7 @@ export default function NewMember() {
       /// end loading and show the URL to the user to browse
       console.log("Member details uploaded to IPFS");
       setPfpURI(URL);
+      setLoading(false);
       if (research == 0) {
         await request(cid, "");
       } else {
@@ -69,12 +82,16 @@ export default function NewMember() {
       }
     } catch (err) {
       console.log(err);
+      setLoading(false);
+      notify(err);
     }
   };
 
   /// 2 . then store research files
   const StoreResearch = async (_pfpCID) => {
     try {
+      setLoading(true);
+      setMessage("Storing the files on IPFS..");
       /// show storing research to IPFS notification
       console.log("Storing the files ");
       /// startLoading
@@ -84,25 +101,36 @@ export default function NewMember() {
       console.log("Research uploaded to IPFS");
       /// end loading and show the URL to the user
       setResearchURI(URL);
+      setLoading(false);
       /// calling request with the users detail CID and the CID of the research
       request(_pfpCID, cid);
     } catch (err) {
       console.log(err);
+      notify(err);
     }
   };
 
   /// 3.  then add these record to the contract
   const request = async (_pfpCID, _researchCID) => {
     try {
+      setLoading(true);
+      setMessage("Adding request , Confirm the Tx -->");
       /// show creating tx request notification
       console.log("Creating the request...");
       const tx = await Member_contract.addRequest(_pfpCID, [_researchCID]);
       // start Loading
+      setMessage("Confirming the tx...");
       await tx.wait();
       // end loading
       console.log("Request added");
-      alert("Request added");
-    } catch (error) {}
+      // alert("Request added");
+      setLoading(false);
+      setIsUploaded(true);
+    } catch (error) {
+      console.log(error);
+      notify(error.message);
+      setLoading(false);
+    }
   };
 
   const Mint = async () => {
@@ -134,11 +162,6 @@ export default function NewMember() {
 
   const handleSubmit = async () => {
     try {
-      // if (!research == 0) {
-      //   await StoreResearch("");
-      // } else {
-      //   await request("", "");
-      // }
       await storeMember();
     } catch (error) {
       console.log(error);
@@ -147,69 +170,92 @@ export default function NewMember() {
 
   return (
     <>
-      <div className={styles.newMember}>
-        <div className={styles.title_small}>
-          <span className={`${styles.titleWord} ${styles.word2}`}>Create</span>
-          <span className={`${styles.titleWord} ${styles.word1}`}> DAO</span>
-          <span className={`${styles.titleWord} ${styles.word2}`}> Entry</span>
-          <span className={`${styles.titleWord} ${styles.word1}`}>
-            {" "}
-            Proposal
-          </span>
-        </div>
-        {/* <label>Profile Picture</label>
-        <input className={styles.research_docs} type="file" accept="image/*, image/png, image/jpeg" /> */}
-        <label>Enter Your Name</label>
-        <input
-          required
-          placeholder="Name"
-          value={name}
-          className={styles.member_name}
-          type="text"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <label>
-          Describe Yourself <small> &#40; minimum 150 words &#41; </small>
-        </label>
-        <textarea
-          required
-          placeholder="Bio"
-          className={styles.member_bio}
-          type="text"
-          value={bio}
-          onChange={(e) => setBio(e.target.value)}
-        />
-        <label>Field of Research </label>
-        <input
-          required
-          placeholder="Research Field"
-          className={styles.member_name}
-          type="text"
-          value={foR}
-          onChange={(e) => setFoR(e.target.value)}
-        />
-        <label>
-          Previous Researches <small> &#40; optional &#41; </small>{" "}
-        </label>
-        <input
-          className={styles.member_name}
-          type="file"
-          onChange={(e) => setResearch(e.target.files)}
-          multiple
-        />
-        <div className={styles.center}>
-          <button className={styles.button} onClick={handleSubmit}>
-            Submit Proposal
-          </button>
-          {eligibleToMint ? (
-            <button className={styles.button} onClick={Mint}>
-              Mint NFT
-            </button>
+      <ToastContainer autoClose={2000} />
+      {!loading ? (
+        <>
+          {!isUploaded ? (
+            <div className={styles.newMember}>
+              <div className={styles.title_small}>
+                <span className={`${styles.titleWord} ${styles.word2}`}>
+                  Create
+                </span>
+                <span className={`${styles.titleWord} ${styles.word1}`}>
+                  {" "}
+                  DAO
+                </span>
+                <span className={`${styles.titleWord} ${styles.word2}`}>
+                  {" "}
+                  Entry
+                </span>
+                <span className={`${styles.titleWord} ${styles.word1}`}>
+                  {" "}
+                  Proposal
+                </span>
+              </div>
+              <label>Enter Your Name</label>
+              <input
+                required
+                placeholder="Name"
+                value={name}
+                className={styles.member_name}
+                type="text"
+                onChange={(e) => setName(e.target.value)}
+              />
+              <label>
+                Describe Yourself <small> &#40; minimum 150 words &#41; </small>
+              </label>
+              <textarea
+                required
+                placeholder="Bio"
+                className={styles.member_bio}
+                type="text"
+                value={bio}
+                onChange={(e) => setBio(e.target.value)}
+              />
+              <label>Field of Research </label>
+              <input
+                required
+                placeholder="Research Field"
+                className={styles.member_name}
+                type="text"
+                value={foR}
+                onChange={(e) => setFoR(e.target.value)}
+              />
+              <label>
+                Previous Researches <small> &#40; optional &#41; </small>{" "}
+              </label>
+              <input
+                className={styles.member_name}
+                type="file"
+                onChange={(e) => setResearch(e.target.files)}
+                multiple
+              />
+              <div className={styles.center}>
+                <button className={styles.button} onClick={handleSubmit}>
+                  Submit Proposal
+                </button>
+                {/* {eligibleToMint ? (
+                  <button className={styles.button} onClick={Mint}>
+                    Mint NFT
+                  </button>
+                ) : (
+                  <a>Not yet Approved</a>
+                )} */}
+              </div>
+            </div>
           ) : (
-            <a>Not yet Approved</a>
+            <>
+              {" "}
+              <a>Request sent for Approval 👀🚀</a>
+              <a>Checkout request here: {pfpURI}</a>
+            </>
           )}
-        </div>
-      </div>
+        </>
+      ) : (
+        <>
+          <Loading _loading={loading} _message={message} />
+        </>
+      )}
     </>
   );
 }

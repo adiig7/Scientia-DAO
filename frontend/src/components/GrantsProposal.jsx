@@ -102,6 +102,12 @@ export function ApplyGrant() {
     }
   };
 
+  useEffect(() => {
+    if (!isConnected) {
+      notify("Connect your wallet first");
+    }
+  }, []);
+
   return (
     <main className={styles.main}>
       {isUploaded ? (
@@ -263,6 +269,9 @@ export default function GrantsProposal() {
   };
 
   useEffect(() => {
+    if (!isConnected) {
+      notify("Connect your wallet first");
+    }
     get();
   }, []);
 

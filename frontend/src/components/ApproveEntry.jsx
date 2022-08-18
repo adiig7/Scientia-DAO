@@ -88,6 +88,9 @@ export default function ApproveEntry() {
   };
 
   useEffect(() => {
+    if (!isConnected) {
+      notify("Connect your wallet first");
+    }
     get();
   }, []);
 
