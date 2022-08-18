@@ -9,7 +9,7 @@ const Screen = styled.div`
   width: 100%;
   opacity: 0;
   animation: fade 0.4s ease-in forwards;
-  background: black;
+  background: transparent;
 
   @keyframes fade {
     0% {
@@ -35,7 +35,7 @@ const Balls = styled.div`
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: #1b5299;
+    background: white;
     margin: 0 6px 0 0;
     animation: oscillate 0.7s ease-in forwards infinite;
   }
@@ -63,61 +63,30 @@ const Balls = styled.div`
   }
 `;
 
-export default function Loading() {
+export default function Loading( props) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  
-  useEffect(() => {
-    //   const handleStart = (url) => url !== router.asPath && setLoading(true);
-    //   const handleComplete = (url) =>
-    // url === router.asPath &&
-    setTimeout(() => {
-      setLoading(false);
-    }, 5000);
+  const [message, setMessage] = useState("")
 
-    //   router.events.on("routeChangeStart", handleStart);
-    //   router.events.on("routeChangeComplete", handleComplete);
-    //   router.events.on("routeChangeError", handleComplete);
-
-    //   return () => {
-    //     router.events.off("routeChangeStart", handleStart);
-    //     router.events.off("routeChangeComplete", handleComplete);
-    //     router.events.off("routeChangeError", handleComplete);
-    //   };
-
-
-    // router.events.on;
-    // // routeChangeStart
-    // // routeChangeComplete
-    // // routeChangeError
-  });
-
+  React.useEffect(() => {
+    setLoading(props._loading);
+  }, [props._loading]);
+ 
+  React.useEffect(() => {
+    setMessage(props._message)
+  }, [props._message]);
   return (
-    loading && (
-      // <div className={styles.spinnerWrapper}>
-      //   <div className={styles.spinner}></div>
-      // </div>
-      <Screen>
-        <Balls>
-          <div className="ball one"></div>
-          <div className="ball two"></div>
-          <div className="ball three"></div>
-        </Balls>
-      </Screen>
-    )
+    <>
+     <Screen>
+      <Balls>
+        <div className="ball one"></div>
+        <div className="ball two"></div>
+        <div className="ball three"></div>
+      </Balls>
+      <div>
+        { message }
+      </div>
+    </Screen>
+    </>
   );
 }
-
-// export default function Loading(props) {
-//   return (
-//     <>
-//       <Screen>
-//       <Balls>
-//         <div className="ball one"></div>
-//         <div className="ball two"></div>
-//         <div className="ball three"></div>
-//       </Balls>
-//     </Screen>
-//     </>
-//   );
-// }

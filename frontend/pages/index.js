@@ -48,7 +48,7 @@ export default function Home() {
               community for SCIENTISTS
             </span>
           </div>
-          <Link href={"#join"}>
+          <Link href={"#explore"}>
           <button className={styles.button} role="button">
             Explore
           </button>
@@ -61,12 +61,12 @@ export default function Home() {
       </main>
 
       {/* join section */}
-      <div id="join" className={styles.section}>
+      <div id="explore" className={styles.section}>
         <FeaturesSection />
       </div>
 
       {/* join section */}
-      <div className={styles.section}>
+      <div id='join' className={styles.section}>
         <JoinSection />
       </div>
 

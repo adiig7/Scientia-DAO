@@ -53,6 +53,13 @@ export function ApplyGrant() {
             id=""
             placeholder="Describe the research idea "
           ></textarea>
+          Enter Amount for Grant
+          <input
+            className={styles.research_docs}
+            type="text"
+            // multiple
+            // onChange={(e) => setFiles(e.target.files)}
+          />
           Upload any media files
           <input
             className={styles.research_docs}

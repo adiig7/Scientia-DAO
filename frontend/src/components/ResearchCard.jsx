@@ -17,7 +17,7 @@ export default function ResearchCard(props) {
             <button className={styles.arrow}></button>
           </div>
         </div> */}
-        <p>{props.description}</p>
+        <p>{props.description.slice(0, 300)}...</p>
         <Link href={`/research/${props.id}`}>
           <button className={styles.button}>Read Research</button>
         </Link>

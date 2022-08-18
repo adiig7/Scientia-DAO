@@ -8,6 +8,21 @@
   flex-direction: column;
 }
 
+
+.center {
+  margin: 0 auto;
+}
+
+.message {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  min-height: 80vh;
+}
+
 .title {
   font-weight: 800;
   font-size: 34px;
