@@ -119,10 +119,11 @@ export default function () {
   const add = async (_cid) => {
     try {
       setLoading(true);
-      setMessage("Adding the Research ....");
+      setMessage("Adding the Research, Confirm the tx ....");
       console.log("Adding the Research ....");
       const tx = await Member_contract.addResearch(_cid);
       await tx.wait();
+      setMessage("Confirming the tx");
       console.log("Research added to your profile");
       console.log(tx);
       setMessage("Research added to your profile");
@@ -143,53 +144,6 @@ export default function () {
       console.log(error);
       notify(error.message);
     }
-  };
-
-  const RenderForm = () => {
-    return (
-      <>
-        <div className={styles.title}>
-          <span className={`${styles.titleWord} ${styles.word2}`}>
-            Publish{" "}
-          </span>
-          <span className={`${styles.titleWord} ${styles.word1}`}>
-            Research
-          </span>
-        </div>
-
-        <div className={styles.publish}>
-          Enter Research Title
-          <input
-            className={styles.research_title}
-            type="text"
-            placeholder="Research Title Here"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          Enter Research Description{" "}
-          <small className={styles.small}> &#40; Minimum 500 words &#41;</small>
-          <textarea
-            className={styles.research_desc}
-            name=""
-            id=""
-            placeholder="Enter Research Details Here"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          ></textarea>
-          Select Research Media Files
-          <input
-            className={styles.research_docs}
-            type="file"
-            multiple
-            onChange={(e) => setResearchFiles(e.target.files)}
-          />
-          <button className={styles.button} onClick={handleSubmit}>
-            {" "}
-            Upload Research to IPFS{" "}
-          </button>
-        </div>
-      </>
-    );
   };
 
   useEffect(() => {
@@ -235,7 +189,60 @@ export default function () {
                     <a>Upload More ??</a>
                   </>
                 ) : (
-                  <RenderForm />
+                  <>
+                    {" "}
+                    <div className={styles.title}>
+                      <span className={`${styles.titleWord} ${styles.word2}`}>
+                        Publish{" "}
+                      </span>
+                      <span className={`${styles.titleWord} ${styles.word1}`}>
+                        Research
+                      </span>
+                    </div>
+                    <div className={styles.publish}>
+                      Enter Research Title
+                      <input
+                        className={styles.research_title}
+                        type="text"
+                        placeholder="Research Title Here"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                      />
+                      Enter Research Description{" "}
+                      <small className={styles.small}>
+                        {" "}
+                        &#40; Minimum 500 words &#41;
+                      </small>
+                      <textarea
+                        className={styles.research_desc}
+                        name=""
+                        id=""
+                        placeholder="Enter Research Details Here"
+                        value={description}
+                        onChange={(e) => setDescription(e.target.value)}
+                      ></textarea>
+                      Select Research Media Files
+                      <input
+                        className={styles.research_docs}
+                        type="file"
+                        multiple
+                        onChange={(e) => setResearchFiles(e.target.files)}
+                      />
+                      <button className={styles.button} onClick={handleSubmit}>
+                        {" "}
+                        Upload Research to IPFS{" "}
+                      </button>
+                      {isUploaded ? (
+                        <>
+                          <a>Research Upload Completed</a>
+                          <a>Check out research on {researchURI}</a>
+                          <a>Upload More ??</a>
+                        </>
+                      ) : (
+                        <a>Research Not yet uploaded</a>
+                      )}
+                    </div>
+                  </>
                 )}
               </>
             ) : (
