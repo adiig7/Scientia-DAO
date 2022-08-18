@@ -1,7 +1,7 @@
 const { ethers } = require("hardhat");
 
 async function main() {
-  const nft = "0x2669e2b28FDf9002F691bB30C637b66290DEF5e0";
+  const nft = "0xd60123082CEd26d0a970ddeFE350A08aB3680207";
   const MembersContract = await ethers.getContractFactory("newDAOMember");
 
   // deploy the contract

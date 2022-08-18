@@ -46,7 +46,7 @@ contract Grants is Ownable {
 
     mapping(uint256 => mapping(address => bool)) public voters;
 
-    mapping(uint256 => Collabration) collabrations;
+    mapping(uint256 => Collabration) public collabrations;
 
     enum Vote {
         Yes, // Yes = 0
@@ -78,7 +78,7 @@ contract Grants is Ownable {
             msg.sender,
             contentURI,
             _amount,
-            _amount,
+            0,
             false,
             false,
             0,
@@ -107,7 +107,7 @@ contract Grants is Ownable {
         voters[_id][msg.sender] == true;
     }
 
-    function endRequest(uint256 _id) public onlyDAOMember {
+    function endRequest(uint256 _id) public {
         Request storage _request = GrantsRequests[_id];
         require(
             block.timestamp > _request.VotingStartTime + votingDuration,
@@ -115,6 +115,7 @@ contract Grants is Ownable {
         );
         if (_request.yayVotes > _request.nayVotes) {
             _request.approved = true;
+            _request.amountApproved = _request.amountRequested;
             GrantsApproved[_GrantsApproved] = _request;
         } else {
             emit GrantRejected(_request.creator, _id);
@@ -123,7 +124,7 @@ contract Grants is Ownable {
 
     /// just a mock function for the chainlink keepers to be able to close the open requestss
     function _perform() public {
-        for (uint256 id = 0; id <= _GrantsRequests; id++) {
+        for (uint256 id = 0; id < _GrantsRequests; id++) {
             Request storage _request = GrantsRequests[id];
             require(
                 block.timestamp > _request.VotingStartTime + votingDuration,

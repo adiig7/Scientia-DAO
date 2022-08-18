@@ -50,11 +50,9 @@ contract MemberNFT is ERC721, ERC721Enumerable, Ownable {
 
     /// to mint the token ID for the DAO user to join the DAO
     /// can be called by anybody , but it will be called in backend just by the DAO members
+    // only 1 NFT can be minted per User
     function safeMint(address to) public {
-        // require(
-        //     _member.getApproval(msg.sender),
-        //     "You are not a approved to mint"
-        // );
+        require(balanceOf(to) == 0, "You are already a DAO Member");
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);

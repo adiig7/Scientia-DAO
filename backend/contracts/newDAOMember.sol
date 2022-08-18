@@ -92,7 +92,7 @@ contract newDAOMember is Ownable {
     /// @dev - NFT is minted later to make him a DAO member
     /// @param _id - id of the member to be added from the requests array
     /// Requirments : Only DAO Member can call this function
-    function addMember(uint256 _id) public onlyDAOMember onlyOwner {
+    function addMember(uint256 _id) public {
         Member storage member = requestList[_id];
         require(
             block.timestamp > member.votingStartTime + votingDuration,
@@ -153,7 +153,7 @@ contract newDAOMember is Ownable {
 
     /// just a mock function for the chainlink keepers to be able to close the open requestss
     function _perform() public {
-        for (uint256 id = 0; id <= counterRequestList; id++) {
+        for (uint256 id = 0; id < counterRequestList; id++) {
             Member storage member = requestList[id];
             require(
                 block.timestamp > member.votingStartTime + votingDuration,

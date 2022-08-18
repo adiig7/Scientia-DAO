@@ -8,15 +8,15 @@ export const NFT_STORAGE_API_KEY =
 export const Whitelist_Contract_Address =
   "0x1e5b01FaA5784E4A75c75F6d0f0dbeF8c40eCc74";
 export const MemberNFT_Contract_Address =
-  "0x2669e2b28FDf9002F691bB30C637b66290DEF5e0";
+  "0xd60123082CEd26d0a970ddeFE350A08aB3680207";
 export const ContributorNFT_Contract_Address =
-  "0xC44a35ada27107FFB64D0cD17C4ED1E4549f66cC";
+  "0xaD52059b257531883E5906B1E0b0e67002dd1297";
 export const DAOFunds_Contract_Address =
-  "0x52E1f8418679423D5E30E5D2cDe15c720BB243Ca";
+  "0x259260e02f5106501efadEd8E6407A46D8a32d09";
 export const DAOMember_Contract_Address =
-  "0x28FCCb7D287C4C92e49C3163B6898d20766aDefF";
+  "0x2e86bfD68101eB5F191042638326f7E2B54BDf9c";
 export const Grants_Contract_Address =
-  "0x306F31D3C8459F7FADE9DDC4b9D8F98AfF3B7ed7";
+  "0x2d1Be1884e60493876B2Cd3f47E8f5a28F355027";
 
 export const Whitelist_ABI = [
   {
@@ -243,6 +243,25 @@ export const MemberNFT_ABI = [
     name: "approve",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "address",
+        name: "",
+        type: "address",
+      },
+    ],
+    name: "approved",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {
@@ -1557,17 +1576,34 @@ export const DAOMember_ABI = [
   {
     inputs: [
       {
-        internalType: "uint256",
-        name: "_id",
-        type: "uint256",
+        internalType: "address",
+        name: "_user",
+        type: "address",
       },
     ],
     name: "getMembersResearch",
     outputs: [
       {
-        internalType: "string[]",
+        components: [
+          {
+            internalType: "address",
+            name: "researcher",
+            type: "address",
+          },
+          {
+            internalType: "uint256",
+            name: "dateOfPublication",
+            type: "uint256",
+          },
+          {
+            internalType: "string",
+            name: "researchPaperURI",
+            type: "string",
+          },
+        ],
+        internalType: "struct newDAOMember.ResearchPaper[]",
         name: "",
-        type: "string[]",
+        type: "tuple[]",
       },
     ],
     stateMutability: "view",
@@ -1668,6 +1704,30 @@ export const DAOMember_ABI = [
   {
     inputs: [
       {
+        internalType: "address",
+        name: "_user",
+        type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "_id",
+        type: "uint256",
+      },
+    ],
+    name: "getVoterStatus",
+    outputs: [
+      {
+        internalType: "bool",
+        name: "",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
         internalType: "uint256",
         name: "",
         type: "uint256",
@@ -1715,6 +1775,11 @@ export const DAOMember_ABI = [
         internalType: "address",
         name: "",
         type: "address",
+      },
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
       },
     ],
     name: "membersPaperList",
@@ -2166,6 +2231,35 @@ export const Grants_ABI = [
     name: "_perform",
     outputs: [],
     stateMutability: "nonpayable",
+    type: "function",
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "collabrations",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "requestID",
+        type: "uint256",
+      },
+      {
+        internalType: "address",
+        name: "creator",
+        type: "address",
+      },
+      {
+        internalType: "bool",
+        name: "open",
+        type: "bool",
+      },
+    ],
+    stateMutability: "view",
     type: "function",
   },
   {

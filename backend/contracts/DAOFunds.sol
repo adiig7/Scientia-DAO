@@ -26,6 +26,7 @@ contract DAOFunds is Ownable {
         return success;
     }
 
+    /// @dev Function to check the contribution for the user if they have done or not
     function getContribution(address _user) public view returns (bool) {
         return contributors[_user];
     }
