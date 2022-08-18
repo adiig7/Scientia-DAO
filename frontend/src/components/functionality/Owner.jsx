@@ -1,7 +1,6 @@
 // to complete or end voting , for grants and members
 // to pay for the grants , transfer
 // access onlyowner Functions
-
 import React, { useEffect, useState } from "react";
 import { useAccount, useContract, useProvider, useSigner } from "wagmi";
 import {
@@ -10,10 +9,11 @@ import {
   DAOMember_ABI,
   OwnerAddress,
 } from "../../../constants/constants";
-import styles from '../../../styles/Home.module.css'
+import styles from "../../../styles/Home.module.css";
 
 const Owner = async () => {
   const [isOwner, setIsOwner] = useState(false);
+  const [id, setId] = useState(0);
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address, isConnected } = useAccount();
@@ -80,21 +80,29 @@ const Owner = async () => {
   useEffect(() => {
     checkOwner();
   });
-};
 
-export default function OwnerUI() {
-
-  return(
+  return (
     <>
       <div className={styles.owner}>
         <h1>Admin Section</h1>
-        <input className={styles.owner_input} type="text" />
+        <input
+          onChange={(e) => setId(e.target.value)}
+          value={id}
+          className={styles.owner_input}
+          type="text"
+        />
         <div>
-        <button className={styles.button}>End Member Vote</button>
-        <button className={styles.button}>End Grants Vote</button>
-        <button className={styles.button}>Pay Grant</button>
+          <button onClick={() => EndVoteMembers(id)} className={styles.button}>
+            End Member Vote
+          </button>
+          <button onClick={() => EndVoteGrants(id)} className={styles.button}>
+            End Grants Vote
+          </button>
+          <button onClick={() => PayGrants(id)} className={styles.button}>
+            Pay Grant
+          </button>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
