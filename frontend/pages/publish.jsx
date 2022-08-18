@@ -65,6 +65,7 @@ export default function () {
       setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -87,6 +88,7 @@ export default function () {
     } catch (err) {
       console.log(err);
       notify(err);
+      setLoading(false);
     }
   };
 
@@ -109,6 +111,7 @@ export default function () {
     } catch (err) {
       console.log(err);
       notify(err);
+      setLoading(false);
     }
   };
 
@@ -129,6 +132,7 @@ export default function () {
       console.log(error);
       notify(error.message);
       notify("Please try again !!");
+      setLoading(false);
     }
   };
 
