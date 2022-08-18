@@ -8,11 +8,15 @@ import {
   DAOMember_Contract_Address,
 } from "../constants/constants";
 
+import Loading from "../src/components/Loading";
+// import Loading from "../src/components/Loading";
+
 export default function explore() {
   const [researches, setResearches] = useState([]);
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address, isConnected } = useAccount();
+  const [loading, setLoading] = useState();
 
   const Member_contract = useContract({
     addressOrName: DAOMember_Contract_Address,
@@ -79,6 +83,12 @@ export default function explore() {
     get();
   }, []);
 
+
+  useEffect(() => {
+    // setLoading(true);
+    // setTimeout(() => setLoading(true), 1000);
+  }, []);
+
   return (
     <>
       <Head>
@@ -90,7 +100,39 @@ export default function explore() {
         <link rel="icon" href="/microscope.png" />
       </Head>
 
-      <div className={styles.main}>
+      {!loading ? (
+        <div className={styles.main}>
+          <div className={styles.title}>
+            <span className={`${styles.titleWord} ${styles.word1}`}>
+              Published{" "}
+            </span>
+            <span className={`${styles.titleWord} ${styles.word2}`}>
+              Researches
+            </span>
+          </div>
+          <div className={styles.researches}>
+            {researches ? (
+              researches.map((research) => {
+                return (
+                  <ResearchCard
+                    title={research.Title}
+                    description={research.Description}
+                    id={research.Id}
+                  />
+                );
+              })
+            ) : (
+              <a>No researches present</a>
+            )}
+          </div>
+        </div>
+      ) : (
+        <div className={styles.main}>
+          <h1>Kushagra Sarathe</h1>
+        </div>
+      )}
+
+      {/* <div className={styles.main}>
         <div className={styles.title}>
           <span className={`${styles.titleWord} ${styles.word1}`}>
             Published{" "}
@@ -113,11 +155,8 @@ export default function explore() {
           ) : (
             <a>No researches present</a>
           )}
-
-          {/* <ResearchCard />
-          <ResearchCard /> */}
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

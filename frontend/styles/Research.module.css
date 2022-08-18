@@ -38,7 +38,7 @@
   justify-content: center;
   align-items: flex-start;
   flex-wrap: wrap;
-  max-width: 100%;
+  max-width: 90%;
 }
 
 /* .research:hover {
@@ -133,7 +133,7 @@
   border-radius: 15px;
   flex-wrap: wrap;
   width: 50%;
-  /* max-width: 500px; */
+  /* max-width: 600px; */
 }
 
 .contribute * {

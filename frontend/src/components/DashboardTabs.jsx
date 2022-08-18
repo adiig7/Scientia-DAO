@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "../../styles/DashboardTabs.module.css";
 import Account from "./Account";
 import ApproveEntry from "./ApproveEntry";
-import GrantsProposal from "./GrantsProposal";
+import GrantsProposal, { ApplyGrant } from "./GrantsProposal";
 
 export default function DashboardTabs() {
   const [toggleState, setToggleState] = useState(1);
@@ -44,6 +44,17 @@ export default function DashboardTabs() {
           }
           onClick={() => toggleTab(3)}
         >
+          Approve Grants
+        </div>
+        
+        <div
+          className={
+            toggleState === 4
+              ? `${styles.tabs} ${styles.active_tab}`
+              : styles.tabs
+          }
+          onClick={() => toggleTab(4)}
+        >
           Apply for Grants
         </div>
       </div>
@@ -78,6 +89,16 @@ export default function DashboardTabs() {
             }
           >
             <GrantsProposal />
+          </div>
+          
+          <div
+            className={
+              toggleState === 4
+                ? `${styles.tab3} ${styles.active_content}`
+                : `${styles.tab3}`
+            }
+          >
+            <ApplyGrant />
           </div>
         </div>
       </main>

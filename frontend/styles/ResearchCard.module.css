@@ -31,7 +31,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   text-align: justify;
-  width: 100%;
+  max-width: 90%;
 }
 
 .researches:hover {

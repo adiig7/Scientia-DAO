@@ -11,8 +11,7 @@ import {
 import { StoreContent } from "../src/components/functionality/StoreContent2";
 import { StoreResearch } from "../src/components/functionality/StoreResearch";
 
-// check connect wallet and popup connect if not done
-//
+
 export default function () {
   const [isMember, setIsMember] = useState(false);
   const [title, setTitle] = useState("");
@@ -112,11 +111,58 @@ export default function () {
     }
   };
 
+  // const RenderForm  = () => {
+  //   return(
+  //     {isMember ? (<main className={styles.main}>
+  //       <div className={styles.title}>
+  //         <span className={`${styles.titleWord} ${styles.word2}`}>
+  //           Publish{" "}
+  //         </span>
+  //         <span className={`${styles.titleWord} ${styles.word1}`}>
+  //           Research
+  //         </span>
+  //       </div>
+
+  //       <div className={styles.publish}>
+  //         Enter Research Title
+  //         <input
+  //           className={styles.research_title}
+  //           type="text"
+  //           placeholder="Research Title Here"
+  //           value={title}
+  //           onChange={(e) => setTitle(e.target.value)}
+  //         />
+  //         Enter Research Description{" "}
+  //         <small className={styles.small}> &#40; Minimum 500 words &#41;</small>
+  //         <textarea
+  //           className={styles.research_desc}
+  //           name=""
+  //           id=""
+  //           placeholder="Enter Research Details Here"
+  //           value={description}
+  //           onChange={(e) => setDescription(e.target.value)}
+  //         ></textarea>
+  //         Select Research Media Files
+  //         <input
+  //           className={styles.research_docs}
+  //           type="file"
+  //           multiple
+  //           onChange={(e) => setResearchFiles(e.target.files)}
+  //         />
+  //         <button className={styles.button} onClick={handleSubmit}>
+  //           {" "}
+  //           Upload Research to IPFS{" "}
+  //         </button>
+  //       </div>
+  //     </main> : }
+  //   )
+  // }
+
   useEffect(() => {
     if (isConnected) {
       check();
     } else {
-      // ConnectButton();
+      ConnectButton();
       window.alert("Connect your wallet first");
     }
   }, []);

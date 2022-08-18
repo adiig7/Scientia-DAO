@@ -7,11 +7,74 @@ import { StoreContent } from "./functionality/StoreContent2";
 import { StoreRequests } from "./functionality/StoreRequests";
 import ApproveGrant from "./ApproveGrant";
 
-export default function GrantsProposal() {
-  const [amount, setAmount] = useState("");
+
+export function ApplyGrant() {
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [files, setFiles] = useState([]);
+
+  const handleSubmit = async () => {
+    try {
+      console.log("Starting uplaoad");
+      await Storefiles();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return(
+    <>
+      <main className={styles.main}>
+        <div className={styles.title}>
+          <span className={`${styles.titleWord} ${styles.word1}`}>Create </span>
+          <span className={`${styles.titleWord} ${styles.word2}`}>Grant</span>
+          <span className={`${styles.titleWord} ${styles.word1}`}>
+            {" "}
+            Proposal
+          </span>
+        </div>
+        <div className={styles.idea}>
+          Enter Research Idea
+          <input
+            className={styles.research_title}
+            type="text"
+            placeholder="Research Idea Here"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <label htmlFor="">Describe your Idea</label>
+          <small className={styles.small}> &#40; minimum 200 words &#41;</small>
+          <textarea
+            className={styles.research_desc}
+            name=""
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            id=""
+            placeholder="Describe the research idea "
+          ></textarea>
+          Upload any media files
+          <input
+            className={styles.research_docs}
+            type="file"
+            multiple
+            onChange={(e) => setFiles(e.target.files)}
+          />
+        </div>
+          <div className={styles.center}>
+            <button className={styles.button} onClick={handleSubmit}>
+              Submit Proposal{" "}
+            </button>
+          </div>
+      </main>
+    </>
+  );
+}
+
+
+export default function GrantsProposal() {
+  const [amount, setAmount] = useState("");
+
   const [grants, setGrants] = useState([]);
 
   const provider = useProvider();
@@ -64,14 +127,7 @@ export default function GrantsProposal() {
     }
   };
 
-  const handleSubmit = async () => {
-    try {
-      console.log("Starting uplaoad");
-      await Storefiles();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+
 
   /// fetch the grants
 
@@ -139,48 +195,7 @@ export default function GrantsProposal() {
 
   return (
     <>
-      <main className={styles.main}>
-        <div className={styles.title}>
-          <span className={`${styles.titleWord} ${styles.word1}`}>Create </span>
-          <span className={`${styles.titleWord} ${styles.word2}`}>Grant</span>
-          <span className={`${styles.titleWord} ${styles.word1}`}>
-            {" "}
-            Proposal
-          </span>
-        </div>
-        <div className={styles.idea}>
-          Enter Research Idea
-          <input
-            className={styles.research_title}
-            type="text"
-            placeholder="Research Idea Here"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <label htmlFor="">Describe your Idea</label>
-          <small className={styles.small}> &#40; minimum 200 words &#41;</small>
-          <textarea
-            className={styles.research_desc}
-            name=""
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            id=""
-            placeholder="Describe the research idea "
-          ></textarea>
-          Upload any media files
-          <input
-            className={styles.research_docs}
-            type="file"
-            multiple
-            onChange={(e) => setFiles(e.target.files)}
-          />
-          <div className={styles.center}>
-            <button className={styles.button} onClick={handleSubmit}>
-              Submit Proposal{" "}
-            </button>
-          </div>
-        </div>
-      </main>
+      
 
       <div className={styles.flex}>
         <div className={styles.title}>
