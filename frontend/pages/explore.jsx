@@ -16,7 +16,8 @@ export default function explore() {
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address, isConnected } = useAccount();
-  const [loading, setLoading] = useState();
+
+  const [loading, setLoading] = useState(false);
 
   const Member_contract = useContract({
     addressOrName: DAOMember_Contract_Address,
@@ -60,6 +61,7 @@ export default function explore() {
   // fetches the no. of requests , then fetches the each request and store the result in the array of requests
   const get = async () => {
     try {
+      setLoading(true);
       console.log("starting ...");
       const TotalRequest = await Member_contract.counterResearches();
       const total = parseInt(TotalRequest._hex);
@@ -74,6 +76,8 @@ export default function explore() {
       console.log("ending...");
       /// set the array of the objects of the requests is stored and can be rendered then
       setResearches(_researches);
+      setLoading(false);
+      
     } catch (error) {
       console.log(error);
     }
@@ -84,10 +88,12 @@ export default function explore() {
   }, []);
 
 
-  useEffect(() => {
-    // setLoading(true);
-    // setTimeout(() => setLoading(true), 1000);
-  }, []);
+  // useEffect(() => {
+  //   // setLoading(true);
+  //   setTimeout(() => setLoading(true), 1000);
+  // }, []);
+
+
 
   return (
     <>
@@ -128,7 +134,8 @@ export default function explore() {
         </div>
       ) : (
         <div className={styles.main}>
-          <h1>Kushagra Sarathe</h1>
+          {/* <h1>Kushagra Sarathe</h1> */}
+          <Loading _loading={loading} />
         </div>
       )}
 

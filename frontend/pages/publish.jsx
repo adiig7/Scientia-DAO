@@ -10,6 +10,7 @@ import {
 } from "../constants/constants";
 import { StoreContent } from "../src/components/functionality/StoreContent2";
 import { StoreResearch } from "../src/components/functionality/StoreResearch";
+import Link from "next/link";
 
 
 export default function () {
@@ -19,6 +20,8 @@ export default function () {
   const [researchFiles, setResearchFiles] = useState([]);
   const [researchURI, setResearchURI] = useState("");
   const [filesURI, setfilesURI] = useState("");
+
+  const [loading, setLoading] = useState(false);
 
   const provider = useProvider();
   const { data: signer } = useSigner();
@@ -38,6 +41,7 @@ export default function () {
 
   const check = async () => {
     try {
+      setLoading(true);
       console.log("Checking Member status ");
       const check = await MemberNFT_contract.balanceOf(address);
       console.log(check);
@@ -52,6 +56,8 @@ export default function () {
         );
         // Response.Redirect("url#JoinSection");
       }
+      setLoading(false);
+
     } catch (error) {
       console.log(error);
     }
@@ -159,10 +165,11 @@ export default function () {
   // }
 
   useEffect(() => {
+    // setIsMember(true)
     if (isConnected) {
       check();
     } else {
-      ConnectButton();
+      // ConnectButton();
       window.alert("Connect your wallet first");
     }
   }, []);
@@ -179,7 +186,7 @@ export default function () {
 
       <main className={styles.main}>
         {isMember ? (
-          <div>
+          <>
             <div className={styles.title}>
               <span className={`${styles.titleWord} ${styles.word2}`}>
                 Publish{" "}
@@ -223,9 +230,18 @@ export default function () {
                 Upload Research to IPFS{" "}
               </button>
             </div>
-          </div>
+          </>
         ) : (
-          <a>Not a DAO member , First regsiter for DAO </a>
+
+          <div className={styles.message}>
+            <h2>You are not a DAO member yet, please apply to become member</h2> 
+            <div className={styles.center}>
+
+            <Link href={'/#join'}>
+              <button className={styles.button}>JoinDao</button>
+            </Link>
+            </div>
+          </div>
         )}
       </main>
     </>
