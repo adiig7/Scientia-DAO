@@ -1,95 +1,116 @@
 .main {
-    padding-top: 5rem;
-    padding-bottom: 1rem;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-wrap: wrap;
-    flex-direction: column;
-    min-height: 92vh;
+  padding-top: 5rem;
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  flex-direction: column;
+  min-height: 92vh;
+  margin: 0 auto;
 }
 
-.upcoming {
-    max-width: 80%;
-    border: 1px solid rgb(110, 99, 160);
-    padding: 1.5rem 3rem;
-    margin-top: 20px;
-    margin-bottom: 40px;
-    border-radius: 10px;
-    /* box-shadow: 0 15px 25px rgba(129, 124, 124, 0.2); */
-    backdrop-filter: blur(14px);
-    background-color: rgba(94, 80, 109, 0.18);
-    transition: ease-in-out 0.3s;
-}
-
-.upcoming:hover {
-    transform: scale(1.02);
-}
-
-/*
-.main * {
-  border: 1px solid red;
+/* 
+.center {
+    margin: 0 auto;
 } */
 
+.founders {
+    padding: 1rem;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.card {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+  border: 1px solid rgb(110, 99, 160);
+  border-radius: 10px;
+  backdrop-filter: blur(14px);
+  background-color: rgba(94, 80, 109, 0.18);
+  transition: ease-in-out 0.3s;
+  /* max-width: 350px; */
+  /* height: 420px; */
+    /* width: 40%; */
+  padding: 0.5rem 2rem;
+  margin: 15px ;
+  text-align: center;
+}
+
+.card:hover {
+  transform: scale(1.02);
+}
+
+.card p {
+  font-size: 16px;
+  max-width: 25ch;
+}
+
 .title {
-    /* font-family: "Montserrat", sans-serif; */
-    font-weight: 800;
-    font-size: 34px;
-    margin: 8px auto;
-    margin-top: 25px;
-    /* text-transform: uppercase; */
+  font-weight: 800;
+  font-size: 34px;
+  margin: 8px auto;
+  margin-top: 25px;
 }
 
 .titleWord {
-    animation: color-animation 4s linear infinite;
+  animation: color-animation 4s linear infinite;
 }
 
 .word1 {
-    --color-1: #a2cdff;
-    --color-2: #84daff;
-    --color-3: #c0ffa1;
+  --color-1: #a2cdff;
+  --color-2: #84daff;
+  --color-3: #c0ffa1;
 }
 
 .word2 {
-    --color-1: #6cffe4;
-    --color-2: #4dffea;
-    --color-3: rgb(114, 255, 208);
+  --color-1: #6cffe4;
+  --color-2: #4dffea;
+  --color-3: rgb(114, 255, 208);
 }
 
 @keyframes color-animation {
-    0% {
-        color: var(--color-1);
-    }
-    32% {
-        color: var(--color-1);
-    }
-    33% {
-        color: var(--color-2);
-    }
-    65% {
-        color: var(--color-2);
-    }
-    66% {
-        color: var(--color-3);
-    }
-    99% {
-        color: var(--color-3);
-    }
-    100% {
-        color: var(--color-1);
-    }
+  0% {
+    color: var(--color-1);
+  }
+  32% {
+    color: var(--color-1);
+  }
+  33% {
+    color: var(--color-2);
+  }
+  65% {
+    color: var(--color-2);
+  }
+  66% {
+    color: var(--color-3);
+  }
+  99% {
+    color: var(--color-3);
+  }
+  100% {
+    color: var(--color-1);
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .main {
-        margin: 0 auto;
-        width: 100%;
+  .grid {
+    padding: 1rem;
+  }
 
-        padding-top: 5rem;
-    }
+  .card p {
+    font-size: 14px;
+  }
 
-    .title {
-        font-size: 22px;
-        margin-top: 25px;
-    }
+  .title {
+    font-size: 22px;
+    margin-top: 25px;
+  }
 }

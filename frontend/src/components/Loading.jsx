@@ -3,9 +3,20 @@ import styles from "../../styles/Loading.module.css";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
+const Message = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding-top: 20rem;
+  color: #6cffe4;
+  letter-spacing: 5px;
+  
+`;
+
 const Screen = styled.div`
   position: relative;
-  height: 100vh;
+  height: 90vh;
   width: 100%;
   opacity: 0;
   animation: fade 0.4s ease-in forwards;
@@ -83,9 +94,13 @@ export default function Loading( props) {
         <div className="ball two"></div>
         <div className="ball three"></div>
       </Balls>
-      <div>
-        { message }
-      </div>
+      <Message>
+        <div>
+          <h2>
+          { message }
+          </h2>
+        </div>
+      </Message>
     </Screen>
     </>
   );

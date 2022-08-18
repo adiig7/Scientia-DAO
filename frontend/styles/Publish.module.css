@@ -62,10 +62,10 @@
   align-items: flex-start;
   flex-wrap: wrap;
 }
-
+/* 
 .publish:hover {
   transform: scale(0.98);
-}
+} */
 
 .research_title {
   width: 100%;
