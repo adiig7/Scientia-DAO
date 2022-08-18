@@ -65,7 +65,7 @@
    */
 
 
-   .spinnerWrapper {
+   /* .spinnerWrapper {
     height: 100vh;
     width: 100vh;
     display: flex;
@@ -107,4 +107,6 @@
    @keyframes rotation {
     from {transform: rotate(0deg);}
     to {transform: rotate(359deg);}
-   }
+   } */
+
+   

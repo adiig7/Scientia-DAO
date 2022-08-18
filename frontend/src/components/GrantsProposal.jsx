@@ -202,8 +202,6 @@ export default function GrantsProposal() {
 
   return (
     <>
-      
-
       <div className={styles.flex}>
         <div className={styles.title}>
           <span className={`${styles.titleWord} ${styles.word2}`}>Open </span>
@@ -228,20 +226,6 @@ export default function GrantsProposal() {
           ) : (
             <a>No Grant Requests</a>
           )}
-          {/* <div className={styles.grant_card}>
-            <ApproveGrant
-              idea_title={`Research On Resuable Automobile Parts`}
-              idea_desc={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis eum ipsam, adipisci, officiis ut corrupti laborum dignissimos omnis at quae natus veritatis excepturi aliquam voluptatum nostrum exercitationem et debitis. Illo?`}
-              idea_field={`Automobile`}
-            />
-          </div>
-          <div className={styles.grant_card}>
-            <ApproveGrant
-              idea_title={`Research On Resuable Automobile Parts`}
-              idea_desc={`Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis eum ipsam, adipisci, officiis ut corrupti laborum dignissimos omnis at quae natus veritatis excepturi aliquam voluptatum nostrum exercitationem et debitis. Illo?`}
-              idea_field={`Automobile`}
-            />
-          </div> */}
         </div>
       </div>
     </>

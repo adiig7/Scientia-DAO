@@ -193,6 +193,8 @@ export default function () {
   };
 
   useEffect(() => {
+    // setLoading(true)
+    // setMessage("Testing")
     setIsMember(true);
     if (isConnected) {
       check();
@@ -212,6 +214,9 @@ export default function () {
         />
         <link rel="icon" href="/microscope.png" />
       </Head>
+
+      { !loading ? (
+        <>
 
       <main className={styles.main}>
         {isMember ? (
@@ -237,19 +242,57 @@ export default function () {
               </Link>
             </div>
           </div>
-        )}
-        {loading ? (
-          <div className={styles.main}>
-            {/* <h1>Kushagra Sarathe</h1> */}
-            <Loading _loading={loading} _message={message} />
-          </div>
-        ) : (
-          <>
-            <a></a>
-          </>
-        )}
+        ) }
         <ToastContainer autoClose={2000} />
       </main>
+        </>
+      ) : (
+      
+        <>
+        <div className={styles.main}>
+            <Loading _loading={loading} _message={message} />
+          </div>
+        </>
+      )
+      }
+      
+
+      {/* // <main className={styles.main}>
+      //   {isMember ? (
+      //     <>
+      //       {isUploaded ? (
+      //         <>
+      //           <a>Research Upload Completed</a>
+      //           <a>Check out research on {researchURI}</a>
+      //           <a>Upload More ??</a>
+      //         </>
+      //       ) : (
+      //         <>
+      //           <RenderForm />
+      //         </>
+      //       )}
+      //     </>
+      //   ) : (
+      //     <div className={styles.message}>
+      //       <h2>You are not a DAO member yet, please apply to become member</h2>
+      //       <div className={styles.center}>
+      //         <Link href={"/#join"}>
+      //           <button className={styles.button}>JoinDao</button>
+      //         </Link>
+      //       </div>
+      //     </div>
+      //   )}
+      //   {loading ? (
+      //     <div className={styles.main}>
+      //       <Loading _loading={loading} _message={message} />
+      //     </div>
+      //   ) : (
+      //     <>
+      //       <a></a>
+      //     </>
+      //   )}
+      //   <ToastContainer autoClose={2000} />
+      // </main> */}
     </>
   );
 }
