@@ -9,6 +9,7 @@ import Link from "next/link";
 import Poweredby from "../src/components/Poweredby";
 import NFTSection from "../src/components/NFTSection";
 import Contribute from "../src/components/Contribute";
+import Owner from "../src/components/functionality/Owner";
 // import scientist from "../assets/scientist.png";
 // import image8 from "../assets/8_bg.png";
 // import grants from "../assets/grants.png";
@@ -103,6 +104,7 @@ export default function Home() {
       <div className={styles.section}>
         <Poweredby />
       </div>
+      {/* <Owner /> */}
     </div>
   );
 }
