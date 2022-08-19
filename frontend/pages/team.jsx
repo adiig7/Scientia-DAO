@@ -37,7 +37,7 @@ export default function team() {
             <p>
               <b>Backend Developer</b>
             </p>
-            <p>Loves to travel and contribute to communities.</p>
+            {/* <p>Loves to travel and contribute to communities.</p> */}
             <a
               href="https://twitter.com/NilsGiebing"
               target="_blank"
@@ -60,7 +60,7 @@ export default function team() {
             <p>
               <b>Frontend Developer</b>
             </p>
-            <p>Bug bounty hunter turned Frontend developer</p>
+            {/* <p>Bug bounty hunter turned Frontend developer</p> */}
             <a
               href="https://twitter.com/kushagrasarathe"
               target="_blank"
@@ -83,7 +83,7 @@ export default function team() {
             <p>
               <b>Fullstack Developer</b>
             </p>
-            <p>Fullstack developer building fun projects</p>
+            {/* <p>Fullstack developer building fun projects</p> */}
             <a
               href="https://twitter.com/0xdhruva"
               target="_blank"
@@ -104,9 +104,9 @@ export default function team() {
 
             <Image src={aditya_gupta} alt="Nils Giebing" />
             <p>
-              <b>Backend Developer</b>
+              <b>Smart-contract Developer</b>
             </p>
-            <p> Android developer turned smart-contract developer</p>
+            {/* <p> Smart-contract developer</p> */}
             <a
               href="https://twitter.com/adiig7"
               target="_blank"

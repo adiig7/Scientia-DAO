@@ -63,7 +63,7 @@ export default function Explore() {
   const get = async () => {
     try {
       setLoading(true);
-      setMessage("Fetching the details from contract... , Hang On !!");
+      setMessage("Fetching data...");
       console.log("starting ...");
       const TotalRequest = await Member_contract.counterResearches();
       const total = parseInt(TotalRequest._hex);
@@ -132,7 +132,7 @@ export default function Explore() {
           </div>
         </div>
       ) : (
-        <div className={styles.masin}>
+        <div className={styles.message}>
           {/* <h1>Kushagra Sarathe</h1> */}
           <Loading _loading={loading} _message={message} />
         </div>

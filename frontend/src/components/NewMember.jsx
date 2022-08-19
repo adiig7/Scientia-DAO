@@ -231,7 +231,7 @@ export default function NewMember() {
                 multiple
               />
               <div className={styles.center}>
-                <button className={styles.button} onClick={handleSubmit}>
+                <button className={styles.member_btn} onClick={handleSubmit}>
                   Submit Proposal
                 </button>
                 {/* {eligibleToMint ? (
@@ -245,9 +245,23 @@ export default function NewMember() {
             </div>
           ) : (
             <>
-              {" "}
-              <a>Request sent for Approval 👀🚀</a>
-              <a>Checkout request here: {pfpURI}</a>
+              <div>
+                {" "}
+                <div className={styles.title_small}>
+                  <span className={`${styles.titleWord} ${styles.word1}`}>
+                    Request sent for Approval{" "}
+                  </span>{" "}
+                  🚀
+                  <span className={`${styles.titleWord} ${styles.word2}`}>
+                    Checkout request here:{" "}
+                    <br />
+                    <a className={`${styles.titleWord} ${styles.word1}`} href={pfpURI}>
+                      {" "}
+                      <u> {pfpURI} </u>
+                    </a>
+                  </span>
+                </div>
+              </div>
             </>
           )}
         </>
