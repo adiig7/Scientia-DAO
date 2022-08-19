@@ -9,7 +9,7 @@ import Link from "next/link";
 import Poweredby from "../src/components/Poweredby";
 import NFTSection from "../src/components/NFTSection";
 import Contribute from "../src/components/Contribute";
-import Owner from "../src/components/functionality/Owner";
+
 // import scientist from "../assets/scientist.png";
 // import image8 from "../assets/8_bg.png";
 // import grants from "../assets/grants.png";
@@ -50,9 +50,9 @@ export default function Home() {
             </span>
           </div>
           <Link href={"#explore"}>
-          <button className={styles.button} role="button">
-            Explore
-          </button>
+            <button className={styles.button} role="button">
+              Explore
+            </button>
           </Link>
         </div>
 
@@ -67,7 +67,7 @@ export default function Home() {
       </div>
 
       {/* join section */}
-      <div id='join' className={styles.section}>
+      <div id="join" className={styles.section}>
         <JoinSection />
       </div>
 

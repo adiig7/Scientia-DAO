@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/Member.module.css";
 import { useAccount, useContract, useProvider, useSigner } from "wagmi";
 import {
@@ -12,6 +12,7 @@ import { StoreMember } from "./functionality/StoreMembers";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "./Loading";
+import Link from "next/link";
 
 export default function NewMember() {
   const [name, setName] = useState("");
@@ -22,6 +23,7 @@ export default function NewMember() {
   const [pfpURI, setPfpURI] = useState("");
   const [researchURI, setResearchURI] = useState([]);
 
+  const [isMember, setIsMember] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
@@ -153,12 +155,26 @@ export default function NewMember() {
     console.log("Checking Eligibility");
     const check = await Member_contract.getApproval(address);
     const data = await MemberNFT_contract.balanceOf(address);
-    const value = parseInt(data.value._hex);
+    const value = parseInt(data._hex);
+    console.log(value);
+    console.log(check);
     if (check && value == 0) {
       setEligibleToMint(true);
+    } else {
+      setIsMember(true);
     }
     ////data will return a value , that returns and check if the user is not the owner of any NFT earlier
   };
+
+  useEffect(() => {
+    if (!isConnected) {
+      notify("Connect your wallet first");
+    } else {
+      check();
+      // setEligibleToMint(true);
+      // setIsMember(true);
+    }
+  }, []);
 
   const handleSubmit = async () => {
     try {
@@ -171,90 +187,98 @@ export default function NewMember() {
   return (
     <>
       <ToastContainer autoClose={2000} />
-      {!loading ? (
+      {isMember ? (
         <>
-          {!isUploaded ? (
-            <div className={styles.newMember}>
-              <div className={styles.title_small}>
-                <span className={`${styles.titleWord} ${styles.word2}`}>
-                  Create
-                </span>
-                <span className={`${styles.titleWord} ${styles.word1}`}>
+          {!loading ? (
+            <>
+              {!isUploaded ? (
+                <div className={styles.newMember}>
+                  <div className={styles.title_small}>
+                    <span className={`${styles.titleWord} ${styles.word2}`}>
+                      Create
+                    </span>
+                    <span className={`${styles.titleWord} ${styles.word1}`}>
+                      {" "}
+                      DAO
+                    </span>
+                    <span className={`${styles.titleWord} ${styles.word2}`}>
+                      {" "}
+                      Entry
+                    </span>
+                    <span className={`${styles.titleWord} ${styles.word1}`}>
+                      {" "}
+                      Proposal
+                    </span>
+                  </div>
+                  <label>Enter Your Name</label>
+                  <input
+                    required
+                    placeholder="Name"
+                    value={name}
+                    className={styles.member_name}
+                    type="text"
+                    onChange={(e) => setName(e.target.value)}
+                  />
+                  <label>
+                    Describe Yourself{" "}
+                    <small> &#40; minimum 150 words &#41; </small>
+                  </label>
+                  <textarea
+                    required
+                    placeholder="Bio"
+                    className={styles.member_bio}
+                    type="text"
+                    value={bio}
+                    onChange={(e) => setBio(e.target.value)}
+                  />
+                  <label>Field of Research </label>
+                  <input
+                    required
+                    placeholder="Research Field"
+                    className={styles.member_name}
+                    type="text"
+                    value={foR}
+                    onChange={(e) => setFoR(e.target.value)}
+                  />
+                  <label>
+                    Previous Researches <small> &#40; optional &#41; </small>{" "}
+                  </label>
+                  <input
+                    className={styles.member_name}
+                    type="file"
+                    onChange={(e) => setResearch(e.target.files)}
+                    multiple
+                  />
+                  <div className={styles.center}>
+                    <button className={styles.button} onClick={handleSubmit}>
+                      Submit Proposal
+                    </button>
+                    {/* {eligibleToMint ? (
+                      <button className={styles.button} onClick={Mint}>
+                        Mint NFT
+                      </button>
+                    ) : (
+                      <a>Not yet Approved</a>
+                    )} */}
+                  </div>
+                  <label>Note: Don't submit multiple request proposals</label>
+                </div>
+              ) : (
+                <>
                   {" "}
-                  DAO
-                </span>
-                <span className={`${styles.titleWord} ${styles.word2}`}>
-                  {" "}
-                  Entry
-                </span>
-                <span className={`${styles.titleWord} ${styles.word1}`}>
-                  {" "}
-                  Proposal
-                </span>
-              </div>
-              <label>Enter Your Name</label>
-              <input
-                required
-                placeholder="Name"
-                value={name}
-                className={styles.member_name}
-                type="text"
-                onChange={(e) => setName(e.target.value)}
-              />
-              <label>
-                Describe Yourself <small> &#40; minimum 150 words &#41; </small>
-              </label>
-              <textarea
-                required
-                placeholder="Bio"
-                className={styles.member_bio}
-                type="text"
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
-              />
-              <label>Field of Research </label>
-              <input
-                required
-                placeholder="Research Field"
-                className={styles.member_name}
-                type="text"
-                value={foR}
-                onChange={(e) => setFoR(e.target.value)}
-              />
-              <label>
-                Previous Researches <small> &#40; optional &#41; </small>{" "}
-              </label>
-              <input
-                className={styles.member_name}
-                type="file"
-                onChange={(e) => setResearch(e.target.files)}
-                multiple
-              />
-              <div className={styles.center}>
-                <button className={styles.button} onClick={handleSubmit}>
-                  Submit Proposal
-                </button>
-                {/* {eligibleToMint ? (
-                  <button className={styles.button} onClick={Mint}>
-                    Mint NFT
-                  </button>
-                ) : (
-                  <a>Not yet Approved</a>
-                )} */}
-              </div>
-            </div>
+                  <a>Request sent for Approval 👀🚀</a>
+                  <a>Checkout request here: {pfpURI}</a>
+                </>
+              )}
+            </>
           ) : (
             <>
-              {" "}
-              <a>Request sent for Approval 👀🚀</a>
-              <a>Checkout request here: {pfpURI}</a>
+              <Loading _loading={loading} _message={message} />
             </>
           )}
         </>
       ) : (
-        <>
-          <Loading _loading={loading} _message={message} />
-        </>
+        <></>
       )}
     </>
   );

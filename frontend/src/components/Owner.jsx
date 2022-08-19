@@ -7,11 +7,12 @@ import {
   Grants_ABI,
   Grants_Contract_Address,
   DAOMember_ABI,
+  DAOMember_Contract_Address,
   OwnerAddress,
-} from "../../../constants/constants";
-import styles from "../../../styles/Home.module.css";
+} from "../../constants/constants";
+import styles from "../../styles/Home.module.css";
 
-const Owner = async () => {
+export default function Owner() {
   const [isOwner, setIsOwner] = useState(false);
   const [id, setId] = useState(0);
   const provider = useProvider();
@@ -25,7 +26,7 @@ const Owner = async () => {
   });
 
   const Member_contract = useContract({
-    addressOrName: DAOMember_Contract_address,
+    addressOrName: DAOMember_Contract_Address,
     contractInterface: DAOMember_ABI,
     signerOrProvider: signer || provider,
   });
@@ -105,4 +106,4 @@ const Owner = async () => {
       </div>
     </>
   );
-};
+}

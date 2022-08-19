@@ -46,6 +46,8 @@ export default function ApproveGrant(props) {
   useEffect(() => {
     if (!isConnected) {
       notify("Connect your wallet first");
+    } else {
+      check();
     }
   }, []);
 
@@ -69,7 +71,7 @@ export default function ApproveGrant(props) {
               }
             />
           </div> */}
-          {/* {hasVoted ? (
+          {!hasVoted ? (
             <div className={styles.vote}>
               <button
                 onClick={() => Vote("YES", props.id)}
@@ -86,8 +88,8 @@ export default function ApproveGrant(props) {
             </div>
           ) : (
             <a> Already voted</a>
-          )} */}
-          <div className={styles.vote}>
+          )}
+          {/* <div className={styles.vote}>
             <button
               onClick={() => Vote("YES", props.id)}
               className={`${styles.button} ${styles.width}`}
@@ -100,7 +102,7 @@ export default function ApproveGrant(props) {
             >
               Deny
             </button>
-          </div>
+          </div> */}
         </div>
       </main>
     </>
