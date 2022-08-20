@@ -297,9 +297,9 @@ export default function GrantsProposal() {
             {grants ? (
               grants.map((grant) => {
                 return (
-                  <div className={styles.grant_card} key={request.Id}>
+                  <div className={styles.grant_card} key={grant.Id}>
                     <ApproveGrant
-                      idea_title={grant.Title}
+                      idea_title={grant.Name}
                       idea_desc={grant.Description}
                       id={grant.Id}
                       key={grant.Id}

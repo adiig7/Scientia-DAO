@@ -34,7 +34,7 @@ export default function ApproveGrant(props) {
   const check = async () => {
     try {
       console.log("checking the user for the Voting");
-      const response = await Member_contract.getVoterStatus(address, props.id);
+      const response = await Grant_contract.getVoterStatus(address, props.id);
       console.log(response);
       /// fetch the true or not status and check if that is right , then only allow them to vote and show the vote button
       setHasVoted(response);
@@ -57,11 +57,11 @@ export default function ApproveGrant(props) {
         <div>
           <h3>{props.idea_title}</h3>
           <p>{props.idea_desc}</p>
-          <b>
+          {/* <b>
             {" "}
             <u>Research Field </u>
             <p>{props.idea_field}</p>
-          </b>
+          </b> */}
           {/* <div>
             <Image
               width={'200px'}
