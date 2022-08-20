@@ -93,7 +93,7 @@
   padding: 1rem;
   border-radius: 10px;
   margin: 20px auto;
-  background: rgb(239, 224, 253);
+  /* background: rgb(239, 224, 253); */
   background: #a6f3ff;
   color: black;
   font-size: 18px;
@@ -104,8 +104,8 @@
   min-height: 150px;
   padding: 1rem;
   margin: 20px auto;
-  background: rgb(239, 224, 253);
-  background: #89efff;
+  /* background: rgb(239, 224, 253);
+  background: #89efff; */
   background: #a6f3ff;
 
   color: black;
