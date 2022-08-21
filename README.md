@@ -67,6 +67,97 @@ We use Spheron to finally deploy our decentralized autonomous organization.
 
 ---
 
+## Smart Contracts
+
+All of our smart contracts are written in Solidity. You can find them under [/backend/contracts](https://github.com/adiig7/Polygon-BUIDL-IT/tree/main/backend/contracts).
+
+They have currently been published on Polygon Mumbai Testnet due to testing and presentational reasons. 
+
+In the smart contracts themselves you can find dev comments and explanations.
+<br /><br /><br />
+**ContributorNFT.sol** - manages the contributor NFT and status
+
+**DAOFunds.sol** - manages the funds of the DAO
+
+**DAOMember.sol** - manages the proccess of some joining the DAO
+
+**Grants.sol** - manages the proposal for someone apply for grants
+
+**MemberNFT.sol** - manages the member NFT and status
+
+**VotingOnProposal.sol** - manages the votings on proposals in general
+
+**Whitelist.sol** - manages the inital whitelist before the DAO only accepts new mebers through votings
+
+---
+
+## NFTs
+
+At the current state Scientia DAO offers two different NFTs. A member NFT and a contributor NFT.
+
+You can find the NFT data under [/backend/constant](https://github.com/adiig7/Polygon-BUIDL-IT/tree/main/backend/constant).
+
+---
+
+## Frontend
+
+For the UI and design we have used Next.js to setup our project easily and build/design it with the help of JavaScript, React and HTML/CSS.
+
+All the frontend code is available under [/frontend](https://github.com/adiig7/Polygon-BUIDL-IT/tree/main/frontend).
+<br /><br /><br />
+
+### Frontend folders in our project:
+
+**constants** - important file with different constants to call in other programs
+
+**pages** - all of our different frontend webpages
+
+**public** - public files like images etc.
+
+**src** - assets like images and single components of the different webpages
+
+**styles** - CSS styling files
+<br /><br /><br />
+### Other important files:
+
+**.env** - important API-keys for deployment
+
+**.gitignore** - lets GitHub ignore several files like sensible data
+
+**next.config.js** - configuration of Next.js
+
+---
+
+## Backend
+
+In our backend folder you can find everything that’s working behind the scenes of Scientia DAO!
+<br /><br /><br />
+### Backend folders in our project:
+
+**constant** - NFT (meta-)data
+
+**contracts** - Solidity Smart Contracts
+
+**scripts** - deployment scripts for the Smart Contracts
+<br /><br /><br />
+### Other important files:
+
+**.gitignore** - lets GitHub ignore several files like sensible data
+
+**README.md** - Smart Contract Addresses
+
+**hardhat.config.js** - HardHat configuration file
+
+---
+
+## Wallet Connection
+
+You can connect your wallet with the help of **RainbowKit**. It gives better control and UX than web3modal.
+
+Look at the docs of RainbowKit on how to use it: [https://www.rainbowkit.com/docs/introduction](https://www.rainbowkit.com/docs/introduction)
+
+---
+
 ### Founders
 
 ### Dhruv Agarwal
