@@ -104,7 +104,21 @@ export default function Home() {
       <div className={styles.section}>
         <Poweredby />
       </div>
-      {/* <Owner /> */}
+
+      {/* docs */}
+      <div className={styles.section}>
+        <div className={styles.center}>
+          <button className={styles.button}>
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href="https://plump-airedale-cba.notion.site/Docs-a94ba6396d524259ad81e0801c659ce9"
+            >
+              Read Docs
+            </a>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
