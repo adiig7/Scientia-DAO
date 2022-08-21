@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/Member.module.css";
 import { useAccount, useContract, useProvider, useSigner } from "wagmi";
 import {
@@ -6,7 +6,6 @@ import {
   DAOMember_Contract_Address,
 } from "../../constants/constants";
 
-/// check Voting Remaining
 export default function MemberCard(props) {
   const [hasVoted, setHasVoted] = useState(false);
   const provider = useProvider();
@@ -46,9 +45,9 @@ export default function MemberCard(props) {
     }
   };
 
-  // useEffect(() => {
-  //   check();
-  // }, []);
+  useEffect(() => {
+    check();
+  }, []);
 
   return (
     <>
@@ -61,7 +60,7 @@ export default function MemberCard(props) {
             <u> Field of Expertise</u>
           </b>
           <h3>{props.member_field}</h3>
-          <div className={styles.vote}>
+          {/* <div className={styles.vote}>
             <button
               onClick={() => Vote("YES", props.id)}
               className={`${styles.button} ${styles.width}`}
@@ -74,8 +73,8 @@ export default function MemberCard(props) {
             >
               Deny
             </button>
-          </div>
-          {/* {hasVoted ? (
+          </div> */}
+          {!hasVoted ? (
             <div className={styles.vote}>
               <button
                 onClick={() => Vote("YES", props.id)}
@@ -92,7 +91,7 @@ export default function MemberCard(props) {
             </div>
           ) : (
             <a>Already Voted</a>
-          )} */}
+          )}
         </div>
       </main>
     </>

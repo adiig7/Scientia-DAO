@@ -5,13 +5,22 @@ import {
   DAOMember_ABI,
   DAOMember_Contract_Address,
 } from "../../constants/constants";
+
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Loading from "./Loading";
 import styles from '../../styles/Publish.module.css'
+
 
 export default function Account() {
   const [researches, setResearches] = useState([]);
   const provider = useProvider();
   const { data: signer } = useSigner();
   const { address, isConnected } = useAccount();
+
+  const notify = (message) => toast(`${message}`);
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const Member_contract = useContract({
     addressOrName: DAOMember_Contract_Address,
@@ -61,43 +70,56 @@ export default function Account() {
   // fetches the no. of requests , then fetches the each request and store the result in the array of requests
   const get = async () => {
     try {
+      setLoading(true);
+      setMessage("Fetching the Requests from contract and IPFS ..");
       console.log("starting ...");
       const _researches = await fetchRequests();
       console.log(_researches);
       console.log("ending...");
       /// set the array of the objects of the requests is stored and can be rendered then
       setResearches(_researches);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
+      notify(error);
     }
   };
 
   useEffect(() => {
-    get();
+    if (!isConnected) {
+      notify("Connect your wallet first");
+    } else {
+      get();
+    }
   }, []);
 
   return (
     <main>
-      <div>
-        {researches ? (
-          researches.map((research, key) => {
-            return (
-              <ResearchCard
-                title={research.Title}
-                description={research.Description}
-                id={research.Id}
-                key={key}
-              />
-            );
-          })
+
+      <ToastContainer autoClose={2000} />
+      {!loading ? (
+        <div>
+          {researches ? (
+            researches.map((research, key) => {
+              return (
+                <ResearchCard
+                  title={research.Title}
+                  description={research.Description}
+                  id={research.Id}
+                  key={key}
+                />
+              );
+            })
           ) : (
-          <div className={styles.message}>
-          <h2>
-            No Researches Found
-          </h2>
-          </div>
-        )}
-      </div>
+            <a>No Researches Found </a>
+          )}
+        </div>
+      ) : (
+        <>
+          <Loading _loading={loading} _message={message} />
+        </>
+      )}
     </main>
   );
 }
