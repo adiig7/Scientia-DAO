@@ -120,15 +120,6 @@ contract newDAOMember2 is Ownable {
         // TODO : delete the member from the requestList
     }
 
-    // /// to end the vote and add the member to the Members List
-    // function endVote(uint256 _id) public onlyOwner {
-    //     Member storage member = requestList[_id];
-    //     require(
-    //         block.timestamp > member.votingStartTime + votingDuration,
-    //         "Voting hasn't ended yet for this member!"
-    //     );
-    // }
-
     function addRequest(string memory ipfsURI, string[] memory researchesURI)
         public
     {
