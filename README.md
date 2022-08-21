@@ -83,6 +83,6 @@ Experience in bug bounty hunting. Learning to code these days.
 
 **Backend Developer**
 
-Experience in building android applications, loves writing smart contracts.
+Loves writing Smart contracts
 
 ---
