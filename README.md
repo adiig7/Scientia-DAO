@@ -51,19 +51,33 @@ We have used several technologies to build this decentralized autonomous organiz
 
 ### Polygon
 
-All of our smart contracts are deployed on the Polygon Mumbai Testnet and so our infrastructure and interactions run on Polygon. 
+All of our smart contracts are deployed on the Polygon Mumbai Testnet and so our infrastructure and interactions run on Polygon. Total 5 of them are there , that manages all the backend code including DAO , Voting, grants, Researches and members. Interaction with the contracts is done with help of wagmi.js and ethers.js. We intend to launch the platform on Polygon Main chain after feedback and presentation. Testing is done well for all the contracts , to ensure they are secured and working properly.
+
+- [Grants Contract](https://mumbai.polygonscan.com/address/0x2d1Be1884e60493876B2Cd3f47E8f5a28F355027)
+- [DAO Funds Contract](https://mumbai.polygonscan.com/address/0x259260e02f5106501efadEd8E6407A46D8a32d09)
+- [Members Contract](https://mumbai.polygonscan.com/address/0x2e86bfD68101eB5F191042638326f7E2B54BDf9c)
+- [Contributor NFT contract](https://mumbai.polygonscan.com/address/0xaD52059b257531883E5906B1E0b0e67002dd1297) 
+- [Member NFT Contract](https://mumbai.polygonscan.com/address/0xd60123082CEd26d0a970ddeFE350A08aB3680207)
 
 ### IPFS/Web3.storage
+All Data storage and querying is done via IPFS with help of Web3.storage SDKs and docs on the website.
+**Web3.Storage** is used for storing all sort of Data including user profile, grants request and researches on **IPFS**, done with the help of the SDK provided and stored in JSON format.
+The querying of the data is done with CID Gateway links and then rendered in Frontend. The CIDs are stored in contract to avoid data tampering. We take the input of the data from the user , pack it in JSON file and then upload the files  IPFS via web3.storage. IPFS is also used to store our NFTs metadata compatible for ERC721 . 
 
-Media files will get uploaded to Web3.storage and research details and personal data gets stored to IPFS via Web3.storage via a JSON file. Later on the frontend the data and researches get extracted from the contract and IPFS.
+Refer these components for more info : [StoreMembers](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreMembers.jsx), [StoreResearch](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreResearch.jsx), [StoreRequests](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreRequests.jsx), [StoreContent](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreContent2.jsx)
+
 
 ### Chainlink
 
-We use Chainlink Keepers for our proposals to automatically keep track of the duration of the decentralized votings and deadlines.
+**Chainlink** Keepers are being used to end the voting for members entry request and grants request. Created 2  *Time based trigger upkeeps* for Members Contract and Grants Contract. These upkeeps runs once in 2 days and close all the open requests if so available in the contract . This is done in order to remove all discrepancies related to one person control. Docs were referred extensively for getting more info about keepers and the contracts are made chainlink keepers compatible too. The keepers are runnig as follows and they check all the open voterequest and close them,if the voting peroid is over.
+- [Member Contract Upkeep](https://keepers.chain.link/mumbai/62371268186247370400248311680388682347830804840005762553167996477608583208053)
+- [Grants Contract Upkeep](https://keepers.chain.link/mumbai/0xd5119b41b4428b8c77253032576bde9c36ffa8dfd8d85665577193b901aa06f1)
 
 ### Spheron
 
-We use Spheron to finally deploy our decentralized autonomous organization.
+We use Spheron to finally deploy our decentralized autonomous organization on IPFS (decentralized storage) so in order to make out platform fully decentralized and compatible with web3.
+
+- [Spheron link](https://scientia-dao-od34eg.spheron.app/)
 
 ---
 
@@ -94,8 +108,12 @@ In the smart contracts themselves you can find dev comments and explanations.
 ## NFTs
 
 At the current state Scientia DAO offers two different NFTs. A member NFT and a contributor NFT.
-
 You can find the NFT data under [/backend/constant](https://github.com/adiig7/Polygon-BUIDL-IT/tree/main/backend/constant).
+
+NFT Collection Links live on Polygon Mumbai Net : 
+- [MemberNFT](https://testnets.opensea.io/collection/scientia-dao-member-v2)
+- [Contributor NFT](https://testnets.opensea.io/collection/scientia-dao-contributor-v2)
+
 
 ---
 
