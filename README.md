@@ -45,6 +45,26 @@ The first 50 people can join the DAO directly after paying the inital deposit of
 
 ---
 
+## Technologies used in Scientia DAO
+
+We have used several technologies to build this decentralized autonomous organization:
+
+### Polygon
+
+All of our smart contracts are deployed on the Polygon Mumbai Testnet and so our infrastructure and interactions run on Polygon. 
+
+### IPFS/Web3.storage
+
+Media files will get uploaded to Web3.storage and research details and personal data gets stored to IPFS via Web3.storage via a JSON file. Later on the frontend the data and researches get extracted from the contract and IPFS.
+
+### Chainlink
+
+We use Chainlink Keepers for our proposals to automatically keep track of the duration of the decentralized votings and deadlines.
+
+### Spheron
+
+We use Spheron to finally deploy our decentralized autonomous organization.
+
 ---
 
 ### Founders
