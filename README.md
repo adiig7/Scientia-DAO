@@ -2,8 +2,6 @@
 
 ![scientia_dao_logo](https://user-images.githubusercontent.com/11206675/183511519-021297a0-b855-41ca-a5ca-d50852554296.png)
 
-If you're looking for the technical documentation, click the following link: https://www.notion.so/Technical-Documentation-cff42d31769842709d9325ea6eddeb19
-
 ### What is our main idea?
 
 Scientia DAO is the first DAO Community for Scientists & Researchers.
