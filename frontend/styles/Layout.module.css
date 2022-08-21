@@ -184,7 +184,10 @@
     text-align: center;
     transition: 0.3s;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-    opacity: 0.95;
+    background: #1e2124;
+    background: #111111;
+    background: #111111f0;
+    backdrop-filter: blur(6px);
   }
 
   .navmenu.active {
