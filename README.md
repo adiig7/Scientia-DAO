@@ -64,6 +64,8 @@ All Data storage and querying is done via IPFS with help of Web3.storage SDKs an
 **Web3.Storage** is used for storing all sort of Data including user profile, grants request and researches on **IPFS**, done with the help of the SDK provided and stored in JSON format.
 The querying of the data is done with CID Gateway links and then rendered in Frontend. The CIDs are stored in contract to avoid data tampering. We take the input of the data from the user , pack it in JSON file and then upload the files  IPFS via web3.storage. IPFS is also used to store our NFTs metadata compatible for ERC721 . 
 
+Website is currently up and working on the provided links of vercel and Spheron , can be tested according to the docs provided on the website. Also Backend Flow is added in the presentation.
+
 Refer these components for more info : [StoreMembers](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreMembers.jsx), [StoreResearch](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreResearch.jsx), [StoreRequests](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreRequests.jsx), [StoreContent](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreContent2.jsx)
 
 
