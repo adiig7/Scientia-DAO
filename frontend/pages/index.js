@@ -71,14 +71,14 @@ export default function Home() {
         <JoinSection />
       </div>
 
-      {/* what more */}
-      <div className={styles.section}>
-        <WhatMore />
-      </div>
-
       {/* nft showcase */}
       <div className={styles.section}>
         <NFTSection />
+      </div>
+
+      {/* what more */}
+      <div className={styles.section}>
+        <WhatMore />
       </div>
 
       {/* contribute section */}

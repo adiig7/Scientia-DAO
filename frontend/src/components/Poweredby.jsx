@@ -5,6 +5,7 @@ import polygon from "../assets/polygon.svg";
 import ipfs from "../assets/ipfs.png";
 import spheron from "../assets/spheron.svg";
 import learnweb3 from "../assets/learnweb3.png";
+import chainlink from "../assets/chainlink.svg";
 import Image from 'next/image';
 
 export default function Poweredby() {
@@ -36,6 +37,11 @@ export default function Poweredby() {
             <Image src={web3storage} />
             </a>
              <p>Web3.Storage</p>
+          </div>
+          <div className={styles.sponsor}>
+            <a href="https://chain.link/" target="_blank" rel="noreferrer">
+            <Image src={chainlink} />
+            </a>
           </div>
           <div className={styles.sponsor}>
             <a href="https://spheron.network" target="_blank" rel="noreferrer">
