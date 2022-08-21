@@ -146,7 +146,8 @@
   }
   .navbar {
     justify-content: space-between;
-    background: #1e2124;
+    background: ##111111ad;
+    backdrop-filter: blur(6px);
   }
   .navlogo {
     max-width: 35px;
