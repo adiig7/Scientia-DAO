@@ -29,7 +29,7 @@ Scientia DAO offers a variety of features:
 
 In order to come up with this idea, Dhruv Agarwal, Kushagra Sarathe, Aditya Gupta and Nils Giebing have sat together and brainstormed. The direction was clear - Medicine and/or science. 
 
-After the second session we came up with the idea of this project and its name - Scientia DAO. Scientia is latin and means ‘science’. Science in its purest form.
+After the second session we came up with the idea of this project and its name - Scientia DAO. Scientia is latin and means 'knowledge’. Knowledge in sciences.
 
 We have set up a GitHub repository and began planning using Notion. First we wrote the smart contracts to come up with the logic behind the DAO. Soon we needed some first visualizations in order to keep going creating more ideas, logic and the dependend components.
 
