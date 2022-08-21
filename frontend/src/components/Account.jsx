@@ -5,9 +5,12 @@ import {
   DAOMember_ABI,
   DAOMember_Contract_Address,
 } from "../../constants/constants";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Loading from "./Loading";
+import styles from '../../styles/Publish.module.css'
+
 
 export default function Account() {
   const [researches, setResearches] = useState([]);
@@ -93,6 +96,7 @@ export default function Account() {
 
   return (
     <main>
+
       <ToastContainer autoClose={2000} />
       {!loading ? (
         <div>

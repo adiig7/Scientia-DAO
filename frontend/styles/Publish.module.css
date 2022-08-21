@@ -23,6 +23,10 @@
   min-height: 80vh;
 }
 
+.message * {
+  text-align: center;
+}
+
 .title {
   font-weight: 800;
   font-size: 34px;
@@ -244,4 +248,10 @@
     padding: 10px;
     margin: 10px auto;
   }
+
+  .message h2{
+    font-size: 16px;
+    padding: 0.5rem 1rem;
+  }
+  
 }

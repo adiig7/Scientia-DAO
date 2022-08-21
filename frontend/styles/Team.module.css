@@ -39,9 +39,10 @@
   /* max-width: 350px; */
   /* height: 420px; */
     /* width: 40%; */
-  padding: 0.5rem 2rem;
-  margin: 15px ;
+  padding: 2rem;
+  margin: 25px 30px ;
   text-align: center;
+  /* max-width: 350px; */
 }
 
 .card:hover {
@@ -53,11 +54,20 @@
   max-width: 25ch;
 }
 
+.card a {
+  margin: auto 10px;
+}
+
 .title {
   font-weight: 800;
   font-size: 34px;
   margin: 8px auto;
   margin-top: 25px;
+}
+
+.twitter {
+  display: inline;
+  width: 10px;
 }
 
 .titleWord {

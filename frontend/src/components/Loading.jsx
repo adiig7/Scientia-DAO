@@ -11,6 +11,7 @@ const Message = styled.div`
   padding-top: 20rem;
   color: #6cffe4;
   letter-spacing: 5px;
+  font-size: 16px ;
   
 `;
 
@@ -96,9 +97,9 @@ export default function Loading( props) {
       </Balls>
       <Message>
         <div>
-          <h2>
+          <h3>
           { message }
-          </h2>
+          </h3>
         </div>
       </Message>
     </Screen>

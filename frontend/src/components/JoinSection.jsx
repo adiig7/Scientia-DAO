@@ -76,13 +76,13 @@ export default function JoinSection() {
 
                 <p>
                   Anyone who has done a research and want to showcase it can
-                  become a DAO member
+                  become a DAO member.
                   <br />
-                  by minting the DAO NFT.
+                  by clicking &#38; filling the join DAO form below
                   <br />
                   <br />
-                  This membership is open to the first 100 researchers and then
-                  the entry to the DAO will be governed by the DAO members.
+                  This membership is open to all the researchers around the world.
+                  The entry is be governed by the DAO members through voting.
                 </p>
               </div>
 
@@ -105,10 +105,12 @@ export default function JoinSection() {
                   researches.
                   <br />
                   <br />
-                  And if you like someone&#39;s work you support them through
-                  donations/grants for social good and earn yourself a
+                  And if you like what we are doing, you supportus through
+                  contributing to DAO for social good and earn yourself a
                   contributor NFT
                   <br />
+                  <br />
+                  The amount recieved from audience contribution is used to pay for grants requested by DAO members for their new research proposals
                 </p>
               </div>
             </Carousel>
