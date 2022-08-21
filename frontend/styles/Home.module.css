@@ -101,13 +101,14 @@
 }
 
 .what_more {
-  padding: 2rem 0;
+  padding: 4rem 0;
+  padding-bottom: 0;
   /* margin-top: 25px ; */
 }
 
 .poweredby {
   /* padding: 4rem 0; */
-  padding-bottom: 2rem;
+  padding: 2rem;
   /* margin-top: 25px ; */
 }
 
@@ -233,7 +234,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 4rem 0.5rem;
+  padding: 2rem 0.5rem;
 }
 
 .feature_card {
@@ -573,6 +574,7 @@
 
   .what_more {
     padding: 2rem 0;
+    padding-bottom: 0rem;
   }
 
   .what_more p {
@@ -601,4 +603,5 @@
   .logo img {
     filter: invert(1);
   }
+
 }
