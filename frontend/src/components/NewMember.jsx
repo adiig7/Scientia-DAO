@@ -261,28 +261,32 @@ export default function NewMember() {
                       <a>Not yet Approved</a>
                     )} */}
                   </div>
-                  <label>Note: Don't submit multiple request proposals</label>
+                  <label>
+                    Note: Dont&apos; submit multiple request proposals
+                  </label>
                 </div>
               ) : (
-               <>
-              <div>
-                {" "}
-                <div className={styles.title_small}>
-                  <span className={`${styles.titleWord} ${styles.word1}`}>
-                    Request sent for Approval{" "}
-                  </span>{" "}
-                  🚀
-                  <span className={`${styles.titleWord} ${styles.word2}`}>
-                    Checkout request here:{" "}
-                    <br />
-                    <a className={`${styles.titleWord} ${styles.word1}`} href={pfpURI}>
-                      {" "}
-                      <u> {pfpURI} </u>
-                    </a>
-                  </span>
-                </div>
-              </div>
-            </>
+                <>
+                  <div>
+                    {" "}
+                    <div className={styles.title_small}>
+                      <span className={`${styles.titleWord} ${styles.word1}`}>
+                        Request sent for Approval{" "}
+                      </span>{" "}
+                      🚀
+                      <span className={`${styles.titleWord} ${styles.word2}`}>
+                        Checkout request here: <br />
+                        <a
+                          className={`${styles.titleWord} ${styles.word1}`}
+                          href={pfpURI}
+                        >
+                          {" "}
+                          <u> {pfpURI} </u>
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </>
               )}
             </>
           ) : (
