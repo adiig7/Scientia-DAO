@@ -66,7 +66,7 @@ The querying of the data is done with CID Gateway links and then rendered in Fro
 
 Website is currently up and working on the provided links of vercel and Spheron , can be tested according to the docs provided on the website. Also Backend Flow is added in the presentation.
 
-[Video Explanation](https://clipchamp.com/watch/DqKfdtcaGDc)
+[Video Explanation](https://clipchamp.com/watch/AYASYGnmhvo)
 
 Refer these components for more info : [StoreMembers](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreMembers.jsx), [StoreResearch](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreResearch.jsx), [StoreRequests](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreRequests.jsx), [StoreContent](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreContent2.jsx)
 
