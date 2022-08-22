@@ -79,7 +79,7 @@ Refer these components for more info : [StoreMembers](https://github.com/adiig7/
 
 We use Spheron to finally deploy our decentralized autonomous organization on IPFS (decentralized storage) so in order to make out platform fully decentralized and compatible with web3.
 
-- [Spheron link](https://scientia-dao-od34eg.spheron.app/)
+- [Spheron link](https://scientia-dao-hagzd.spheron.app/)
 
 ---
 
