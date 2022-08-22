@@ -66,6 +66,8 @@ The querying of the data is done with CID Gateway links and then rendered in Fro
 
 Website is currently up and working on the provided links of vercel and Spheron , can be tested according to the docs provided on the website. Also Backend Flow is added in the presentation.
 
+[Video Explanation](https://clipchamp.com/watch/DqKfdtcaGDc)
+
 Refer these components for more info : [StoreMembers](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreMembers.jsx), [StoreResearch](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreResearch.jsx), [StoreRequests](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreRequests.jsx), [StoreContent](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreContent2.jsx)
 
 
@@ -74,6 +76,8 @@ Refer these components for more info : [StoreMembers](https://github.com/adiig7/
 **Chainlink** Keepers are being used to end the voting for members entry request and grants request. Created 2  *Time based trigger upkeeps* for Members Contract and Grants Contract. These upkeeps runs once in 2 days and close all the open requests if so available in the contract . This is done in order to remove all discrepancies related to one person control. Docs were referred extensively for getting more info about keepers and the contracts are made chainlink keepers compatible too. The keepers are runnig as follows and they check all the open voterequest and close them,if the voting peroid is over.
 - [Member Contract Upkeep](https://keepers.chain.link/mumbai/62371268186247370400248311680388682347830804840005762553167996477608583208053)
 - [Grants Contract Upkeep](https://keepers.chain.link/mumbai/0xd5119b41b4428b8c77253032576bde9c36ffa8dfd8d85665577193b901aa06f1)
+
+[Video Explanation](https://clipchamp.com/watch/DqKfdtcaGDc)
 
 ### Spheron
 
