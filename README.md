@@ -66,6 +66,8 @@ The querying of the data is done with CID Gateway links and then rendered in Fro
 
 Website is currently up and working on the provided links of vercel and Spheron , can be tested according to the docs provided on the website. Also Backend Flow is added in the presentation.
 
+[Video Explanation](https://clipchamp.com/watch/AYASYGnmhvo)
+
 Refer these components for more info : [StoreMembers](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreMembers.jsx), [StoreResearch](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreResearch.jsx), [StoreRequests](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreRequests.jsx), [StoreContent](https://github.com/adiig7/Scientia-DAO/blob/main/frontend/src/components/functionality/StoreContent2.jsx)
 
 
@@ -75,11 +77,13 @@ Refer these components for more info : [StoreMembers](https://github.com/adiig7/
 - [Member Contract Upkeep](https://keepers.chain.link/mumbai/62371268186247370400248311680388682347830804840005762553167996477608583208053)
 - [Grants Contract Upkeep](https://keepers.chain.link/mumbai/0xd5119b41b4428b8c77253032576bde9c36ffa8dfd8d85665577193b901aa06f1)
 
+[Video Explanation](https://clipchamp.com/watch/DqKfdtcaGDc)
+
 ### Spheron
 
 We use Spheron to finally deploy our decentralized autonomous organization on IPFS (decentralized storage) so in order to make out platform fully decentralized and compatible with web3.
 
-- [Spheron link](https://scientia-dao-od34eg.spheron.app/)
+- [Spheron link](https://scientia-dao-hagzd.spheron.app/)
 
 ---
 
