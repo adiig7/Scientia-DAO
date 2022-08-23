@@ -5,7 +5,7 @@ import scope from "../assets/scope-128.png";
 import Image from "next/image";
 import Link from "next/link";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-
+import UnstoppableDomain from "./unstoppableDomains";
 export default function Layout({ children }) {
   const [isActive, setIsActive] = useState(false);
 
@@ -17,8 +17,7 @@ export default function Layout({ children }) {
     <>
       {/* <div className={styles.container}> */}
       <header className={styles.header}>
-        <nav
-         className={styles.navbar}>
+        <nav className={styles.navbar}>
           <div className={styles.logo}>
             <Link href={"/"}>
               <div className={styles.title}>
@@ -35,7 +34,6 @@ export default function Layout({ children }) {
             </div>
           </div>
           <ul
-          
             className={
               isActive === false
                 ? styles.navmenu
@@ -74,7 +72,8 @@ export default function Layout({ children }) {
             </li> */}
             <li className={styles.navitem}>
               {/* <button>Connect Wallet</button> */}
-              <ConnectButton />
+              {/* <ConnectButton /> */}
+              <UnstoppableDomain />
             </li>
           </ul>
           <button
