@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../../styles/Footer.module.css";
 import Image from "next/image";
 import github from "../assets/github.svg";
-import logo from "../assets/logo1.png";
 
 export default function Footer() {
   return (
@@ -18,7 +17,8 @@ export default function Footer() {
           {/* <Image src={logo} /> */}
 
           <span className={styles.footer_text}>
-            © 2022 ALL RIGHTS RESERVED - Scientia DAO
+            Scientia DAO - <b>OPEN SOURCE</b> published under the GNU GPLv3 license<br/>
+            Build Scientia DAO together with us!
           </span>
           <div className={`${styles.github} `}>
             <a
@@ -26,7 +26,7 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
             >
-              <Image src={github} />
+              <Image src={github} alt="GitHub Logo" />
             </a>
           </div>
         </div>
