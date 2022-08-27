@@ -6,7 +6,7 @@ const uauth = new UAuth({
   redirectUri:
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : "https://scientia-dao-hagzd.spheron.app/",
+      : "https://scientia-dao-od34eg.spheron.app/",
 });
 
 function UnstoppableDomain() {
