@@ -6,6 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import UnstoppableDomain from "./unstoppableDomains";
+
 export default function Layout({ children }) {
   const [isActive, setIsActive] = useState(false);
 

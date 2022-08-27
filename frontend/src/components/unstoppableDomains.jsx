@@ -3,7 +3,10 @@ import UAuth from "@uauth/js";
 import styles from "../../styles/Layout.module.css";
 const uauth = new UAuth({
   clientID: "9aaea778-f1a6-433f-b216-1b7a0a1cc087",
-  redirectUri: "http://localhost:3000",
+  redirectUri:
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : "https://scientia-dao-hagzd.spheron.app/",
 });
 
 function UnstoppableDomain() {
