@@ -4,7 +4,7 @@
 - Link to the code where the component is added : "https://github.com/Dhruv-2003/Scientia-DAO/blob/main/frontend/src/components/unstoppableDomains.jsx"
 - Pull request Link :"https://github.com/adiig7/Scientia-DAO/pull/6"
 - Recorded Video of demo : "https://www.loom.com/share/6f3ae54837324db7b012cf6ad59f6ae9"
-- Live URL : "https://scientia-dao-git-fork-dhruv-2003-main-adiig7.vercel.app/"
+- Live URL : "https://scientia-dao-od34eg.spheron.app/"
 - Person of Contact: Dhruv Agarwl (Email: contact.dhruvagarwal@gmail.com)
 - Discord ID : 0xdhruv#1370
 - Unstoppable Domains Email ID : contact.dhruvagarwal@gmail.com
